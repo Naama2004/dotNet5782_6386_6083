@@ -10,7 +10,7 @@ using BLApi;
 
 namespace BlImplementation;
 
-public class BOcart:ICart
+public class BOcart : ICart
 {
     public BO.cart addProduct(BO.cart C, int id)//עבור מסך קטלוג ומבך פרטי מוצר
     {

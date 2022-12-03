@@ -18,12 +18,28 @@
                 <ColumnDefinition Width="400*"/>
                 <ColumnDefinition Width="310*"/>
                 <ColumnDefinition Width="23*"/>
-                <ColumnDefinition Width="67*"/>
+                <ColumnDefinition Width="49*"/>
+                <ColumnDefinition Width="19*"/>
             </Grid.ColumnDefinitions >
-            <ComboBox Name="CategorySelector" Grid.Column="1" Grid.ColumnSpan="3"/>
-            <Label x:Name="label" Content="Select Category:" HorizontalAlignment="Left" Margin="39,0,0,0" VerticalAlignment="Center" Height="46" Width="218" Foreground="#FF108E23" FontWeight="Bold" FontSize="22" FontStyle="Italic"/>
+            <ComboBox Name="CategorySelector" Grid.Column="1" Grid.ColumnSpan="4" SelectionChanged="CategorySelector_SelectionChanged" RenderTransformOrigin="0.5,0.5">
+                <ComboBox.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="-0.164"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </ComboBox.RenderTransform>
+            </ComboBox>
+            <Label  x:Name="label" Content="Select Category:" HorizontalAlignment="Left" Margin="39,0,0,0" VerticalAlignment="Center" Height="46" Width="218" Foreground="#FF108E23" FontWeight="Bold" FontSize="22" FontStyle="Italic"/>
         </Grid>
-        <ListBox x:Name="ProductsList" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,46,0,0" Grid.RowSpan="2"  SelectionChanged="ProductsList_SelectionChanged"/>
+        <ListView Name ="ProductsListview" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn/>
+                </GridView>
+            </ListView.View>
+        </ListView>
 
 
 

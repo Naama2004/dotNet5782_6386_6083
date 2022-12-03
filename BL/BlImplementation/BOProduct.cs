@@ -24,8 +24,8 @@ public class BOProduct : IProduct
                 {
                     ProductId = P.ID,
                     ProductName = productFromBl.Name,
-                    price = P.Price, 
-                    Category=(BO.Enums.Category)P.Category,
+                    price = P.Price,
+                    Category = (BO.Enums.Category)P.Category,
                 }).ToList();
     }
 
@@ -51,11 +51,11 @@ public class BOProduct : IProduct
 
     public void AddProductmaneger(BO.Product P)
     {
-        if(P.ID > 0 && P.Name!=" " && P.Price>0 && P.instock>=0)
+        if (P.ID > 0 && P.Name != " " && P.Price > 0 && P.instock >= 0)
         {
             DO.Product DOp = new DO.Product();
             DOp.ID = P.ID;
-            DOp.Name = P.Name;  
+            DOp.Name = P.Name;
             DOp.Price = P.Price;
             DOp.InStock = P.instock;
             DAL.DalProduct product = new DAL.DalProduct();
@@ -71,7 +71,7 @@ public class BOProduct : IProduct
         }
     }
 
-    public void RemoveProductmaneger(int id )
+    public void RemoveProductmaneger(int id)
     {
         // בדיקה שהמוצר ךא מופיע באף הזמנה
         //אם עבד
@@ -109,7 +109,23 @@ public class BOProduct : IProduct
         }
     }
 
+    public IEnumerable<BO.ProductForList> GetProductsByCategory(BO.Enums.Category category)
+    {
+        DAL.DalProduct product = new DAL.DalProduct();
+        List<DO.Product> doproductList = product.GetAll().ToList();
+        return (from P in doproductList
+                    // let productFromBl = product.GET(P.ID)
+                where P.Category == (DO.Enums.Category)category
+                select new BO.ProductForList()
+                {
+                    ProductId = P.ID,
+                    ProductName = P.Name,
+                    price = P.Price,
+                    Category = (BO.Enums.Category)P.Category,
+                }).ToList();
+    }
+    //זריקה אם הקטגוריה אינה קיימת
 
 }
-        
+
 

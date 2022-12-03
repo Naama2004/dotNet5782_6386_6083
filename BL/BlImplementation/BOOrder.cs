@@ -38,7 +38,7 @@ public BO.Order GetOrderDetails(int id)
         DalOrder temp = new DalOrder();
         try
         {
-            DO.Order wantedOrder=temp.GET(id);
+            DO.Order wantedOrder = temp.GET(id);
             BO.Order returnOrder = new BO.Order();
             returnOrder.Id = wantedOrder.ID;
             returnOrder.CustomerName = wantedOrder.CustomerName;
@@ -50,7 +50,7 @@ public BO.Order GetOrderDetails(int id)
             // חסר רשימת מוצרים, סטטוס מחיר וכו
             return returnOrder;
         }
-        catch 
+        catch
         {
             throw new Exception("dfgh");
             // תפיסה וזריקה
@@ -72,15 +72,15 @@ public BO.Order UpdateShip(int id)
         //עדכון בשכבת הלוגיקה 
 
 
-        if(temp.State!=BO.Enums.State.send)
+        if (temp.State != BO.Enums.State.send)
         {
-           
-           
+
+
             //DO.Order updated = new DO.Order();
             //updated
             help.UPDATE()
         }
-            
+
     }
 
 }

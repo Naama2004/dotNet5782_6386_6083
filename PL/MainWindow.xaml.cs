@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using BL;
 using BLApi;
+using BlImplementation;
 namespace PL
 {
     /// <summary>
@@ -23,9 +24,15 @@ namespace PL
     {
         private IBl name = new Bl();
         public MainWindow()
-        {
-           
+        { 
+
             InitializeComponent();
+        }
+
+        private void openListWindow(object sender, RoutedEventArgs e)
+        {
+            ProductListForManager help = new ProductListForManager();
+            help.Show();
         }
     }
 }
