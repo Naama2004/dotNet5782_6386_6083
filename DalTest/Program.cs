@@ -38,7 +38,7 @@ press 3 for orderitem");
                             Product p = new Product();
                             p.ID = id;
                             Console.WriteLine(@"enter a for sweatshirt b for sweatpants c for bucket hut d for socks e for T-shirt");
-                            string op = Console.ReadLine();
+                            string? op = Console.ReadLine();
                             if (op == "a")
                             {
                                 p.Category = Enums.Category.Sweatshirt;
@@ -65,8 +65,8 @@ press 3 for orderitem");
                                 p.Category = Enums.Category.Tshirt;
                                 p.Price = 35;
                             }
-                            Console.WriteLine("Enter your name");
-                            string name = Console.ReadLine();
+                            Console.WriteLine("Enter name of pruduct");
+                            string? name = Console.ReadLine();
                             p.Name = name;
                             temp.ADD(p);
                             break;
@@ -77,7 +77,7 @@ press 3 for orderitem");
                             int num4 = Convert.ToInt32(Console.ReadLine());
                             order1.ID = num4;
                             Console.WriteLine("enter your name");
-                            string temp1 = Console.ReadLine();
+                            string? temp1 = Console.ReadLine();
                             order1.CustomerName = temp1;
                             Console.WriteLine("enter your email address");
                             temp1 = Console.ReadLine();
@@ -169,28 +169,38 @@ press 3 for orderitem");
                     }
                     break;
                 case 2://get
-                    Console.WriteLine(@"press 1 for product
-                                    press 2 for order
-                                    press 3 for order item");
+                    Console.WriteLine(@"
+press 1 for product
+press 2 for order
+press 3 for order item");
                     int num = new int();
+                    int numhelp = new int();
                     num = Convert.ToInt32(Console.ReadLine());
                     switch (num)
                     {
+                        
                         case 1:
                             Product p = new Product();
-                            p = temp.GET(num);
+                            Console.WriteLine("enter product id");
+                            
+                            numhelp = int.Parse(Console.ReadLine());
+                            p = temp.GET(numhelp);
                             Console.WriteLine(p);
                             //p.ToString();
                             break;
                         case 2:
-                            Order O = new Order();
-                            O = order.GET(num);
+                            Order? O = new Order();
+                            Console.WriteLine("enter order id");
+                            numhelp = int.Parse(Console.ReadLine());
+                            O = order.GET(numhelp);
                             Console.WriteLine(O);
                             //O.ToString();
                             break;
                         case 3:
-                            OrderItem OI = new OrderItem();
-                            OI = Oitem.GET(num);
+                            OrderItem? OI = new OrderItem();
+                            Console.WriteLine("enter orderittem id");
+                            numhelp = int.Parse(Console.ReadLine());
+                            OI = Oitem.GET(numhelp);
                             Console.WriteLine(OI);
                             //OI.ToString();
                             break;
@@ -210,7 +220,7 @@ press 3 for orderitem");
                             Product p = new Product();
                             p.ID = id;
                             Console.WriteLine(@"enter a for sweatshirt b for sweatpants c for bucket hut d for socks e for T-shirt");
-                            string op = Console.ReadLine();
+                            string? op = Console.ReadLine();
                             if (op == "a")
                             {
                                 p.Category = Enums.Category.Sweatshirt;
@@ -237,7 +247,7 @@ press 3 for orderitem");
                                 p.Category = Enums.Category.Tshirt;
                                 p.Price = 35;
                             }
-                            string name = Console.ReadLine();
+                            string? name = Console.ReadLine();
                             p.Name = name;
                             temp.UPDATE(p);
                             break;
@@ -247,7 +257,7 @@ press 3 for orderitem");
                             int num4 = Convert.ToInt32(Console.ReadLine());
                             order1.ID = num4;
                             Console.WriteLine("enter your name");
-                            string temp1 = Console.ReadLine();
+                            string? temp1 = Console.ReadLine();
                             order1.CustomerName = temp1;
                             Console.WriteLine("enter your email address");
                             temp1 = Console.ReadLine();
@@ -322,7 +332,7 @@ press 3 for orderitem");
                             Console.WriteLine("enter anoumt:");
                             num1 = Convert.ToInt32(Console.ReadLine());
                             oi.Amount = num1;
-                            Enums.Category category = new Enums.Category();
+                            Enums.Category? category = new Enums.Category();
                             category = (Enums.Category)price.Category;
                             if (category == Enums.Category.Sweatshirt)
                                 oi.Price = num1 * 50;

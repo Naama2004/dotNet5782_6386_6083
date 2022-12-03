@@ -193,8 +193,8 @@ static public class DataSource
         Random R3 = new Random();
         int stringlength = R3.Next(1, 30);//random length to the name before the @
         int randVal;
-        string adress = "";
-        char Letter;
+        //string adress = "";
+       
         for (int i = 0; i < stringlength; i++)
         {
 

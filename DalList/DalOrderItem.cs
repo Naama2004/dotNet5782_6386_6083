@@ -10,13 +10,18 @@ public class DalOrderItem : ICrud<OrderItem>
 {
     public void ADD(OrderItem OI)
     {
-        DataSource.ordersItems.Add(OI);
+
+            if (DataSource.ordersItems.BinarySearch(OI) == 1)
+            {
+                throw new ExistIdException("this order already exist");
+            }
+            DataSource.ordersItems.Add(OI);
+
     }
 
     public void DELETE(int id)
     {
-        OrderItem OrderNULL = new OrderItem();//דרך להחזיר אם לא נמצא 
-        OrderNULL.ID = 0;
+        
         foreach (OrderItem P in ordersItems)
         {
             if (P.ID == id)
@@ -26,19 +31,35 @@ public class DalOrderItem : ICrud<OrderItem>
 
     public OrderItem GET(int id)
     {
-        OrderItem OrderItemNULL = new OrderItem();//דרך להחזיר אם לא נמצא 
-        OrderItemNULL.ID = 0;
+        //return DataSource.ordersItems.Find(x=>x.Value.ID==id);
+
         foreach (OrderItem OI in ordersItems)
         {
             if (OI.ID == id)
                 return OI;
         }
-        return OrderItemNULL;
+        throw new UnfounfException(" id not found");
     }
 
     public void UPDATE(OrderItem entity)
     {
+        GET(entity.ID);
         DELETE(entity.ID);
         ADD(entity);
+    }
+
+    public OrderItem GetByOrderAndProduct(int OID, int PID)
+    {
+        foreach(var OI in DataSource.ordersItems)
+        {
+            OrderItem result = DataSource.ordersItems.Find(x => (x.Value.OrderID == OID && x.Value.ProductID == PID)); 
+            return result;
+        }
+        throw new UnfounfException("the item was not found");
+    }
+
+    public IEnumerable<OrderItem> GetAll()
+    {
+        return (from OrderItem item in DataSource.ordersItems select item).ToList();
     }
 }
