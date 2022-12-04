@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using BL;
 using BLApi;
-using BlImplementation;
+//using BlImplementation;
 
 namespace PL
 {
@@ -23,7 +23,7 @@ namespace PL
     /// </summary>
     public partial class ProductListForManager : Window
     {
-        private IBl bl= new Bl();
+        private IBl bl = BLApi.Factory.Get();
         public ProductListForManager()
         {
             CategorySelector.ItemsSource = Enum.GetValues(typeof(BO.Enums.Category));

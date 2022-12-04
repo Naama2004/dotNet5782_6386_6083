@@ -7,19 +7,18 @@ using System.Text;
 using System.Threading.Tasks;
 
 using BLApi;
-
-
-
+//using DalApi;
 namespace BlImplementation;
 
 public class BOProduct : IProduct
 {
     public IEnumerable<BO.ProductForList> GetProducts()
     {
-        DAL.DalProduct product = new DAL.DalProduct();
-        List<DO.Product> doproductList = product.GetAll().ToList();
+        DalApi.IDal? p =DalApi.Factory.Get();
+        //DAL.DalProduct product = new DAL.DalProduct();
+        List<DO.Product> doproductList = p.Product.GetAll().ToList();/*GetAll().ToList();*/
         return (from P in doproductList
-                let productFromBl = product.GET(P.ID)
+                let productFromBl = p.Product.GET(P.ID)
                 select new BO.ProductForList()
                 {
                     ProductId = P.ID,
@@ -34,9 +33,10 @@ public class BOProduct : IProduct
     {
         if (id > 0)
         {
-            DAL.DalProduct product = new DAL.DalProduct();
+            DalApi.IDal? p = DalApi.Factory.Get();
+            //DAL.DalProduct product = new DAL.DalProduct();
 
-            DO.Product productDO = product.GET(id);
+            DO.Product productDO = p.Product.GET(id);
             BO.Product productBO = new BO.Product();
             productBO.ID = productDO.ID;
             productBO.Name = productDO.Name;
@@ -58,10 +58,11 @@ public class BOProduct : IProduct
             DOp.Name = P.Name;
             DOp.Price = P.Price;
             DOp.InStock = P.instock;
-            DAL.DalProduct product = new DAL.DalProduct();
+            DalApi.IDal? p = DalApi.Factory.Get();
+            //DAL.DalProduct product = new DAL.DalProduct();
             try
             {
-                product.ADD(DOp);
+                p.Product.ADD(DOp);
             }
             catch
             {
@@ -75,10 +76,11 @@ public class BOProduct : IProduct
     {
         // בדיקה שהמוצר ךא מופיע באף הזמנה
         //אם עבד
-        DAL.DalProduct product = new DAL.DalProduct();
+        DalApi.IDal? p = DalApi.Factory.Get();
+        //DAL.DalProduct product = new DAL.DalProduct();
         try
         {
-            product.DELETE(id);
+            p.Product.DELETE(id);
         }
         catch
         {
@@ -91,7 +93,8 @@ public class BOProduct : IProduct
     {
         if (P.ID > 0 && P.Name != " " && P.Price > 0 && P.instock >= 0)
         {
-            DAL.DalProduct product = new DAL.DalProduct();
+            DalApi.IDal? p = DalApi.Factory.Get();
+            //DAL.DalProduct product = new DAL.DalProduct();
             DO.Product DOp = new DO.Product();
             DOp.ID = P.ID;
             DOp.Name = P.Name;
@@ -99,7 +102,7 @@ public class BOProduct : IProduct
             DOp.InStock = P.instock;
             try
             {
-                product.UPDATE(DOp);
+               p.Product.UPDATE(DOp);
             }
             catch
             {
@@ -111,8 +114,9 @@ public class BOProduct : IProduct
 
     public IEnumerable<BO.ProductForList> GetProductsByCategory(BO.Enums.Category category)
     {
-        DAL.DalProduct product = new DAL.DalProduct();
-        List<DO.Product> doproductList = product.GetAll().ToList();
+        DalApi.IDal? p = DalApi.Factory.Get();
+        //DAL.DalProduct product = new DAL.DalProduct();
+        List<DO.Product> doproductList = p.Product.GetAll().ToList();
         return (from P in doproductList
                     // let productFromBl = product.GET(P.ID)
                 where P.Category == (DO.Enums.Category)category

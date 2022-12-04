@@ -14,7 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using BL;
 using BLApi;
-using BlImplementation;
+//using BlImplementation;
 namespace PL
 {
     /// <summary>
@@ -22,7 +22,7 @@ namespace PL
     /// </summary>
     public partial class MainWindow : Window
     {
-        private IBl name = new Bl();
+        private IBl bl = BLApi.Factory.Get();
         public MainWindow()
         { 
 
