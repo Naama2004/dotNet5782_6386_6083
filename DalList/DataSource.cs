@@ -62,7 +62,7 @@ static public class DataSource
     static readonly Random R = new Random();
     static internal List<Order?> orders { get; } = new List<Order?>();
     static internal List<OrderItem?> ordersItems { get; } = new List<OrderItem?>();
-    static internal List<Product?> products_ { get; } = new List<Product?>();
+    static internal List<Product?> products { get; } = new List<Product?>();
     static public Product randP()
     {
         Product p = new Product();//a new one to add
@@ -223,7 +223,7 @@ static public class DataSource
         temp.ID = config.NextOI;
         int stock = 0;
         Enums.Category pCategory = new Enums.Category();
-        foreach (Product p in products_)
+        foreach (Product p in products)
         {
             if (p.ID == Prand)
             {
@@ -266,8 +266,6 @@ static public class DataSource
             p.ADD(tempP);
             pO.ADD(tempO);
             OI.UPDATE(tempOI);
-
-
         }
 }
 

@@ -1,15 +1,15 @@
-﻿using DO;
+﻿//using DO;
 
-namespace BO;
+//namespace BO;
 
-public class OrderTracking
-{
-    public int OrderId { get; set; }    
-    public Enums.State State { get; set; }
-   // public //tupels
+//public class OrderTracking
+//{
+//    public int OrderId { get; set; }    
+//    public Enums.State State { get; set; }
+//   // public //tupels
 
-     public override string ToString() => $@"
-order id: ={OrderId},
-status: {State},
-	";
-}
+//     public override string ToString() => $@"
+//order id: ={OrderId},
+//status: {State},
+//	";
+//}

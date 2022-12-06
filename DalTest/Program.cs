@@ -219,7 +219,7 @@ press 3 for order item");
                             int id = Convert.ToInt32(Console.ReadLine());
                             Product p = new Product();
                             p.ID = id;
-                            Console.WriteLine(@"enter a for sweatshirt b for sweatpants c for bucket hut d for socks e for T-shirt");
+                            Console.WriteLine(@"enter a new for sweatshirt b for sweatpants c for bucket hut d for socks e for T-shirt");
                             string? op = Console.ReadLine();
                             if (op == "a")
                             {
@@ -247,6 +247,7 @@ press 3 for order item");
                                 p.Category = Enums.Category.Tshirt;
                                 p.Price = 35;
                             }
+                            Console.WriteLine("enter new name");
                             string? name = Console.ReadLine();
                             p.Name = name;
                             temp.UPDATE(p);

@@ -1,20 +1,20 @@
-﻿using DO;
-using static BO.Enums;
+﻿//using DO;
+//using static BO.Enums;
 
-namespace BO;
+//namespace BO;
 
-public class ProductForList
-{
-    public int ProductId { get; set; }  
-    public string? ProductName { get; set; }
-    public double? price { get; set; }  
-    public Enums.Category Category { get; set; }
+//public class ProductForList
+//{
+//    public int ProductId { get; set; }  
+//    public string? ProductName { get; set; }
+//    public double? price { get; set; }  
+//    public Enums.Category Category { get; set; }
 
-    public override string ToString() => $@"
-Product Id: ={ProductId},
-Product Name: {ProductName},
-price: {price},
-Category: {Category},
-	";
+//    public override string ToString() => $@"
+//Product Id: ={ProductId},
+//Product Name: {ProductName},
+//price: {price},
+//Category: {Category},
+//	";
 
-}
+//}
