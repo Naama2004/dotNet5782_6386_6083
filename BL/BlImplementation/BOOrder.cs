@@ -1,11 +1,11 @@
 ﻿
-//using System;
-//using System.Collections.Generic;
-//using System.Dynamic;
-//using System.Linq;
-//using System.Text;
-//using System.Threading.Tasks;
-//using BLApi;
+////using System;
+////using System.Collections.Generic;
+////using System.Dynamic;
+////using System.Linq;
+////using System.Text;
+////using System.Threading.Tasks;
+////using BLApi;
 
 //using DAL;
 //using DO;
@@ -19,7 +19,7 @@
 //        DalOrder TO = new DalOrder();
 //        List<DO.Order> doOrderList = TO.GetAll().ToList();
 //        return (from O in doOrderList
-//                    //let OrderFromBl = TO.GET(O.ID) למה צריך לט 
+//                    let OrderFromBl = TO.GET(O.ID) למה צריך לט 
 //                select new BO.OrderForList()
 //                {
 //                    OrderId = O.ID,
@@ -27,7 +27,7 @@
 //                    Amount = 0,
 //                    TotalPrice = 0,
 //                }).ToList();
-//        // שלושת השדות האחרונים צריך לבדוק איך יודעים אותם
+//         שלושת השדות האחרונים צריך לבדוק איך יודעים אותם
 //    }
 //}
 
@@ -47,37 +47,37 @@
 //            returnOrder.OrderDate = wantedOrder.OrderDate;
 //            returnOrder.ShipDate = wantedOrder.ShipDate;
 //            returnOrder.DeliveryDate = wantedOrder.DeliveryDate;
-//            // חסר רשימת מוצרים, סטטוס מחיר וכו
+//             חסר רשימת מוצרים, סטטוס מחיר וכו
 //            return returnOrder;
 //        }
 //        catch
 //        {
 //            throw new Exception("dfgh");
-//            // תפיסה וזריקה
+//             תפיסה וזריקה
 //        }
 
 //    }
 //    throw new Exception("dfgh");
-//    //זריקה
+//    זריקה
 //}
 
 //public BO.Order UpdateShip(int id)
 //{
 //    try
 //    {
-//        //עדכון בשכבת הנתונים 
+//        עדכון בשכבת הנתונים 
 //        DalOrder help = new DalOrder();
 //        DO.Order temp = help.GET(id);
 //        temp.OrderDate = DateTime.Today;
-//        //עדכון בשכבת הלוגיקה 
+//        עדכון בשכבת הלוגיקה 
 
 
 //        if (temp.State != BO.Enums.State.send)
 //        {
 
 
-//            //DO.Order updated = new DO.Order();
-//            //updated
+//            DO.Order updated = new DO.Order();
+//            updated
 //            help.UPDATE()
 //        }
 
