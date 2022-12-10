@@ -12,70 +12,127 @@ namespace BlImplementation;
 
 public class BOcart : ICart
 {
+    DalApi.IDal? factor = DalApi.Factory.Get();
     public BO.cart addProduct(BO.cart C, int id)
     {
-        BO.OrderItem? OI = C.items?.Find(x => x.ProductId == id); 
+        DO.Product PDetails = factor.Product.GET(id);
+        C.items = C.items ?? new();
+        if (PDetails.InStock > 0)
         {
-            if(OI == null)//if the product is NOT already in the cart 
+            BO.OrderItem item = C.items.FirstOrDefault(x => x.ProductId == id) ?? new()
             {
-                DO.Product productTemp=new DO.Product();
-                List<DO.Product> help = productTemp.GetAll().ToList();
-
-                productTemp = help.Find(x=>x.ID==id);
-                if (productTemp.ID== id && productTemp.InStock > 0)//the product is in DO and in stock 
-                {
-                    OI.ProductId=productTemp.ID;
-                    OI.price=productTemp.Price;
-                    OI.ProductName = productTemp.Name;
-                    //OI.OrderId=
-                    OI.amount = 1;
-                    OI.TotalPrice = productTemp.Price;//there is only one of that kind 
-                    OI.price = productTemp.Price;
-                    //creates an entity to add
-                    C.items?.Add(OI);
-                    //if add throws an exeption chatch it 
+                ProductId = id,
+                OrderId = 0,
+                price = PDetails.Price,
+                ProductName = PDetails.Name,
+                amount = 0,
+                TotalPrice = 0
+            };
 
 
-     
+            //item is a new one OR Exsisting one 
 
-                }
-
-
-
-
-            }
-            else//the product is in the cart 
-            {
-                //does it actuallt change the cart ?
-                from P in C.items
-                where P.ProductId == id
-                select new BO.OrderItem
-                 {
-                    // P.amount++;
-                  //P.totslprice = ...
-
-
-                 }
-                
-
-            }
-
-
-
-
-
-
-
-
-
-
-
+            item.amount++;
+            item.TotalPrice += item.price;
+            C.items.Add(item);
+            C.price += item.price;
         }
-       //else
-       //throws an Exeption the product is already in the cart 
-      
+
+
+        //else
+        //throw not in stock 
+        return C;
+
+
+
 
     }
+    public BO.cart updateAmountInCart(BO.cart C , int ID, int newAmount)
+        
+    {
+        C.items = C.items ?? new();
+        BO.OrderItem temp = C.items?.FirstOrDefault(x => x.ProductId == ID) ?? throw new Exception("product is not in the cart");
+        if (newAmount == 0)// which means to delete this orderitem from the cart 
+        {
+            C.price -= temp?.TotalPrice;
+            C.items.Remove(temp);
+            return C;
+        }
+        if (newAmount<temp.amount)
+        {
+            BO.OrderItem UpdatesOrderItem = copyOrderItem(temp);
+            UpdatesOrderItem.amount = newAmount;
+            UpdatesOrderItem.TotalPrice = newAmount * UpdatesOrderItem.price;
+            C.price -= temp.TotalPrice; 
+            C.items.Remove(temp);
+            C.items.Add(UpdatesOrderItem);
+            C.price += UpdatesOrderItem.TotalPrice;
+            return C;
+        }
+        if(newAmount>temp.amount)
+        {
+            if (factor.Product.GET(ID).InStock < newAmount)//if there is not enough in stock
+                throw new Exception();//אין מספיק בסטוק
+            BO.OrderItem UpdatesOrderItem = copyOrderItem(temp);
+            UpdatesOrderItem.amount = newAmount;
+            UpdatesOrderItem.TotalPrice = newAmount * UpdatesOrderItem.price;
+            C.price -= temp.TotalPrice;
+            C.items.Remove(temp);
+            C.items.Add(UpdatesOrderItem);
+            C.price += UpdatesOrderItem.TotalPrice;//update the cart price to the new correct one 
+            return C;
+
+        }
+
+
+        //throw invalid amount 
+    }
+
+    public BO.OrderItem copyOrderItem(BO.OrderItem from)
+    {
+        BO.OrderItem TO = new BO.OrderItem();
+        TO.price = from.price;
+        TO.amount = from.amount;
+        TO.TotalPrice = from.amount * from.price;
+        TO.OrderId = from.OrderId;
+        TO.ProductName = from.ProductName;
+        TO.ProductId = from.ProductId;
+        return TO;
+    }
+    public void OrderConfirm(BO.cart c)
+    {
+        c.items = c.items ?? new();
+        List<DO.Product >Plist = factor.Product.GetAll().ToList();
+      foreach(BO.OrderItem OI in c.items)
+        {
+            if (OI.amount > Plist.FirstOrDefault(x => x.ID == OI.ProductId).InStock)
+                throw new Exception(" not anough products in stock");
+        }
+        if (c.CustomerName == null)
+            throw new Exception(" missing costmer name");
+        if (c.CustomerAddres == null)
+            throw new Exception(" missing costmer adress");
+        
+        //check Email
+        BO.Order returnorder=new BO.Order();
+        returnorder.price = c.price;
+        returnorder.CustomerName=c.CustomerName;
+        returnorder.CustomerAddres=c.CustomerAddres;
+        returnorder.CustomerEmail=c.CustomerEmail;
+        returnorder.OrderDate = DateTime.Now;
+        returnorder.ShipDate = null;
+        returnorder.DeliveryDate = null;
+        //לקבל מספר הזמנה בחזכה
+
+
+
+
+    }
+
+
+
+
+
 }
 
 
@@ -108,103 +165,5 @@ public class BOcart : ICart
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-//        //bool flag = false;
-//        //foreach (BO.OrderItem? P in C.items)// האם צריך להשתמש בלינק
-//        //{
-//        //    if (P.ProductId==id)
-//        //    {
-//        //         flag = true;
-//        //        break;
-//        //    }
-//        //}
-//        //DAL.DalProduct product = new DAL.DalProduct();
-//        //try
-//        //{
-//        //    DO.Product productDO = product.GET(id);
-//        //    if (!flag)
-//        //    {
-//        //        if (productDO.InStock > 0)
-//        //        {
-//        //            BO.OrderItem orderItem = new BO.OrderItem();
-//        //            orderItem.OrderId = 0;
-//        //            orderItem.ProductId = id;
-//        //            orderItem.price = productDO.Price;
-//        //            orderItem.amount = 1;
-//        //            orderItem.TotalPrice = orderItem.amount * productDO.Price;
-//        //            C.items.Add(orderItem);
-//        //            C.price += orderItem.TotalPrice;
-//        //        }
-//        //        // אולי זריקה לוידעת
-
-//        //    }
-//        //    else
-//        //    {
-//        //        if (productDO.InStock > 0)//צריך לבדוק מספיק אבל אין לי מושג כמה צריך
-//        //        {
-//        //            foreach (BO.OrderItem? P in C.items)
-//        //            {
-//        //                if (P.ProductId == id)
-//        //                {
-//        //                    P.amount += 1;
-//        //                    P.TotalPrice += P.price;
-//        //                    break;
-//        //                }
-//        //                C.price += P.price;
-//        //            }
-//        //        }
-//        //        // אולי זריקה לוידעת 
-
-//        //    }
-//        //    return C;
-//        //}
-//        //catch
-//        //{
-//        //    //תפיסת הזריקה 
-//        //    // ונראה לי גם זריקה כי לא החזרנו עגלה 
-//        //}
-//    }
-
-//    public BO.cart UpdatePAmount(BO.cart C, int id, int amount)// עבור מסך קניות
-//    {
-//        foreach (BO.OrderItem? P in C.items)// האם צריך להשתמש בלינק
-//        {
-//            if (P.ProductId == id)
-//            {
-//                if (amount != P.amount)//the amount of the product in the cart has changed 
-//                {
-//                    if (amount != 0)//its bigger or samller then the currnt amount
-//                    {
-//                        P.amount = amount;
-//                        P.TotalPrice = P.price * amount;
-
-//                    }
-//                    else//the new amount is 0
-//                    {
-//                        C.items.Remove(P);
-//                    }
-
-//                }
-//            }
-//            break; //אם לא מצא את הפרודקט חריגה
-//        }
-//        return C;
-//    }
-
-
-//}
-////public BO.cart confirmCart(BO.cart C)
 
 

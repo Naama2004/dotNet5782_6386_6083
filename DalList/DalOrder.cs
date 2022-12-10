@@ -69,4 +69,5 @@ public class DalOrder :IOrder /*ICrud<Order>*/
     {
         return (from Order order in DataSource.orders select order).ToList();
     }
+    
 }

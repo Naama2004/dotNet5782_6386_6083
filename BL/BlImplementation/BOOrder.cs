@@ -1,86 +1,243 @@
 ﻿
-////using System;
-////using System.Collections.Generic;
-////using System.Dynamic;
-////using System.Linq;
-////using System.Text;
-////using System.Threading.Tasks;
-////using BLApi;
+using System;
+using System.Collections.Generic;
+using System.Dynamic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using BLApi;
 
 //using DAL;
 //using DO;
 
-//namespace BlImplementation;
+namespace BlImplementation;
 
-//public class BOOrder : IOrder
-//{
-//    public IEnumerable<BO.OrderForList> GETOrders()
-//    {
-//        DalOrder TO = new DalOrder();
-//        List<DO.Order> doOrderList = TO.GetAll().ToList();
-//        return (from O in doOrderList
-//                    let OrderFromBl = TO.GET(O.ID) למה צריך לט 
-//                select new BO.OrderForList()
-//                {
-//                    OrderId = O.ID,
-//                    state = BO.Enums.State.approved,
-//                    Amount = 0,
-//                    TotalPrice = 0,
-//                }).ToList();
-//         שלושת השדות האחרונים צריך לבדוק איך יודעים אותם
-//    }
-//}
+public class BOOrder : IOrder
+{
+    DalApi.IDal? factor = DalApi.Factory.Get();
+    public IEnumerable<BO.OrderForList> GETOrders()
 
-//public BO.Order GetOrderDetails(int id)
-//{
-//    if (id > 0)
-//    {
-//        DalOrder temp = new DalOrder();
-//        try
-//        {
-//            DO.Order wantedOrder = temp.GET(id);
-//            BO.Order returnOrder = new BO.Order();
-//            returnOrder.Id = wantedOrder.ID;
-//            returnOrder.CustomerName = wantedOrder.CustomerName;
-//            returnOrder.CustomerEmail = wantedOrder.CustomerEmail;
-//            returnOrder.CustomerAddres = wantedOrder.CustomerAddress;
-//            returnOrder.OrderDate = wantedOrder.OrderDate;
-//            returnOrder.ShipDate = wantedOrder.ShipDate;
-//            returnOrder.DeliveryDate = wantedOrder.DeliveryDate;
-//             חסר רשימת מוצרים, סטטוס מחיר וכו
-//            return returnOrder;
-//        }
-//        catch
-//        {
-//            throw new Exception("dfgh");
-//             תפיסה וזריקה
-//        }
+    {
 
-//    }
-//    throw new Exception("dfgh");
-//    זריקה
-//}
+        List<DO.Order> tempDOList = factor.Order.GetAll().ToList();//copy the entire order list in DO to temp DO list 
 
-//public BO.Order UpdateShip(int id)
-//{
-//    try
-//    {
-//        עדכון בשכבת הנתונים 
-//        DalOrder help = new DalOrder();
-//        DO.Order temp = help.GET(id);
-//        temp.OrderDate = DateTime.Today;
-//        עדכון בשכבת הלוגיקה 
+        return (from O in tempDOList//returns a IEnumerable of orderitems 
+                select new BO.OrderForList()
+                {//update the O to be  a BO ordertiem
+                    OrderId = O.ID,
+                    state = FindState(O),
+                    Amount = TotalProductsAmount(O.ID),
+                    TotalPrice = TotalPrice(O.ID)
+                });
 
 
-//        if (temp.State != BO.Enums.State.send)
-//        {
+    }
 
 
-//            DO.Order updated = new DO.Order();
-//            updated
-//            help.UPDATE()
-//        }
 
-//    }
+    public BO.Order GetOrderInfo(int id)
+    {
+        if (id > 0)
 
-//}
+        {
+
+            try
+            {
+
+                List<DO.OrderItem> tempList = factor.OrderItem.GetAll().ToList();
+
+                DO.Order wantedOrder = factor.Order.GET(id);
+                BO.Order returnOrder = new BO.Order();
+                returnOrder.Id = wantedOrder.ID;
+                returnOrder = copyvalues(wantedOrder);
+                returnOrder.Items = getallorderItem(id);
+                returnOrder.State = FindState(wantedOrder);
+                returnOrder.price = TotalProductsAmount(id);
+                return returnOrder;
+            }
+            catch
+            {
+                //if Get threw an Exeption - the order wasnt found catch it and throw an Exeption 
+            }
+
+        }
+        //if the id isnt valid throws an Exepsion 
+
+    }
+
+
+
+
+
+
+
+
+
+
+    public BO.Order UpdateShip(int id)
+    {
+        try
+        {
+
+            DO.Order temp = factor.Order.GET(id);//find the wanted order
+            if (DateTime.Today < temp.ShipDate)
+            {
+                //updating the DO entity
+                DO.Order updatedDO = new DO.Order();
+                updatedDO.ID = temp.ID;
+                updatedDO.CustomerEmail = temp.CustomerEmail;
+                updatedDO.CustomerAddress = temp.CustomerAddress;
+                updatedDO.CustomerName = temp.CustomerName;
+                updatedDO.OrderDate = temp.OrderDate;
+                updatedDO.DeliveryDate = temp.DeliveryDate;
+                updatedDO.ShipDate = DateTime.Today;
+                factor.Order.UPDATE(updatedDO);
+                //return an updated BO entity
+                BO.Order updatedBO = copyvalues(updatedDO);
+                updatedBO.Items = getallorderItem(id);
+                updatedBO.State = FindState(updatedDO);
+                updatedBO.price = TotalPrice(id);
+                return updatedBO;
+
+
+            }
+
+
+        }
+        //catch : if GET couldnt find 
+        //catch: updatet couldnt delete because it does ot exist
+
+
+    }
+    public BO.Order UpdateDelivery(int id)
+    {
+        try
+        {
+
+            DO.Order temp = factor.Order.GET(id);//find the wanted order
+            if (FindState(temp) == BO.Enums.State.send)
+            {
+                //updating the DO entity
+                DO.Order updatedDO = new DO.Order();
+                updatedDO.ID = temp.ID;
+                updatedDO.CustomerEmail = temp.CustomerEmail;
+                updatedDO.CustomerAddress = temp.CustomerAddress;
+                updatedDO.CustomerName = temp.CustomerName;
+                updatedDO.OrderDate = temp.OrderDate;
+                updatedDO.DeliveryDate = DateTime.Today;
+                updatedDO.ShipDate = temp.ShipDate;
+                factor.Order.UPDATE(updatedDO);
+                //return an updated BO entity
+                BO.Order updatedBO = copyvalues(updatedDO);
+                updatedBO.Items = getallorderItem(id);
+                updatedBO.State = FindState(updatedDO);
+                updatedBO.price = TotalPrice(id);
+                return updatedBO;
+
+
+            }
+
+
+        }
+        //catch : if GET couldnt find 
+        //catch: updatet couldnt delete because it does ot exist
+
+
+    }
+    public BO.OrderTracking trackOrder(int ID)
+        {
+        try
+        {
+           DO.Order help= factor.Order.GET(ID);
+            BO.OrderTracking returnOrderTracking=new BO.OrderTracking();
+            returnOrderTracking.OrderId = ID;
+            returnOrderTracking.State = FindState(help);
+            //put the tuple
+            //
+            //
+            //
+            //
+            //
+            //
+            //
+
+            return returnOrderTracking;
+        }
+        //catch if get throws
+
+
+        }
+
+
+
+
+
+    public BO.Order copyvalues(DO.Order d)
+    {
+        BO.Order b=new BO.Order();
+        b.Id = d.ID;
+        b.CustomerName = d.CustomerName;
+        b.CustomerEmail = d.CustomerEmail;
+        b.OrderDate = d.OrderDate;
+        b.ShipDate = d.ShipDate;
+        b.DeliveryDate = d.DeliveryDate;
+        b.CustomerAddres = d.CustomerAddress;
+        return b;
+
+
+    }
+    public BO.Enums.State FindState(DO.Order O)
+    {
+        if (DateTime.Today >= O.OrderDate && DateTime.Today < O.ShipDate)
+            return BO.Enums.State.approved;
+        if (DateTime.Today >= O.ShipDate && DateTime.Today < O.DeliveryDate)
+            return BO.Enums.State.send;
+        if (DateTime.Today >= O.DeliveryDate)
+            return BO.Enums.State.provided;
+        throw new Exception("check");
+    }
+    public int TotalProductsAmount(int ID)
+    {
+        int total = 0;  
+        List<DO.OrderItem>temp = factor.OrderItem.GetAll().ToList();
+        foreach(DO.OrderItem item in temp)
+        {
+            if (item.ID == ID)
+                total += (int)item.Amount;
+
+        }
+        return total;
+        
+    }
+    public Double TotalPrice(int ID)
+    {
+        Double total = 0;
+        List<DO.OrderItem> temp = factor.OrderItem.GetAll().ToList();
+        foreach (DO.OrderItem item in temp)
+        {
+            if (item.ID == ID)
+                total += (Double)item.Price;
+
+        }
+        return total;
+
+    }
+    public List<BO.OrderItem>? getallorderItem(int ID)
+    {
+        List<DO.OrderItem> tempDolist = factor.OrderItem.GetAll().ToList();
+
+        return (from O in tempDolist
+                where O.OrderID == ID
+                select new BO.OrderItem()
+                {
+                    OrderId = ID,
+                    ProductId = O.ProductID,
+                    price = O.Price,
+                    amount = O.Amount,
+                    TotalPrice = O.Price * O.Amount,
+                    ProductName = factor.Product.GET((int)O.ProductID).Name
+                }).ToList();
+    }
+
+
+}

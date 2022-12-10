@@ -18,12 +18,12 @@ public class BOProduct : IProduct
     {
         
         List<DO.Product> tempList= p.Product.GetAll().ToList();//get all of the products from DO into a temp list 
-        return (from P in tempList//return as an IEnumerable of Products for List these products
-                let productFromBl = p.Product.GET(P.ID)
+        return (from P in tempList//return as an IEnumerable of BO Products 
+              //  let productFromDO = p.Product.GET(P.ID)
                 select new BO.ProductForList()
                 {
                     ProductId = P.ID,
-                    ProductName = productFromBl.Name,
+                    ProductName = P.Name,
                     price = P.Price,
                     Category = (BO.Enums.Category)P.Category,
                 }).ToList();
