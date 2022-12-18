@@ -8,4 +8,11 @@ public class Product
     public double? Price { get; set; }
     public Enums.Category? category { get; set; }
     public int? instock { get; set; }
+    public override string ToString() => $@"
+Product ID={ID}:
+pruduct name: {Name}, 
+category -{category}
+Price:{Price}
+Amount in stock:{instock}
+	";
 }

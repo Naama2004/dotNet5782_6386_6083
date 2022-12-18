@@ -6,8 +6,8 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 using BLApi;
-
-
+using BO;
+using DO;
 namespace BlImplementation;
 
 public class BOcart : ICart
@@ -36,19 +36,25 @@ public class BOcart : ICart
             item.TotalPrice += item.price;
             C.items.Add(item);
             C.price += item.price;
+            return C;
         }
-
+        else
+        {
+            throw new Exception("there is not enough in stock");
+        }
 
         //else
         //throw not in stock 
-        return C;
+        
 
 
 
 
     }
-    public BO.cart updateAmountInCart(BO.cart C , int ID, int newAmount)
-        
+
+    #region update amount in cart
+    public BO.cart updateAmountInCart(BO.cart C, int ID, int newAmount)
+
     {
         C.items = C.items ?? new();
         BO.OrderItem temp = C.items?.FirstOrDefault(x => x.ProductId == ID) ?? throw new Exception("product is not in the cart");
@@ -58,18 +64,18 @@ public class BOcart : ICart
             C.items.Remove(temp);
             return C;
         }
-        if (newAmount<temp.amount)
+        if (newAmount < temp.amount)
         {
             BO.OrderItem UpdatesOrderItem = copyOrderItem(temp);
             UpdatesOrderItem.amount = newAmount;
             UpdatesOrderItem.TotalPrice = newAmount * UpdatesOrderItem.price;
-            C.price -= temp.TotalPrice; 
+            C.price -= temp.TotalPrice;
             C.items.Remove(temp);
             C.items.Add(UpdatesOrderItem);
             C.price += UpdatesOrderItem.TotalPrice;
             return C;
         }
-        if(newAmount>temp.amount)
+        if (newAmount > temp.amount)
         {
             if (factor.Product.GET(ID).InStock < newAmount)//if there is not enough in stock
                 throw new Exception();//אין מספיק בסטוק
@@ -83,11 +89,11 @@ public class BOcart : ICart
             return C;
 
         }
-
+        throw new InValidIdException("the amount was not valid");
 
         //throw invalid amount 
     }
-
+    #endregion
     public BO.OrderItem copyOrderItem(BO.OrderItem from)
     {
         BO.OrderItem TO = new BO.OrderItem();
@@ -102,8 +108,8 @@ public class BOcart : ICart
     public void OrderConfirm(BO.cart c)
     {
         c.items = c.items ?? new();
-        List<DO.Product >Plist = factor.Product.GetAll().ToList();
-      foreach(BO.OrderItem OI in c.items)
+        List<DO.Product> Plist = factor.Product.GetAll().ToList();
+        foreach (BO.OrderItem OI in c.items)
         {
             if (OI.amount > Plist.FirstOrDefault(x => x.ID == OI.ProductId).InStock)
                 throw new Exception(" not anough products in stock");
@@ -112,13 +118,13 @@ public class BOcart : ICart
             throw new Exception(" missing costmer name");
         if (c.CustomerAddres == null)
             throw new Exception(" missing costmer adress");
-        
+
         //check Email
-        BO.Order returnorder=new BO.Order();
+        BO.Order returnorder = new BO.Order();
         returnorder.price = c.price;
-        returnorder.CustomerName=c.CustomerName;
-        returnorder.CustomerAddres=c.CustomerAddres;
-        returnorder.CustomerEmail=c.CustomerEmail;
+        returnorder.CustomerName = c.CustomerName;
+        returnorder.CustomerAddres = c.CustomerAddres;
+        returnorder.CustomerEmail = c.CustomerEmail;
         returnorder.OrderDate = DateTime.Now;
         returnorder.ShipDate = null;
         returnorder.DeliveryDate = null;

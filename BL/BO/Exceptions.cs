@@ -1,6 +1,6 @@
 ﻿using System.Runtime.Serialization;
 
-namespace DO;
+namespace BO;
 [Serializable]
 
 // למה צריך שדה 
@@ -13,7 +13,7 @@ public class NotFoundException : Exception
     public NotFoundException() : base() { }
     public NotFoundException(string message) : base(message) { }
     public NotFoundException(string message, Exception inner) : base(message, inner) { }
-    public NotFoundException(string message, UnfounfException inner) : base(message, inner) { }
+    public NotFoundException(string message, DO.UnfounfException inner) : base(message, inner) { }
     protected NotFoundException(SerializationInfo info, StreamingContext context) : base(info, context) { }
     public NotFoundException(string message, int id) : base(message) { Id = id; }
     public NotFoundException(int id) : base() => Id = id;

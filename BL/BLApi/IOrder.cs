@@ -13,6 +13,8 @@ public interface IOrder
     public Double TotalPrice(int ID);
     public List<BO.OrderItem>? getallorderItem(int ID);
     public BO.Order UpdateDelivery(int id);
+    public BO.OrderTracking trackOrder(int ID);
+
 
 
 

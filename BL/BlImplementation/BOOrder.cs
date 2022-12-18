@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BLApi;
+using BO;
 
 //using DAL;
 //using DO;
@@ -15,8 +16,8 @@ namespace BlImplementation;
 public class BOOrder : IOrder
 {
     DalApi.IDal? factor = DalApi.Factory.Get();
+    #region get all aorders
     public IEnumerable<BO.OrderForList> GETOrders()
-
     {
 
         List<DO.Order> tempDOList = factor.Order.GetAll().ToList();//copy the entire order list in DO to temp DO list 
@@ -29,12 +30,10 @@ public class BOOrder : IOrder
                     Amount = TotalProductsAmount(O.ID),
                     TotalPrice = TotalPrice(O.ID)
                 });
-
-
     }
+    #endregion
 
-
-
+    #region get order info
     public BO.Order GetOrderInfo(int id)
     {
         if (id > 0)
@@ -55,25 +54,19 @@ public class BOOrder : IOrder
                 returnOrder.price = TotalProductsAmount(id);
                 return returnOrder;
             }
-            catch
+            catch (DO.UnfounfException ex) 
             {
+                throw new NotFoundException("the order was not found", ex);
                 //if Get threw an Exeption - the order wasnt found catch it and throw an Exeption 
             }
 
         }
+        throw new InValidIdException("the id is not valid");
         //if the id isnt valid throws an Exepsion 
 
     }
-
-
-
-
-
-
-
-
-
-
+    #endregion
+    #region update ship // חסרה זריקה 
     public BO.Order UpdateShip(int id)
     {
         try
@@ -98,17 +91,25 @@ public class BOOrder : IOrder
                 updatedBO.State = FindState(updatedDO);
                 updatedBO.price = TotalPrice(id);
                 return updatedBO;
-
-
+            }
+            else
+            {
+                throw new Exception();//צריך להחזיר משהו לא הצלחתי להבין מה
             }
 
-
+        }
+        catch(DO.UnfounfException ex)
+        {
+            throw new NotFoundException("the order was not found", ex);
         }
         //catch : if GET couldnt find 
         //catch: updatet couldnt delete because it does ot exist
 
 
     }
+    #endregion
+
+    #region update delivery // חסרה זריקה
     public BO.Order UpdateDelivery(int id)
     {
         try
@@ -133,23 +134,31 @@ public class BOOrder : IOrder
                 updatedBO.State = FindState(updatedDO);
                 updatedBO.price = TotalPrice(id);
                 return updatedBO;
-
-
+            }
+            else
+            {
+                throw new Exception();//צריך להחזיר משהו לא הצלחתי להבין מה
             }
 
-
+        }
+        catch (DO.UnfounfException ex)
+        {
+            throw new NotFoundException("the order was not found", ex);
         }
         //catch : if GET couldnt find 
         //catch: updatet couldnt delete because it does ot exist
 
 
     }
+    #endregion
+
+    #region track order // לא גמור
     public BO.OrderTracking trackOrder(int ID)
-        {
+    {
         try
         {
-           DO.Order help= factor.Order.GET(ID);
-            BO.OrderTracking returnOrderTracking=new BO.OrderTracking();
+            DO.Order help = factor.Order.GET(ID);
+            BO.OrderTracking returnOrderTracking = new BO.OrderTracking();
             returnOrderTracking.OrderId = ID;
             returnOrderTracking.State = FindState(help);
             //put the tuple
@@ -163,18 +172,22 @@ public class BOOrder : IOrder
 
             return returnOrderTracking;
         }
+        catch (DO.UnfounfException ex)
+        {
+            throw new NotFoundException("the order was not found", ex);
+        }
         //catch if get throws
 
 
-        }
+    }
+
+    #endregion
 
 
-
-
-
+    #region copy values
     public BO.Order copyvalues(DO.Order d)
     {
-        BO.Order b=new BO.Order();
+        BO.Order b = new BO.Order();
         b.Id = d.ID;
         b.CustomerName = d.CustomerName;
         b.CustomerEmail = d.CustomerEmail;
@@ -186,6 +199,9 @@ public class BOOrder : IOrder
 
 
     }
+    #endregion
+
+    #region find state
     public BO.Enums.State FindState(DO.Order O)
     {
         if (DateTime.Today >= O.OrderDate && DateTime.Today < O.ShipDate)
@@ -196,19 +212,25 @@ public class BOOrder : IOrder
             return BO.Enums.State.provided;
         throw new Exception("check");
     }
+    #endregion
+
+    #region total poduct amount
     public int TotalProductsAmount(int ID)
     {
-        int total = 0;  
-        List<DO.OrderItem>temp = factor.OrderItem.GetAll().ToList();
-        foreach(DO.OrderItem item in temp)
+        int total = 0;
+        List<DO.OrderItem> temp = factor.OrderItem.GetAll().ToList();
+        foreach (DO.OrderItem item in temp)
         {
             if (item.ID == ID)
                 total += (int)item.Amount;
 
         }
         return total;
-        
+
     }
+    #endregion
+
+    #region total price
     public Double TotalPrice(int ID)
     {
         Double total = 0;
@@ -222,6 +244,9 @@ public class BOOrder : IOrder
         return total;
 
     }
+    #endregion
+
+    #region get all order utems
     public List<BO.OrderItem>? getallorderItem(int ID)
     {
         List<DO.OrderItem> tempDolist = factor.OrderItem.GetAll().ToList();
@@ -238,6 +263,7 @@ public class BOOrder : IOrder
                     ProductName = factor.Product.GET((int)O.ProductID).Name
                 }).ToList();
     }
+    #endregion
 
 
 }

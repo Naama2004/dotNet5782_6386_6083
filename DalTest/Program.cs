@@ -88,7 +88,8 @@ press 3 for orderitem");
                             DateTime dates = new DateTime();
                             Console.WriteLine("enter orders date");
                             num4 = Convert.ToInt32(Console.ReadLine());
-                            dates.AddYears(num4);
+                            //dates.
+                            //dates.AddYears(num4);
                             num4 = Convert.ToInt32(Console.ReadLine());
                             dates.AddMonths(num4);
                             num4 = Convert.ToInt32(Console.ReadLine());

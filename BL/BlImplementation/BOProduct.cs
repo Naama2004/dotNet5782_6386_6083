@@ -7,20 +7,20 @@ using System.Text;
 using System.Threading.Tasks;
 
 using BLApi;
-using DO;
+using BO;
 //using DalApi;
 namespace BlImplementation;
 
 public class BOProduct : IProduct
 {
     DalApi.IDal? p = DalApi.Factory.Get();
-
+    #region get all products
     public IEnumerable<BO.ProductForList> GetProducts()
     {
-        
-        List<DO.Product> tempList= p.Product.GetAll().ToList();//get all of the products from DO into a temp list 
+
+        List<DO.Product> tempList = p.Product.GetAll().ToList();//get all of the products from DO into a temp list 
         return (from P in tempList//return as an IEnumerable of BO Products 
-              //  let productFromDO = p.Product.GET(P.ID)
+                                  //  let productFromDO = p.Product.GET(P.ID)
                 select new BO.ProductForList()
                 {
                     ProductId = P.ID,
@@ -29,8 +29,9 @@ public class BOProduct : IProduct
                     Category = (BO.Enums.Category)P.Category,
                 }).ToList();
     }
+    #endregion
 
-
+    #region get product info for manager
     public BO.Product ProductInfoManeger(int id)
     {
         try
@@ -39,9 +40,9 @@ public class BOProduct : IProduct
             {
 
                 DO.Product productDO = p.Product.GET(id);//get that specific DO entity by its ID
-                //is the ID is valid , but is not found in DO GET will throw an Exeption Therefor:
-                //catch()
-            BO.Product productBO = new BO.Product();//bulid a BO entity 
+                                                         //is the ID is valid , but is not found in DO GET will throw an Exeption Therefor:
+                                                         //catch()
+                BO.Product productBO = new BO.Product();//bulid a BO entity 
                 productBO.ID = productDO.ID;//set the wanted values into the BO entity 
                 productBO.Name = productDO.Name;
                 productBO.Price = productDO.Price;
@@ -51,12 +52,15 @@ public class BOProduct : IProduct
             }
             throw new InValidIdException("the id was invalid");
         }
-        catch (NotFoundException x)
+        catch (DO.UnfounfException x)
         {
             throw new NotFoundException("id is not found", x);
         }
         //the ID isnt valid and for sure isnt in DO
     }
+    #endregion
+
+    #region get product info client
     public BO.ProductItem ProductInfoClient(int id, BO.cart c)
     {
         try
@@ -86,12 +90,14 @@ public class BOProduct : IProduct
             else//the ID isnt valid 
                 throw new InValidIdException("the id was invalid");
         }
-        catch(NotFoundException x)
+        catch (NotFoundException x)
         {
             throw new NotFoundException("id is not found", x);
         }
     }
+    #endregion
 
+    #region add product as a manager
     public void AddProductmaneger(BO.Product P)
     {
         try
@@ -112,13 +118,15 @@ public class BOProduct : IProduct
 
             }
         }
-        catch(ExistIdException x)
+        catch (DO.ExistIdException x)
         {
             throw new IdExistException("the id already exists", x);
         }
         //if one of the details isnt valid throw an Exeption 
     }
+    #endregion
 
+    #region remove product as a manager
     public void RemoveProductmaneger(int id)
     {
         //checks if the product is in one of the orders 
@@ -130,13 +138,16 @@ public class BOProduct : IProduct
         {
             p.Product.DELETE(id);//tries to delete the product from DO if the object does not exist DELETE will throw an Exeption 
         }
-        catch
+        catch(DO.UnfounfException ex)
         {
+            throw new NotFoundException("id was not found", ex);
             //catch the non-Existing Exeption and throw it again 
-            
+
         }
     }
+    #endregion
 
+    #region update info manager
     public void UpdateProductmaneger(BO.Product P)
     {
         if (P.ID > 0 && P.Name != " " && P.Price > 0 && P.instock >= 0)
@@ -151,21 +162,23 @@ public class BOProduct : IProduct
             {
                 p.Product.UPDATE(DOp);//try to update the DO if the product doest not exist the call for DELETE in UPDATE will throw an Exeption 
             }
-            catch(UnfounfException x)
+            catch (DO.UnfounfException x)
             {//catch the Exeption and throw it 
                 throw new NotFoundException("id is not found", x);
             }
         }
         throw new InValidIdException("one or more of the details is not valied");
-       // else
-       //if one or more of the info is invalid - throw an Exeption  
+        // else
+        //if one or more of the info is invalid - throw an Exeption  
     }
+    #endregion
 
+    #region get all products by category
     public IEnumerable<BO.ProductForList> GetProductsByCategory(BO.Enums.Category category)
     {
         //this function returns a collection of all of the products that are in the same category 
 
-        List<DO.Product> temp= p.Product.GetAll().ToList();//get all of the products into a temp list 
+        List<DO.Product> temp = p.Product.GetAll().ToList();//get all of the products into a temp list 
         return (from P in temp
 
                 where P.Category == (DO.Enums.Category)category
@@ -179,7 +192,7 @@ public class BOProduct : IProduct
                 ).ToList();//idont think there should be a to list in here 
     }
     //if the category is invalid throws an Exeption 
-
+    #endregion
 }
 
 

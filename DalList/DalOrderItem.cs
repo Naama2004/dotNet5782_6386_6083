@@ -29,7 +29,7 @@ public class DalOrderItem : IOrderItem/*ICrud<OrderItem>*/
     public void DELETE(int id)
     {
         //if the function finds the order item it removes it , if not it returns 0 and the code throws an exeption.
-        if (DataSource.products.RemoveAll(x => x?.ID == id) == 0)
+        if (DataSource.ordersItems.RemoveAll(x => x?.ID == id) == 0)
             throw new UnfounfException("cant delete a no existing item");
 
 

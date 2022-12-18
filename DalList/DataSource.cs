@@ -265,7 +265,7 @@ static public class DataSource
             DalOrderItem OI= new DalOrderItem();
             p.ADD(tempP);
             pO.ADD(tempO);
-            OI.UPDATE(tempOI);
+            OI.ADD(tempOI);
         }
 }
 
