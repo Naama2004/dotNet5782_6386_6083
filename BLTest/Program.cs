@@ -12,7 +12,6 @@ internal class Program
         IBl bl = BLApi.Factory.Get();
         BO.Product p=new BO.Product();
         int id;
-
         Console.WriteLine(@"
 enter 
 1 for  product 
@@ -20,13 +19,15 @@ enter
 3 for cart
 -1 to exit");
         int choice = int.Parse(Console.ReadLine());
-        while (choice !=-1)
+        while (choice != -1)
         {
+
             switch (choice)
             {
 
                 case 1:
                     #region all of product functions
+                   
                     Console.WriteLine(@"
 these are the function options :
 Enter 1 to get all products 
@@ -36,7 +37,8 @@ Enter 4 to Add product as a menager
 Enter 5 to remove a product as a menager
 Enter 6 update product as a mengaer 
 Enter 7 to get a product , by its category ");
-                    int Functioncoice = 0;
+                    int Functioncoice;
+                    Functioncoice=int.Parse(Console.ReadLine());
                     switch (Functioncoice)
                     {
                         
@@ -110,9 +112,9 @@ enter amount of products:");
                                     num = int.Parse(Console.ReadLine());
                                     OI.amount = num;
                                     OI.TotalPrice = OI.amount * OI.price;
-                                    c.items.Add(OI);
+                                    c.items?.Add(OI);
                                 }
-                                for (int i = 0; i < c.items.Count(); i++)
+                                for (int i = 0; i < c.items?.Count(); i++)
                                 {
                                     c.price += c.items[i].price;
                                 }
@@ -578,6 +580,13 @@ enter amount of products in cart(not updated):");
                     break;
                     #endregion
             }
+            Console.WriteLine(@"
+enter 
+1 for  product 
+2 for order
+3 for cart
+-1 to exit");
+            choice = int.Parse(Console.ReadLine());
         }
     }
 }

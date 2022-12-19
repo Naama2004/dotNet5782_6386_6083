@@ -7,93 +7,107 @@ using System.Threading.Tasks;
 
 using BLApi;
 using BO;
+using DalApi;
 using DO;
 namespace BlImplementation;
 
 public class BOcart : ICart
 {
     DalApi.IDal? factor = DalApi.Factory.Get();
+    #region add product to cart
     public BO.cart addProduct(BO.cart C, int id)
     {
-        DO.Product PDetails = factor.Product.GET(id);
-        C.items = C.items ?? new();
-        if (PDetails.InStock > 0)
+        try
         {
-            BO.OrderItem item = C.items.FirstOrDefault(x => x.ProductId == id) ?? new()
+            DO.Product PDetails = factor.Product.GET(id);
+            C.items = C.items ?? new();
+            if (PDetails.InStock > 0)
             {
-                ProductId = id,
-                OrderId = 0,
-                price = PDetails.Price,
-                ProductName = PDetails.Name,
-                amount = 0,
-                TotalPrice = 0
-            };
+                BO.OrderItem item = C.items.FirstOrDefault(x => x.ProductId == id) ?? new()
+                {
+                    ProductId = id,
+                    OrderId = 0,
+                    price = PDetails.Price,
+                    ProductName = PDetails.Name,
+                    amount = 0,
+                    TotalPrice = 0
+                };
 
 
-            //item is a new one OR Exsisting one 
+                //item is a new one OR Exsisting one 
 
-            item.amount++;
-            item.TotalPrice += item.price;
-            C.items.Add(item);
-            C.price += item.price;
-            return C;
+                item.amount++;
+                item.TotalPrice += item.price;
+                C.items.Add(item);
+                C.price += item.price;
+                return C;
+            }
+            else
+            {
+                throw new NotInStockException("there is not enough in stock");
+            }
         }
-        else
+        catch(ExistIdException ex)
         {
-            throw new Exception("there is not enough in stock");
+            throw new IdExistException("id already exist", ex);
         }
-
-        //else
-        //throw not in stock 
-        
-
-
-
-
     }
+    #endregion
 
     #region update amount in cart
     public BO.cart updateAmountInCart(BO.cart C, int ID, int newAmount)
 
     {
-        C.items = C.items ?? new();
-        BO.OrderItem temp = C.items?.FirstOrDefault(x => x.ProductId == ID) ?? throw new Exception("product is not in the cart");
-        if (newAmount == 0)// which means to delete this orderitem from the cart 
+        if(newAmount < 0)
         {
-            C.price -= temp?.TotalPrice;
-            C.items.Remove(temp);
-            return C;
+            throw new InValidIdException("the new amount can not be negative");
         }
-        if (newAmount < temp.amount)
+        try
         {
-            BO.OrderItem UpdatesOrderItem = copyOrderItem(temp);
-            UpdatesOrderItem.amount = newAmount;
-            UpdatesOrderItem.TotalPrice = newAmount * UpdatesOrderItem.price;
-            C.price -= temp.TotalPrice;
-            C.items.Remove(temp);
-            C.items.Add(UpdatesOrderItem);
-            C.price += UpdatesOrderItem.TotalPrice;
-            return C;
-        }
-        if (newAmount > temp.amount)
-        {
-            if (factor.Product.GET(ID).InStock < newAmount)//if there is not enough in stock
-                throw new Exception();//אין מספיק בסטוק
-            BO.OrderItem UpdatesOrderItem = copyOrderItem(temp);
-            UpdatesOrderItem.amount = newAmount;
-            UpdatesOrderItem.TotalPrice = newAmount * UpdatesOrderItem.price;
-            C.price -= temp.TotalPrice;
-            C.items.Remove(temp);
-            C.items.Add(UpdatesOrderItem);
-            C.price += UpdatesOrderItem.TotalPrice;//update the cart price to the new correct one 
-            return C;
+            C.items = C.items ?? new();
+            BO.OrderItem temp = C.items?.FirstOrDefault(x => x.ProductId == ID) ?? throw new Exception("product is not in the cart");
+            if (newAmount == 0)// which means to delete this orderitem from the cart 
+            {
+                C.price -= temp?.TotalPrice;
+                C.items.Remove(temp);
+                return C;
+            }
+            if (newAmount < temp.amount)
+            {
+                BO.OrderItem UpdatesOrderItem = copyOrderItem(temp);
+                UpdatesOrderItem.amount = newAmount;
+                UpdatesOrderItem.TotalPrice = newAmount * UpdatesOrderItem.price;
+                C.price -= temp.TotalPrice;
+                C.items.Remove(temp);
+                C.items.Add(UpdatesOrderItem);
+                C.price += UpdatesOrderItem.TotalPrice;
+                return C;
+            }
+            if (newAmount > temp.amount)
+            {
+                if (factor.Product.GET(ID).InStock < newAmount)//if there is not enough in stock
+                    throw new Exception();//אין מספיק בסטוק
+                BO.OrderItem UpdatesOrderItem = copyOrderItem(temp);
+                UpdatesOrderItem.amount = newAmount;
+                UpdatesOrderItem.TotalPrice = newAmount * UpdatesOrderItem.price;
+                C.price -= temp.TotalPrice;
+                C.items.Remove(temp);
+                C.items.Add(UpdatesOrderItem);
+                C.price += UpdatesOrderItem.TotalPrice;//update the cart price to the new correct one 
+                return C;
 
+            }
+            throw new InValidIdException("the amount was not valid");
         }
-        throw new InValidIdException("the amount was not valid");
+        catch (UnfounfException ex)
+        {
+            throw new NotFoundException("the product id was not found",ex);
+        }
 
-        //throw invalid amount 
     }
     #endregion
+
+    #region copy all order items
     public BO.OrderItem copyOrderItem(BO.OrderItem from)
     {
         BO.OrderItem TO = new BO.OrderItem();
@@ -105,40 +119,47 @@ public class BOcart : ICart
         TO.ProductId = from.ProductId;
         return TO;
     }
-    public void OrderConfirm(BO.cart c)
+    #endregion
+
+    #region approves order or maeks a new one
+    public bool OrderConfirm(BO.cart c)
     {
-        c.items = c.items ?? new();
-        List<DO.Product> Plist = factor.Product.GetAll().ToList();
-        foreach (BO.OrderItem OI in c.items)
+        //data tast
+        if ((!c.CustomerEmail.Contains('@')) || (c.CustomerName == "") || (c.CustomerAddres == ""))
+            throw new InValidIdException("the data is not valid");
+
+        DO.Order newOrder = new DO.Order();
+
+        int idOfOrder = factor.Order.ADD(newOrder);//return the id of the new order
+        if (idOfOrder < 0)
+            throw new InValidIdException();
+        newOrder.OrderDate = DateTime.Now;
+        newOrder.ShipDate = null;
+        newOrder.DeliveryDate = null;
+
+        foreach (var item in c.items)
         {
-            if (OI.amount > Plist.FirstOrDefault(x => x.ID == OI.ProductId).InStock)
-                throw new Exception(" not anough products in stock");
+            //check if the product is in stock
+            DO.Product product = (DO.Product)factor.Product.GET(idOfOrder);
+            if (product.InStock - item.amount < 0)
+                return false;
+            //if the produt in stock so add to order
+            DO.OrderItem newOrderItem = new DO.OrderItem()
+            {
+
+                ProductID = product.ID,
+                OrderID = item.OrderId,
+                Price = item.price,
+                Amount = item.amount,
+                ID = idOfOrder
+            };
+
+            factor.OrderItem.ADD(newOrderItem);
         }
-        if (c.CustomerName == null)
-            throw new Exception(" missing costmer name");
-        if (c.CustomerAddres == null)
-            throw new Exception(" missing costmer adress");
-
-        //check Email
-        BO.Order returnorder = new BO.Order();
-        returnorder.price = c.price;
-        returnorder.CustomerName = c.CustomerName;
-        returnorder.CustomerAddres = c.CustomerAddres;
-        returnorder.CustomerEmail = c.CustomerEmail;
-        returnorder.OrderDate = DateTime.Now;
-        returnorder.ShipDate = null;
-        returnorder.DeliveryDate = null;
-        //לקבל מספר הזמנה בחזכה
-
-
-
-
+        Console.WriteLine("your order number is : " + idOfOrder);
+        return true;
     }
-
-
-
-
-
+    #endregion
 }
 
 

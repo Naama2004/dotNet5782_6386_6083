@@ -7,13 +7,14 @@ using System.Text;
 using System.Threading.Tasks;
 using BLApi;
 using BO;
+using DalApi;
 
 //using DAL;
-//using DO;
+using DO;
 
 namespace BlImplementation;
 
-public class BOOrder : IOrder
+public class BOOrder : BLApi.IOrder
 {
     DalApi.IDal? factor = DalApi.Factory.Get();
     #region get all aorders
@@ -66,6 +67,7 @@ public class BOOrder : IOrder
 
     }
     #endregion
+
     #region update ship // חסרה זריקה 
     public BO.Order UpdateShip(int id)
     {
@@ -152,37 +154,35 @@ public class BOOrder : IOrder
     }
     #endregion
 
-    #region track order // לא גמור
+    #region track order 
     public BO.OrderTracking trackOrder(int ID)
     {
-        try
-        {
-            DO.Order help = factor.Order.GET(ID);
-            BO.OrderTracking returnOrderTracking = new BO.OrderTracking();
-            returnOrderTracking.OrderId = ID;
-            returnOrderTracking.State = FindState(help);
-            //put the tuple
-            //
-            //
-            //
-            //
-            //
-            //
-            //
+       
+            if (ID < 0)
+                throw new InValidIdException("Negative ID");
 
-            return returnOrderTracking;
-        }
-        catch (DO.UnfounfException ex)
-        {
-            throw new NotFoundException("the order was not found", ex);
-        }
-        //catch if get throws
+            try
+            {
+                DO.Order myOrder = factor.Order.GET(ID);
+            return new BO.OrderTracking()
+            {
+
+                OrderId = myOrder.ID,
+                State = FindState(myOrder),
+                Tracking = myOrder.TrackO()
+                };
+            }
+            catch (DO.UnfounfException ex)
+            {
+                throw new BO.NotFoundException("order was not found", ex);
+            }
 
 
     }
 
-    #endregion
 
+
+    #endregion
 
     #region copy values
     public BO.Order copyvalues(DO.Order d)
@@ -264,6 +264,5 @@ public class BOOrder : IOrder
                 }).ToList();
     }
     #endregion
-
 
 }

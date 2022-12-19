@@ -8,11 +8,20 @@ namespace DAL;
 
 public class DalOrderItem : IOrderItem/*ICrud<OrderItem>*/
 {
-    public void ADD(OrderItem OI)
+    public int ADD(OrderItem OI)
     {
-        if (DataSource.ordersItems.Exists(x => x?.ID == OI.ID))//is exist returns true OI is alredy in the list
-            throw new ExistIdException("this order item already exist");
-        DataSource.ordersItems.Add(OI);//if the orderitem isnt already in the list , adds it 
+        if (OI.ID != 0)
+        {
+            if (DataSource.ordersItems.Exists(x => x?.ID == OI.ID))//is exist returns true OI is alredy in the list
+                throw new ExistIdException("this order item already exist");
+            DataSource.ordersItems.Add(OI);//if the orderitem isnt already in the list , adds it 
+            return OI.ID;
+        }
+        else
+        {
+            OI.ID = config.NextOI;
+            return OI.ID;   
+        }
 
 
 

@@ -8,7 +8,7 @@ namespace DAL;
 static public class DataSource
 {
 
-    internal static class config
+    public static class config
     {
         internal const int start_Order_Number = 10000;
 

@@ -3,7 +3,7 @@ namespace DalApi;
 
 public interface ICrud<T> where T: struct
 {
-    void ADD(T entity);
+    int ADD(T entity);
     void DELETE(int id);
     T GET (int id);
     void UPDATE(T entity);

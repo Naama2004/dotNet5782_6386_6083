@@ -4,16 +4,26 @@ using DalApi;
 using DO;
 using System.Linq;
 using System.Linq.Expressions;
+using static DAL.DataSource;
 
 namespace DAL;
 
 public class DalProduct : IProduct/*ICrud<Product>*/
 {
-    public void ADD(Product P)
+    public int ADD(Product P)
     {
-        if (DataSource.products.Exists(x => x?.ID == P.ID))//is exist returns true P is alredy in the list
-            throw new ExistIdException("this product already exist");
-        DataSource.products.Add(P);//if the product isnt already in the list , adds it . 
+        if (P.ID != 0)
+        {
+            if (DataSource.products.Exists(x => x?.ID == P.ID))//is exist returns true P is alredy in the list
+                throw new ExistIdException("this product already exist");
+            DataSource.products.Add(P);//if the product isnt already in the list , adds it . 
+            return P.ID;
+        }
+        else
+        {
+            P.ID = config.NextP;
+            return P.ID;
+        }
     }
 
     public void DELETE(int id)

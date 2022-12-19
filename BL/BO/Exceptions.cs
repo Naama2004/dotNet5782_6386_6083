@@ -17,7 +17,7 @@ public class NotFoundException : Exception
     protected NotFoundException(SerializationInfo info, StreamingContext context) : base(info, context) { }
     public NotFoundException(string message, int id) : base(message) { Id = id; }
     public NotFoundException(int id) : base() => Id = id;
-    public override string ToString() => Message + Id + "is already exist";
+    
 
 }
 
@@ -30,7 +30,7 @@ public class InValidIdException : Exception
     protected InValidIdException(SerializationInfo info, StreamingContext context) : base(info, context) { }
     public InValidIdException(string message, int id) : base(message) { Id = id; }
     public InValidIdException(int id) : base() => Id = id;
-    public override string ToString() => Message + Id + "is already exist";
+   
 
 }
 
@@ -46,5 +46,18 @@ public class IdExistException : Exception
     public IdExistException(string message, int id) : base(message) { Id = id; }
     public IdExistException(int id) : base() => Id = id;
     public override string ToString() => Message + Id + "is already exist";
+
+}
+
+public class NotInStockException : Exception
+{
+    public int Id;
+    public NotInStockException() : base() { }
+    public NotInStockException(string message) : base(message) { }
+    public NotInStockException(string message, Exception inner) : base(message, inner) { }
+    protected NotInStockException (SerializationInfo info, StreamingContext context) : base(info, context) { }
+    public NotInStockException(string message, int id) : base(message) { Id = id; }
+    public NotInStockException(int id) : base() => Id = id;
+    
 
 }

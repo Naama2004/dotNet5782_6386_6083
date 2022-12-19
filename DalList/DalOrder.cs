@@ -2,24 +2,27 @@
 using DalApi;
 using DO;
 using System.Data;
+using static DAL.DataSource;
 
 namespace DAL;
 
 public class DalOrder :IOrder /*ICrud<Order>*/
 {
-    public void ADD(Order O)
+    public int ADD(Order O)
     {
-        if (DataSource.orders.Exists(x => x?.ID == O.ID))//if it exist returns true O is alredy in the list
-            throw new ExistIdException("this product already exist");
-        DataSource.orders.Add(O);//if the product isnt already in the list , adds it . 
-
-
-
-        //if (DataSource.orders.Exists(x => x.Value.ID == O.ID))
-        //{
-        //    throw new ExistIdException("this product already exist");
-        //}
-        //DataSource.orders.Add(O);
+        if (O.ID != 0)
+        {
+            if (DataSource.orders.Exists(x => x?.ID == O.ID))//if it exist returns true O is alredy in the list
+                throw new ExistIdException("this product already exist");
+            DataSource.orders.Add(O);//if the product isnt already in the list , adds it . 
+            return O.ID;
+        }
+        else
+        {
+            //we didnt know that add functions needed to return id and we didnt have the time to finis it
+            O.ID = config.NextO;
+            return O.ID;
+        }
     }
 
     public void DELETE(int id)
@@ -69,5 +72,7 @@ public class DalOrder :IOrder /*ICrud<Order>*/
     {
         return (from Order order in DataSource.orders select order).ToList();
     }
-    
+
+
+
 }

@@ -83,7 +83,7 @@ public class BOProduct : IProduct
                 temp.category = (BO.Enums.Category)productDO.Category;//i dont think we're converting the category coreccty 
 
 
-                temp.AmountInCart = c.items.FirstOrDefault(x => x.ProductId == productDO.ID).amount;
+                temp.AmountInCart =(int)c.items.FirstOrDefault(x => x.ProductId == productDO.ID).amount;
                 //find in the cart the orderitem that matches the product id and put the amount in the BO entity 
                 return temp;
             }
