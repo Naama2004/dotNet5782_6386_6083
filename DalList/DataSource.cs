@@ -5,7 +5,7 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace DAL;
 
-static public class DataSource
+ public static class DataSource
 {
 
     public static class config
@@ -257,16 +257,44 @@ static public class DataSource
         
         static void s_initalize()//בונה מוצר ואז אורדר ואז אורדר אייתם
         {
-            Product tempP = DataSource.randP();
-            Order tempO = DataSource.randOrder();
-            OrderItem tempOI = DataSource.randOI();
-            DalProduct p = new DalProduct();
-            DalOrder pO = new DalOrder();
-            DalOrderItem OI= new DalOrderItem();
-            p.ADD(tempP);
-            pO.ADD(tempO);
-            OI.ADD(tempOI);
-        }
+        DalProduct p = new DalProduct();
+        DalOrder pO = new DalOrder();
+        DalOrderItem OI = new DalOrderItem();
+        Product P1 = DataSource.randP();
+        Product P2 = DataSource.randP();
+        Product P3 = DataSource.randP();
+        Product P4 = DataSource.randP();
+        Product P5 = DataSource.randP();
+        Product P6 = DataSource.randP();
+        Product P7 = DataSource.randP();
+        Product P8 = DataSource.randP();
+        Product P9 = DataSource.randP();
+        Product P10 = DataSource.randP();
+        p.ADD(P1);
+        p.ADD(P2);
+        p.ADD(P3);
+        p.ADD(P4);
+        p.ADD(P5);
+        p.ADD(P6);
+        p.ADD(P7);
+        p.ADD(P8);
+        p.ADD(P9);
+        p.ADD(P10);
+        Order O1 = DataSource.randOrder();
+        Order O2 = DataSource.randOrder();
+        Order O3 = DataSource.randOrder();
+        pO.ADD(O1);
+        pO.ADD(O2);
+        pO.ADD(O3);
+        OrderItem OI1 = DataSource.randOI();
+        OrderItem OI2 = DataSource.randOI();
+        OrderItem OI3 = DataSource.randOI();
+        OrderItem OI4 = DataSource.randOI();
+        OI.ADD(OI1);
+        OI.ADD(OI2);
+        OI.ADD(OI3);
+        OI.ADD(OI4);
+    }
 }
 
 

@@ -8,26 +8,35 @@ using System.Threading.Tasks;
 
 using BLApi;
 using BO;
+using DO;
 //using DalApi;
 namespace BlImplementation;
 
 public class BOProduct : IProduct
 {
-    DalApi.IDal? p = DalApi.Factory.Get();
+   static DalApi.IDal? dal = DalApi.Factory.Get();
     #region get all products
     public IEnumerable<BO.ProductForList> GetProducts()
     {
-
-        List<DO.Product> tempList = p.Product.GetAll().ToList();//get all of the products from DO into a temp list 
-        return (from P in tempList//return as an IEnumerable of BO Products 
-                                  //  let productFromDO = p.Product.GET(P.ID)
-                select new BO.ProductForList()
-                {
-                    ProductId = P.ID,
-                    ProductName = P.Name,
-                    price = P.Price,
-                    Category = (BO.Enums.Category)P.Category,
-                }).ToList();
+        try
+        {
+            IEnumerable<DO.Product> tempList = dal.Product.GetAll();
+            //List<DO.Product> tempList = dal.Product.GetAll().ToList();//get all of the products from DO into a temp list 
+            return (from P in tempList//return as an IEnumerable of BO Products 
+                                      //  let productFromDO = p.Product.GET(P.ID)
+                    select new BO.ProductForList()
+                    {
+                        ProductId = P.ID,
+                        ProductName = P.Name,
+                        price = P.Price,
+                        Category = (BO.Enums.Category)P.Category,
+                    }).ToList();
+        }
+        catch(DalConfigException ex)
+        {
+            Console.WriteLine(ex.Message);
+            return null;
+        }
     }
     #endregion
 
@@ -39,7 +48,7 @@ public class BOProduct : IProduct
             if (id > 0)
             {
 
-                DO.Product productDO = p.Product.GET(id);//get that specific DO entity by its ID
+                DO.Product productDO = dal.Product.GET(id);//get that specific DO entity by its ID
                                                          //is the ID is valid , but is not found in DO GET will throw an Exeption Therefor:
                                                          //catch()
                 BO.Product productBO = new BO.Product();//bulid a BO entity 
@@ -67,7 +76,7 @@ public class BOProduct : IProduct
         {
             if (id > 0)
             {
-                DO.Product productDO = p.Product.GET(id);//if the id isnt found in the DO Get will throw an Exeption 
+                DO.Product productDO = dal.Product.GET(id);//if the id isnt found in the DO Get will throw an Exeption 
                 BO.ProductItem temp = new BO.ProductItem();
                 temp.Price = productDO.Price ?? 0;//if for some reason the Price is null put a Zero in it 
 
@@ -114,7 +123,7 @@ public class BOProduct : IProduct
 
 
 
-                p.Product.ADD(DOp);//ADD might throw an Exeption in case were trying to add a product that already exist 
+                dal.Product.ADD(DOp);//ADD might throw an Exeption in case were trying to add a product that already exist 
 
             }
         }
@@ -136,7 +145,7 @@ public class BOProduct : IProduct
         //throw an Exeption if its in the orders 
         try
         {
-            p.Product.DELETE(id);//tries to delete the product from DO if the object does not exist DELETE will throw an Exeption 
+            dal.Product.DELETE(id);//tries to delete the product from DO if the object does not exist DELETE will throw an Exeption 
         }
         catch(DO.UnfounfException ex)
         {
@@ -160,7 +169,7 @@ public class BOProduct : IProduct
             DOp.Category = (DO.Enums.Category)P.category;
             try
             {
-                p.Product.UPDATE(DOp);//try to update the DO if the product doest not exist the call for DELETE in UPDATE will throw an Exeption 
+                dal.Product.UPDATE(DOp);//try to update the DO if the product doest not exist the call for DELETE in UPDATE will throw an Exeption 
             }
             catch (DO.UnfounfException x)
             {//catch the Exeption and throw it 
@@ -178,7 +187,7 @@ public class BOProduct : IProduct
     {
         //this function returns a collection of all of the products that are in the same category 
 
-        List<DO.Product> temp = p.Product.GetAll().ToList();//get all of the products into a temp list 
+        List<DO.Product> temp = dal.Product.GetAll().ToList();//get all of the products into a temp list 
         return (from P in temp
 
                 where P.Category == (DO.Enums.Category)category
