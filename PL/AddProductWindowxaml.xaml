@@ -1,0 +1,39 @@
+﻿<Window x:Class="PL.AddProductWindowxaml"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PL"
+        mc:Ignorable="d"
+        Title="AddProductWindowxaml" Height="450" Width="800">
+    <Grid>
+        <ComboBox x:Name="Selected_Category" Margin="365,130,190,264">
+            <TextBox TextWrapping="Wrap" Text="TextBox" Width="120"/>
+            <TextBox TextWrapping="Wrap" Text="TextBox" Width="120"/>
+            <ComboBoxItem Content="T-shirt"></ComboBoxItem>
+            <ComboBoxItem Content="sweatShirt"></ComboBoxItem>
+            <ComboBoxItem Content="sweatPants"></ComboBoxItem>
+            <ComboBoxItem Content="Bucket Hat"></ComboBoxItem>
+            <ComboBoxItem Content="socks"></ComboBoxItem>
+        </ComboBox>
+        <TextBox x:Name="categoryViewer" HorizontalAlignment="Left" Margin="105,130,0,0" TextWrapping="Wrap" Text="category:" VerticalAlignment="Top" Width="218" Height="40" FontSize="16" Foreground="Red" FontWeight="Bold"/>
+        <TextBox x:Name="PrintOnItem" HorizontalAlignment="Left" Margin="105,175,0,0" TextWrapping="Wrap" Text="Print On Item:" VerticalAlignment="Top" Width="218" Height="42" TextChanged="TextBox_TextChanged" Foreground="Red" FontSize="16" FontWeight="Bold" Background="White"/>
+        <TextBox x:Name="price" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Price:" VerticalAlignment="Top" Width="218" Height="38" Margin="105,222,0,0" Foreground="Red" FontSize="16" FontWeight="Bold"/>
+        <TextBox x:Name="in_stock" TextWrapping="Wrap" Text="In stock:" Margin="105,265,477,129" Foreground="Red" FontWeight="Bold" FontSize="16"/>
+        <TextBox x:Name="id" TextWrapping="Wrap" Text="Id:" Margin="105,80,477,309" Foreground="Red" FontSize="16" FontWeight="Bold" TextChanged="id_TextChanged"/>
+        <TextBox x:Name="SelectedId" HorizontalAlignment="Left" Margin="365,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="245" Foreground="Red" FontSize="16" FontWeight="Bold" Height="45" TextChanged="SelectedId_TextChanged"/>
+        <TextBox x:Name="SelectedPrice" HorizontalAlignment="Left" Margin="365,222,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="245" Foreground="Red" FontSize="16" FontWeight="Bold" Height="38"/>
+        <TextBox x:Name="Selected_Instock" HorizontalAlignment="Left" Margin="365,265,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="245" Foreground="Red" FontSize="16" FontWeight="Bold" Height="40"/>
+        <TextBox x:Name="HeadLine" HorizontalAlignment="Left" Margin="30,29,0,0" TextWrapping="Wrap" Text="Please Enter Product Details:" VerticalAlignment="Top" Width="441" Foreground="#FF090E39" FontSize="18" FontFamily="Showcard Gothic"/>
+        <ComboBox x:Name="SelectedPrint" HorizontalAlignment="Left" Margin="365,175,0,0" VerticalAlignment="Top" Width="245" Height="43" SelectionChanged="PrintOptions_SelectionChanged">
+            <ComboBoxItem Content="127.0.0.1 Sweet 127.0.0.1"></ComboBoxItem>
+            <ComboBoxItem Content="HELLO WORLD!"></ComboBoxItem>
+            <ComboBoxItem Content="roses are #ff0000 violets are #0000ff"></ComboBoxItem>
+            <ComboBoxItem Content="2B || !2B"></ComboBoxItem>
+            <ComboBoxItem Content="give me a break"></ComboBoxItem>
+        </ComboBox>
+
+        <Button x:Name="ConfirmAdding" Content="ADD" HorizontalAlignment="Left" Margin="309,327,0,0" VerticalAlignment="Top" Height="44" Width="75" FontFamily="Showcard Gothic" FontSize="18" FontWeight="Normal" Click="ConfirmAdding_Click"/>
+
+    </Grid>
+</Window>

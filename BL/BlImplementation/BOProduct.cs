@@ -123,7 +123,7 @@ public class BOProduct : IProduct
 
 
 
-                dal.Product.ADD(DOp);//ADD might throw an Exeption in case were trying to add a product that already exist 
+                dal?.Product.ADD(DOp);//ADD might throw an Exeption in case were trying to add a product that already exist 
 
             }
         }
@@ -201,6 +201,38 @@ public class BOProduct : IProduct
                 ).ToList();//idont think there should be a to list in here 
     }
     //if the category is invalid throws an Exeption 
+    public BO.Product createProductByValues(int id, string name,int instock,double price ,string cat)
+    {
+        BO.Product product = new BO.Product();
+        product.ID = id;
+        product.Name = name;
+        product.instock=instock;
+      
+        product.Price = price;
+        switch(cat)
+        {
+            case "T-shirt":
+                product.category = BO.Enums.Category.Tshirt;
+                
+                    break;
+            case "sweatShirt":
+                product.category = BO.Enums.Category.Sweatshirt;
+                break;
+            case "sweatPants":
+                product.category = BO.Enums.Category.Sweatpant;
+                break;
+            case "Bucket Hat":
+                product.category = BO.Enums.Category.BucketHat;
+                break;
+            case "socks":
+                product.category = BO.Enums.Category.Socks;
+                break;
+
+
+
+        }
+        return product;
+    }
     #endregion
 }
 
