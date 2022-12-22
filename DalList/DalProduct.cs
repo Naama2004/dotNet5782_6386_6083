@@ -70,7 +70,7 @@ public class DalProduct : IProduct/*ICrud<Product>*/
         ADD(entity);
     }
 
-    public IEnumerable<Product> GetAll()
+    public IEnumerable<DO.Product> GetAll()
     {
         return (from Product P in DataSource.products select P).ToList();
     }

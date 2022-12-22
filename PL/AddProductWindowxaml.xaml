@@ -17,15 +17,15 @@
             <ComboBoxItem Content="socks"></ComboBoxItem>
         </ComboBox>
         <TextBox x:Name="categoryViewer" HorizontalAlignment="Left" Margin="105,130,0,0" TextWrapping="Wrap" Text="category:" VerticalAlignment="Top" Width="218" Height="40" FontSize="16" Foreground="Red" FontWeight="Bold"/>
-        <TextBox x:Name="PrintOnItem" HorizontalAlignment="Left" Margin="105,175,0,0" TextWrapping="Wrap" Text="Print On Item:" VerticalAlignment="Top" Width="218" Height="42" TextChanged="TextBox_TextChanged" Foreground="Red" FontSize="16" FontWeight="Bold" Background="White"/>
+        <TextBox x:Name="PrintOnItem" HorizontalAlignment="Left" Margin="105,175,0,0" TextWrapping="Wrap" Text="Print On Item:" VerticalAlignment="Top" Width="218" Height="42"  Foreground="Red" FontSize="16" FontWeight="Bold" Background="White"/>
         <TextBox x:Name="price" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Price:" VerticalAlignment="Top" Width="218" Height="38" Margin="105,222,0,0" Foreground="Red" FontSize="16" FontWeight="Bold"/>
         <TextBox x:Name="in_stock" TextWrapping="Wrap" Text="In stock:" Margin="105,265,477,129" Foreground="Red" FontWeight="Bold" FontSize="16"/>
-        <TextBox x:Name="id" TextWrapping="Wrap" Text="Id:" Margin="105,80,477,309" Foreground="Red" FontSize="16" FontWeight="Bold" TextChanged="id_TextChanged"/>
-        <TextBox x:Name="SelectedId" HorizontalAlignment="Left" Margin="365,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="245" Foreground="Red" FontSize="16" FontWeight="Bold" Height="45" TextChanged="SelectedId_TextChanged"/>
+        <TextBox x:Name="id" TextWrapping="Wrap" Text="Id:" Margin="105,80,477,309" Foreground="Red" FontSize="16" FontWeight="Bold" />
+        <TextBox x:Name="SelectedId" HorizontalAlignment="Left" Margin="365,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="245" Foreground="Red" FontSize="16" FontWeight="Bold" Height="45" />
         <TextBox x:Name="SelectedPrice" HorizontalAlignment="Left" Margin="365,222,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="245" Foreground="Red" FontSize="16" FontWeight="Bold" Height="38"/>
         <TextBox x:Name="Selected_Instock" HorizontalAlignment="Left" Margin="365,265,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="245" Foreground="Red" FontSize="16" FontWeight="Bold" Height="40"/>
         <TextBox x:Name="HeadLine" HorizontalAlignment="Left" Margin="30,29,0,0" TextWrapping="Wrap" Text="Please Enter Product Details:" VerticalAlignment="Top" Width="441" Foreground="#FF090E39" FontSize="18" FontFamily="Showcard Gothic"/>
-        <ComboBox x:Name="SelectedPrint" HorizontalAlignment="Left" Margin="365,175,0,0" VerticalAlignment="Top" Width="245" Height="43" SelectionChanged="PrintOptions_SelectionChanged">
+        <ComboBox x:Name="SelectedPrint" HorizontalAlignment="Left" Margin="365,175,0,0" VerticalAlignment="Top" Width="245" Height="43" >
             <ComboBoxItem Content="127.0.0.1 Sweet 127.0.0.1"></ComboBoxItem>
             <ComboBoxItem Content="HELLO WORLD!"></ComboBoxItem>
             <ComboBoxItem Content="roses are #ff0000 violets are #0000ff"></ComboBoxItem>

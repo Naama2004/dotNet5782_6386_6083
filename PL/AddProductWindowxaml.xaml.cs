@@ -26,9 +26,10 @@ namespace PL
 
         public AddProductWindowxaml()
         {
+
             InitializeComponent();
             //make the category combo box be the category enums options
-           // Selected_Category.ItemsSource = Enum.GetValues(typeof(BO.Enums.Category));
+           ///Selected_Category.ItemsSource = Enum.GetValues(typeof(BO.Enums.Category));
             //make the prints combo box be the print enum options
             // SelectedPrint.ItemsSource=Enum.GetValues(typeof(BO.Enums.print));
 

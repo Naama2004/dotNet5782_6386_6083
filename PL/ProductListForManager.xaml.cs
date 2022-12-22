@@ -27,8 +27,8 @@ namespace PL
         public ProductListForManager()
         {
             //CategorySelector.ItemsSource = System.Enum.GetValues(typeof(BO.Enums.Category));
-            ProductsListview.ItemsSource = bl.Product.GetProducts();
             InitializeComponent();
+            ProductsListview.ItemsSource = bl.Product.GetProducts();
         }
 
         private void CategorySelector_SelectionChanged(object sender, SelectionChangedEventArgs e)

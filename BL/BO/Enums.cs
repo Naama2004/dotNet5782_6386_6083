@@ -19,7 +19,7 @@ public class Enums
     }
     public enum print
     {
-        home_SWEET_home = 1, HelloWorld, roses_are_red_vilots_are_blue, to_B_or_not_to_be, give_me_a_break
+        home_SWEET_home = 0, HelloWorld, roses_are_red_vilots_are_blue, to_B_or_not_to_be, give_me_a_break
     }
 
 }

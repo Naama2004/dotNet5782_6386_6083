@@ -19,7 +19,7 @@ public class BOProduct : IProduct
     public IEnumerable<BO.ProductForList> GetProducts()
     {
 
-            IEnumerable<DO.Product> tempList = dal.Product.GetAll();
+            IEnumerable<DO.Product> tempList = dal!.Product.GetAll();
         //List<DO.Product> tempList = dal.Product.GetAll().ToList();//get all of the products from DO into a temp list 
         return (from P in tempList//return as an IEnumerable of BO Products 
                                   //  let productFromDO = p.Product.GET(P.ID)

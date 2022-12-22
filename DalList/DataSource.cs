@@ -60,15 +60,15 @@ namespace Dal;
     }
 
     static readonly Random R = new Random();
-    internal static  List<Order?> orders { get; } = new List<Order?>();
-    internal static  List<OrderItem?> ordersItems { get; } = new List<OrderItem?>();
-    internal static  List<Product?> products { get; } = new List<Product?>();
+    static internal List<Order?> orders { get; } = new List<Order?>();
+    static internal List<OrderItem?> ordersItems { get; } = new List<OrderItem?>();
+    static internal List<Product?> products { get; } = new List<Product?>();
     static public Product randP()
     {
         Product p = new Product();//a new one to add
 
         int rand = R.Next(6);// choose a random num less then 6 
-        Enums.Category choise = (Enums.Category)rand;
+        Enums.Category choise = (DO.Enums.Category)rand;
         p.Category = choise;
         rand = R.Next(6);
         switch (rand)
@@ -80,16 +80,17 @@ namespace Dal;
                 p.Name = "Hello World!";
                 break;
             case 3:
-                p.Name = "a";
+                p.Name = "give me a </br>";
                 break;
             case 4:
-                p.Name = "b";
+                p.Name = "2B || !2B";
                 break;
             case 5:
-                p.Name = "c";
+                p.Name = "roses are #FF0000 vilets are #0000FF";
                 break;
 
         }
+
         p.ID = config.NextP;
         switch (choise)
         {

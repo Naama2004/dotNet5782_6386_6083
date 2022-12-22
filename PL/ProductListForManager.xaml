@@ -38,13 +38,13 @@
             </ComboBox>
             <Label  x:Name="label" Content="Select Category:" HorizontalAlignment="Left" Margin="39,0,0,0" VerticalAlignment="Center" Height="46" Width="267" Foreground="Red" FontWeight="Bold" FontSize="24" FontStyle="Italic" FontFamily="Stencil"/>
         </Grid>
-        <ListView Name ="ProductsListview" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}" SelectionChanged="ProductsListview_SelectionChanged">
+        <ListView Name ="ProductsListview" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}" >
             <ListView.View>
                 <GridView AllowsColumnReorder="True" >
 
                     <GridViewColumn Header="Name" DisplayMemberBinding="{Binding ProductName}" />
                     <GridViewColumn Header="ID" DisplayMemberBinding="{Binding ProductId}"/>
-                    <GridViewColumn  Header="Category" DisplayMemberBinding="{Binding ProductCategory }" />
+                    <GridViewColumn  Header="Category" DisplayMemberBinding="{Binding Category }" />
                     <GridViewColumn  Header="Price" DisplayMemberBinding="{Binding  price }" />
 
                 </GridView>

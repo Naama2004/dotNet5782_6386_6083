@@ -11,7 +11,7 @@ public struct Enums
     }
     public enum print
     {
-        home =1, HelloWorld,rgb ,toB, br      
+        home =0, HelloWorld,rgb ,toB, br      
     }
     
 
