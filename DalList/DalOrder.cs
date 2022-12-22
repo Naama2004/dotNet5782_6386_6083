@@ -2,9 +2,9 @@
 using DalApi;
 using DO;
 using System.Data;
-using static DAL.DataSource;
+using static Dal.DataSource;
 
-namespace DAL;
+namespace Dal;
 
 public class DalOrder :IOrder /*ICrud<Order>*/
 {

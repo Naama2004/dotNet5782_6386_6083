@@ -1,7 +1,7 @@
 ﻿using BLApi;
 using BlImplementation;
 using BO;
-using DAL;
+using Dal;
 using DO;
 
 namespace BLTest;
@@ -70,7 +70,7 @@ Enter 7 to get a product , by its category ");
                         #endregion
                         
                         case 3:
-                            #region get products unfo client
+                            #region get products info client
                             try
                             {
                                 Console.WriteLine("enter product id");
@@ -199,11 +199,12 @@ enter products id");
                                 bl.Product.RemoveProductmaneger(id4);
                                 p = bl.Product.ProductInfoManeger(id4);
                                 Console.WriteLine(p);// if there is a throw it is good
+                                
                                 break;
                             }
                             catch(NotFoundException ex)
                             {
-                                Console.WriteLine(ex.Message);
+                                Console.WriteLine(ex.Message+" this ia a good throw, now we know it was deleted:)");
                                 break;
                             }
                         #endregion
@@ -254,7 +255,7 @@ enter products amount in stock");
                                 p.instock = int.Parse(Console.ReadLine());
                                 bl.Product.UpdateProductmaneger(p);
                                 Console.WriteLine(@"
-enter products id");
+enter products id to check if it was updated");
                                 id = int.Parse(Console.ReadLine());
                                 p = bl.Product.ProductInfoManeger(id);
                                 Console.WriteLine(p);
@@ -320,6 +321,7 @@ Enter 4 to update delivery as a menager
 Enter 5 track an order
 ");
                     int Functioncoice2 = 0;
+                    Functioncoice2 =int.Parse(Console.ReadLine());
                     switch (Functioncoice2)
                     {
                         case 1:
@@ -366,6 +368,12 @@ Enter 5 track an order
                                 Console.WriteLine(ex.Message);
                                 break;
                             }
+                            catch (Exception ex)
+                            {
+                                Console.WriteLine(ex.Message);
+                                break;
+                            }
+
                         #endregion
                         case 4:
                             #region update delivery as a menager
@@ -381,6 +389,11 @@ Enter 5 track an order
                             {
                                 Console.WriteLine(ex.Message);
                                     break;
+                            }
+                            catch (Exception ex)
+                            {
+                                Console.WriteLine(ex.Message);
+                                break;
                             }
                         #endregion
                         case 5:
@@ -413,6 +426,7 @@ Enter 3 to confirm an order
 
 ");
                     int Functioncoice3 = 0;
+                    Functioncoice3=int.Parse(Console.ReadLine());
                     switch (Functioncoice3)
                     {
                         case 1:

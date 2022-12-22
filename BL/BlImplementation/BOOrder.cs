@@ -21,7 +21,7 @@ public class BOOrder : BLApi.IOrder
     public IEnumerable<BO.OrderForList> GETOrders()
     {
 
-        List<DO.Order> tempDOList = factor.Order.GetAll().ToList();//copy the entire order list in DO to temp DO list 
+        List<DO.Order> tempDOList = factor!.Order.GetAll().ToList();//copy the entire order list in DO to temp DO list 
 
         return (from O in tempDOList//returns a IEnumerable of orderitems 
                 select new BO.OrderForList()
@@ -29,7 +29,7 @@ public class BOOrder : BLApi.IOrder
                     OrderId = O.ID,
                     state = FindState(O),
                     Amount = TotalProductsAmount(O.ID),
-                    TotalPrice = TotalPrice(O.ID)
+                    TotalPrice = (Double)TotalPrice(O.ID)!
                 });
     }
     #endregion
@@ -74,7 +74,7 @@ public class BOOrder : BLApi.IOrder
         try
         {
 
-            DO.Order temp = factor.Order.GET(id);//find the wanted order
+            DO.Order temp = factor!.Order.GET(id);//find the wanted order
             if (DateTime.Today < temp.ShipDate)
             {
                 //updating the DO entity
@@ -96,7 +96,7 @@ public class BOOrder : BLApi.IOrder
             }
             else
             {
-                throw new Exception();//צריך להחזיר משהו לא הצלחתי להבין מה
+                throw new Exception("the order was already shiped");//צריך להחזיר משהו לא הצלחתי להבין מה
             }
 
         }
@@ -139,7 +139,7 @@ public class BOOrder : BLApi.IOrder
             }
             else
             {
-                throw new Exception();//צריך להחזיר משהו לא הצלחתי להבין מה
+                throw new Exception("the order was already sent");//צריך להחזיר משהו לא הצלחתי להבין מה
             }
 
         }
@@ -231,14 +231,15 @@ public class BOOrder : BLApi.IOrder
     #endregion
 
     #region total price
-    public Double TotalPrice(int ID)
+    public Double? TotalPrice(int ID)
     {
-        Double total = 0;
+        Double? total = 0;
+        Double? temp1 = 0;
         List<DO.OrderItem> temp = factor.OrderItem.GetAll().ToList();
         foreach (DO.OrderItem item in temp)
         {
             if (item.ID == ID)
-                total += (Double)item.Price;
+                total += (Double?)item.Price;
 
         }
         return total;

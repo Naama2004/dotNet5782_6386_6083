@@ -28,20 +28,18 @@ namespace PL
         {
             InitializeComponent();
             //make the category combo box be the category enums options
-            // Selected_Category.ItemsSource = Enum.GetValues(typeof(BO.Enums.Category));
+           // Selected_Category.ItemsSource = Enum.GetValues(typeof(BO.Enums.Category));
             //make the prints combo box be the print enum options
             // SelectedPrint.ItemsSource=Enum.GetValues(typeof(BO.Enums.print));
 
 
-            //לשאול משהו
+
             //מה זה האייטמ סורס והאם צריך אותו ולמה 
-            //מה זה הריזולט ואיך הוא קשור לאופשיינן
-            //    MessageBoxResult.OK,
-           // MessageBoxOptions.RtlReading);
-           //זה תקין שאפשר לגשת לבאו ולדאו ??
-           //נלאבלים
-           //הפוהקציות מחזירות רפרנס?
-           //למה יש זריקה בהשמה של הליסט בחלון הקודם?
+           
+            //זה תקין שאפשר לגשת לבאו ולדאו ??
+            //נלאבלים
+            //הפוהקציות מחזירות רפרנס?
+            //למה יש זריקה בהשמה של הליסט בחלון הקודם?
         }
 
         private void ConfirmAdding_Click(object sender, RoutedEventArgs e)
@@ -64,6 +62,7 @@ namespace PL
                         "Invalid input",
                         MessageBoxButton.OK,
                         MessageBoxImage.Hand
+                       
                         );
 
                 if (wantedPrice < 0)

@@ -4,9 +4,9 @@ using DalApi;
 using DO;
 using System.Linq;
 using System.Linq.Expressions;
-using static DAL.DataSource;
+using static Dal.DataSource;
 
-namespace DAL;
+namespace Dal;
 
 public class DalProduct : IProduct/*ICrud<Product>*/
 {

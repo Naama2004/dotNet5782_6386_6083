@@ -18,25 +18,19 @@ public class BOProduct : IProduct
     #region get all products
     public IEnumerable<BO.ProductForList> GetProducts()
     {
-        try
-        {
+
             IEnumerable<DO.Product> tempList = dal.Product.GetAll();
-            //List<DO.Product> tempList = dal.Product.GetAll().ToList();//get all of the products from DO into a temp list 
-            return (from P in tempList//return as an IEnumerable of BO Products 
-                                      //  let productFromDO = p.Product.GET(P.ID)
-                    select new BO.ProductForList()
-                    {
-                        ProductId = P.ID,
-                        ProductName = P.Name,
-                        price = P.Price,
-                        Category = (BO.Enums.Category)P.Category,
-                    }).ToList();
-        }
-        catch(DalConfigException ex)
-        {
-            Console.WriteLine(ex.Message);
-            return null;
-        }
+        //List<DO.Product> tempList = dal.Product.GetAll().ToList();//get all of the products from DO into a temp list 
+        return (from P in tempList//return as an IEnumerable of BO Products 
+                                  //  let productFromDO = p.Product.GET(P.ID)
+                select new BO.ProductForList()
+                {
+                    ProductId = P.ID,
+                    ProductName = P.Name,
+                    price = P.Price,
+                    Category = (BO.Enums.Category)P.Category!,
+                }).ToList();
+
     }
     #endregion
 
@@ -48,7 +42,7 @@ public class BOProduct : IProduct
             if (id > 0)
             {
 
-                DO.Product productDO = dal.Product.GET(id);//get that specific DO entity by its ID
+                DO.Product productDO = dal!.Product.GET(id);//get that specific DO entity by its ID
                                                          //is the ID is valid , but is not found in DO GET will throw an Exeption Therefor:
                                                          //catch()
                 BO.Product productBO = new BO.Product();//bulid a BO entity 
@@ -145,7 +139,7 @@ public class BOProduct : IProduct
         //throw an Exeption if its in the orders 
         try
         {
-            dal.Product.DELETE(id);//tries to delete the product from DO if the object does not exist DELETE will throw an Exeption 
+            dal!.Product.DELETE(id);//tries to delete the product from DO if the object does not exist DELETE will throw an Exeption 
         }
         catch(DO.UnfounfException ex)
         {
@@ -176,9 +170,10 @@ public class BOProduct : IProduct
                 throw new NotFoundException("id is not found", x);
             }
         }
-        throw new InValidIdException("one or more of the details is not valied");
-        // else
-        //if one or more of the info is invalid - throw an Exeption  
+        else
+        {
+            throw new InValidIdException("one or more of the details is not valied");
+        }  
     }
     #endregion
 

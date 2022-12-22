@@ -19,7 +19,7 @@ public class BOcart : ICart
     {
         try
         {
-            DO.Product PDetails = factor.Product.GET(id);
+            DO.Product PDetails = factor!.Product.GET(id);
             C.items = C.items ?? new();
             if (PDetails.InStock > 0)
             {

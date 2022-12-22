@@ -13,7 +13,4 @@ public interface IProduct
     public void RemoveProductmaneger(int id);
     public void UpdateProductmaneger(BO.Product P);
     public BO.Product createProductByValues(int id, string name, int instock, double price,string cat);
-
-
-
 }

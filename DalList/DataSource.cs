@@ -3,7 +3,7 @@ using System.ComponentModel;
 using System.Security.Cryptography.X509Certificates;
 using static System.Net.Mime.MediaTypeNames;
 
-namespace DAL;
+namespace Dal;
 
  public static class DataSource
 {
@@ -60,9 +60,9 @@ namespace DAL;
     }
 
     static readonly Random R = new Random();
-    static internal List<Order?> orders { get; } = new List<Order?>();
-    static internal List<OrderItem?> ordersItems { get; } = new List<OrderItem?>();
-    static internal List<Product?> products { get; } = new List<Product?>();
+    internal static  List<Order?> orders { get; } = new List<Order?>();
+    internal static  List<OrderItem?> ordersItems { get; } = new List<OrderItem?>();
+    internal static  List<Product?> products { get; } = new List<Product?>();
     static public Product randP()
     {
         Product p = new Product();//a new one to add
