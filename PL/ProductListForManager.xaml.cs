@@ -62,9 +62,29 @@ namespace PL
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            //move to adding product window 
+            AddOrUpdateProductWindow help = new AddOrUpdateProductWindow();
+            //help.ShowDialog();
+            help.Show();
         }
 
-      
+        void ListViewItem_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var item = ((FrameworkElement)e.OriginalSource).DataContext as BO.Product;
+            if (item != null)//null or one of them is missing we need to check 
+            {
+                AddOrUpdateProductWindow help = new AddOrUpdateProductWindow(item);
+                help.Show();//open the ADD or Update window but send it value which makes it the updaate window
+
+            }
+            else
+            {
+                MessageBox.Show("please choose an item to update"
+                    , "missing input"
+                    , MessageBoxButton.OK);
+            }
+
+
+        }
+
     }
-}
+    }

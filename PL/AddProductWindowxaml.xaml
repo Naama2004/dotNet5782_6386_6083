@@ -1,4 +1,4 @@
-﻿<Window x:Class="PL.AddProductWindowxaml"
+﻿<Window x:Class="PL.AddOrUpdateProductWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -33,7 +33,8 @@
             <ComboBoxItem Content="give me a break"></ComboBoxItem>
         </ComboBox>
 
-        <Button x:Name="ConfirmAdding" Content="ADD" HorizontalAlignment="Left" Margin="309,327,0,0" VerticalAlignment="Top" Height="44" Width="75" FontFamily="Showcard Gothic" FontSize="18" FontWeight="Normal" Click="ConfirmAdding_Click"/>
+        <Button x:Name="ConfirmAdding" Content="ADD" HorizontalAlignment="Left" Margin="325,349,0,0" VerticalAlignment="Top" Height="44" Width="75" FontFamily="Showcard Gothic" FontSize="18" FontWeight="Normal" Click="ConfirmAdding_Click"/>
+        <Button x:Name="confirmUpdatingProduct" Content="update" HorizontalAlignment="Left" Margin="412,349,0,0" VerticalAlignment="Top" Foreground="Black" Height="48" Width="76" FontSize="18" FontFamily="Showcard Gothic" Click="confirmUpdatingProduct_Click"/>
 
     </Grid>
 </Window>
