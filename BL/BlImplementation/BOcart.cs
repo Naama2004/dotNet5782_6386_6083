@@ -28,7 +28,7 @@ public class BOcart : ICart
                     ProductId = id,
                     OrderId = 0,
                     price = PDetails.Price,
-                    ProductName = PDetails.Name,
+                    Print = PDetails.Print,
                     amount = 0,
                     TotalPrice = 0
                 };
@@ -115,7 +115,7 @@ public class BOcart : ICart
         TO.amount = from.amount;
         TO.TotalPrice = from.amount * from.price;
         TO.OrderId = from.OrderId;
-        TO.ProductName = from.ProductName;
+        TO.Print = from.Print;
         TO.ProductId = from.ProductId;
         return TO;
     }

@@ -1,19 +1,24 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Xml;
 //using BL;
 using BLApi;
 using BlImplementation;
+using Microsoft.VisualBasic;
 
 namespace PL
 {
@@ -24,57 +29,52 @@ namespace PL
     public partial class ProductListForManager : Window
     {
         private IBl bl = BLApi.Factory.Get();
+
+        public ObservableCollection<BO.ProductForList> Products { set; get; }
         public ProductListForManager()
         {
-            //CategorySelector.ItemsSource = System.Enum.GetValues(typeof(BO.Enums.Category));
             InitializeComponent();
-            ProductsListview.ItemsSource = bl.Product.GetProducts();
+            Products = new ObservableCollection<BO.ProductForList>(bl.Product.GetProducts());
+            DataContext = this;
+            CategorySelector.ItemsSource =  Enum.GetValues(typeof (DO.Enums.Category));
         }
 
         private void CategorySelector_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (ProductsListview.ItemsSource != null)
+            if (CategorySelector.SelectedItem != null)
             {
-                ComboBoxItem cbi = (ComboBoxItem)ProductsListview.SelectedItem;
-                string? selectedText = cbi.Content.ToString();
-                switch (selectedText)
-                {
-                    case "T-shirt":
-                        ProductsListview.ItemsSource = bl.Product.GetProductsByCategory(BO.Enums.Category.Tshirt);
-                        break;
-                    case "sweat shirt":
-                        ProductsListview.ItemsSource = bl.Product.GetProductsByCategory(BO.Enums.Category.Sweatshirt);
-                        break;
-                    case "sweat Pants":
-                        ProductsListview.ItemsSource = bl.Product.GetProductsByCategory(BO.Enums.Category.Sweatpant);
-                        break;
-                    case "Bucket Hat":
-                        ProductsListview.ItemsSource = bl.Product.GetProductsByCategory(BO.Enums.Category.BucketHat);
-                        break;
-                    case "socks":
-                        ProductsListview.ItemsSource = bl.Product.GetProductsByCategory(BO.Enums.Category.Socks);
-                        break;
-                }
+                BO.Enums.Category category = (BO.Enums.Category)CategorySelector.SelectedItem;
+
+                Products = new ObservableCollection<BO.ProductForList>(bl.Product.GetProductsByCondition(product => product.Category == category, Products));
+                ProductsListview.ItemsSource = Products;
+                
             }
             else
-                ProductsListview.ItemsSource = bl.Product.GetProducts();
+                ProductsListview.ItemsSource = Products;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             AddOrUpdateProductWindow help = new AddOrUpdateProductWindow();
-            //help.ShowDialog();
             help.Show();
+          //  ProductsListview.ItemsSource = bl.Product.GetProducts();// איך לעשות שלר נצטרך כל פעם לקחת מחדש את הרשימה??
+               this.Close();
         }
 
-        void ListViewItem_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+       private void ListViewItem_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            var item = ((FrameworkElement)e.OriginalSource).DataContext as BO.Product;
-            if (item != null)//null or one of them is missing we need to check 
-            {
-                AddOrUpdateProductWindow help = new AddOrUpdateProductWindow(item);
-                help.Show();//open the ADD or Update window but send it value which makes it the updaate window
 
+             BO.ProductForList? item = ProductsListview.SelectedItem as BO.ProductForList;
+            if (item != null) 
+            {
+                BO.Product update = new BO.Product();
+                update.ID = item.ProductId;
+                update.Print = item.Print;
+                update.category = item.Category;
+                update.Price = item.price;
+                update.instock = 1;// need to be changed
+                new AddOrUpdateProductWindow(update).Show();//open the ADD or Update window but send it value which makes it the updaate window
+                this.Close();
             }
             else
             {

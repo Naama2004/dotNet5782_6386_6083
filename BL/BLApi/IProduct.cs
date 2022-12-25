@@ -5,8 +5,9 @@ namespace BLApi;
 
 public interface IProduct
 {
+    public IEnumerable<BO.ProductForList> GetProductsByCondition(Func<ProductForList, bool> func, IEnumerable<BO.ProductForList> productForLists);
     public IEnumerable<BO.ProductForList> GetProducts();
-    public IEnumerable<BO.ProductForList> GetProductsByCategory(BO.Enums.Category category);
+   
     public Product ProductInfoManeger(int id);
     public ProductItem ProductInfoClient(int id, cart c);
     public void AddProductmaneger(BO.Product P);

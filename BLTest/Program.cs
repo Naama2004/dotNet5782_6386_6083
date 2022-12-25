@@ -2,6 +2,7 @@
 using BlImplementation;
 using BO;
 using Dal;
+using DalApi;
 using DO;
 
 namespace BLTest;
@@ -106,7 +107,7 @@ enter product id:");
                                     Console.WriteLine(@"
 enter product name:");
                                     string name = Console.ReadLine();
-                                    OI.ProductName = name;
+                                    OI.Print = name;
                                     OI.price = 0;//how do i get the price
                                     Console.WriteLine(@"
 enter amount of products:");
@@ -141,7 +142,7 @@ enter product id:");
                                 p.ID = id;
                                 Console.WriteLine(@"
 enter product name:");
-                                p.Name = Console.ReadLine();
+                                p.Print = Console.ReadLine();
                                 Console.WriteLine(@"
 enter a for sweatshirt b for sweatpants c for bucket hut d for socks e for T-shirt");
                                 string ch= Console.ReadLine();
@@ -220,7 +221,7 @@ enter product id:");
                                 p.ID = id;
                                 Console.WriteLine(@"
 enter product name:");
-                                p.Name = Console.ReadLine();
+                                p.Print = Console.ReadLine();
                                 Console.WriteLine(@"
 enter a for sweatshirt b for sweatpants c for bucket hut d for socks e for T-shirt");
                                 string? op1 = Console.ReadLine();
@@ -300,7 +301,7 @@ enter a for sweatshirt b for sweatpants c for bucket hut d for socks e for T-shi
                             {
                                 ca= BO.Enums.Category.Tshirt;
                             }
-                            foreach (BO.ProductForList pfl in bl.Product.GetProductsByCategory(ca))
+                            foreach (BO.ProductForList pfl in bl.Product.GetProductsByCondition(product => product.Category == ca, bl.Product.GetProducts()))
                             {
                                 Console.WriteLine(pfl);
                             }
@@ -464,7 +465,7 @@ enter product id:");
                                 Console.WriteLine(@"
 enter product name:");
                                 string name = Console.ReadLine();
-                                OI.ProductName = name;
+                                OI.Print = name;
                                 OI.price = 0;//how do i get the price
                                 Console.WriteLine(@"
 enter amount of products:");
@@ -517,7 +518,7 @@ enter product id:");
                                     Console.WriteLine(@"
 enter product name:");
                                     string name = Console.ReadLine();
-                                    OI.ProductName = name;
+                                    OI.Print = name;
                                     OI.price = 0;//how do i get the price
                                     Console.WriteLine(@"
 enter amount of products in cart(not updated):");
@@ -575,7 +576,7 @@ enter product id:");
                                 Console.WriteLine(@"
 enter product name:");
                                 string name = Console.ReadLine();
-                                OI.ProductName = name;
+                                OI.Print = name;
                                 OI.price = 0;//how do i get the price
                                 Console.WriteLine(@"
 enter amount of products in cart(not updated):");

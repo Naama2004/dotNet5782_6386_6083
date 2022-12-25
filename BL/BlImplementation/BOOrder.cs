@@ -52,7 +52,7 @@ public class BOOrder : BLApi.IOrder
                 returnOrder = copyvalues(wantedOrder);
                 returnOrder.Items = getallorderItem(id);
                 returnOrder.State = FindState(wantedOrder);
-                returnOrder.price = TotalProductsAmount(id);
+                returnOrder.Price = TotalProductsAmount(id);
                 return returnOrder;
             }
             catch (DO.UnfounfException ex) 
@@ -91,7 +91,7 @@ public class BOOrder : BLApi.IOrder
                 BO.Order updatedBO = copyvalues(updatedDO);
                 updatedBO.Items = getallorderItem(id);
                 updatedBO.State = FindState(updatedDO);
-                updatedBO.price = TotalPrice(id);
+                updatedBO.Price = TotalPrice(id);
                 return updatedBO;
             }
             else
@@ -134,7 +134,7 @@ public class BOOrder : BLApi.IOrder
                 BO.Order updatedBO = copyvalues(updatedDO);
                 updatedBO.Items = getallorderItem(id);
                 updatedBO.State = FindState(updatedDO);
-                updatedBO.price = TotalPrice(id);
+                updatedBO.Price = TotalPrice(id);
                 return updatedBO;
             }
             else
@@ -261,7 +261,7 @@ public class BOOrder : BLApi.IOrder
                     price = O.Price,
                     amount = O.Amount,
                     TotalPrice = O.Price * O.Amount,
-                    ProductName = factor.Product.GET((int)O.ProductID).Name
+                    Print = factor.Product.GET((int)O.ProductID).Print
                 }).ToList();
     }
     #endregion

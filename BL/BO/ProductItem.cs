@@ -3,7 +3,7 @@
 public class ProductItem
 {
     public int ProductId { get; set; }
-    public string? Name { get; set; }
+    public string? Print { get; set; }
     public double Price { get; set; }
     public Enums.Category category { get; set; }
     public bool InStock { get; set; }
@@ -11,7 +11,7 @@ public class ProductItem
 
     public override string ToString() => $@"
 Product Id: ={ProductId},
-Name: {Name},
+Name: {Print},
 price: {Price},
 Category: {category},
 	";

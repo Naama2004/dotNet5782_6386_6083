@@ -67,7 +67,7 @@ press 3 for orderitem");
                             }
                             Console.WriteLine("Enter name of pruduct");
                             string? name = Console.ReadLine();
-                            p.Name = name;
+                            p.Print = name;
                             temp.ADD(p);
                             break;
 
@@ -250,7 +250,7 @@ press 3 for order item");
                             }
                             Console.WriteLine("enter new name");
                             string? name = Console.ReadLine();
-                            p.Name = name;
+                            p.Print = name;
                             temp.UPDATE(p);
                             break;
                         case 2:

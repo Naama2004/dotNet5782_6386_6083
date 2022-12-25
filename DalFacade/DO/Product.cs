@@ -3,7 +3,7 @@
 namespace DO;
 public struct Product
 {
-    public string? Name { get; set; }
+    public string? Print { get; set; }
     public int ID { get; set; }
     public double? Price { get; set; }
     public int? InStock { get; set; }
@@ -11,7 +11,7 @@ public struct Product
 
     public override string ToString() => $@"
 	Product ID={ID}:
-    pruduct name: {Name}, 
+    pruduct name: {Print}, 
 	category -{Category}
     Price:{Price}
     Amount in stock:{InStock}

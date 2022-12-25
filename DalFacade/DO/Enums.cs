@@ -3,7 +3,7 @@ public struct Enums
 {
     public enum Category
     {
-       Tshirt=1,Sweatshirt,Sweatpant,BucketHat, Socks
+       Tshirt,Sweatshirt,Sweatpant,BucketHat, Socks
     }
     public enum Price
     {
@@ -11,9 +11,9 @@ public struct Enums
     }
     public enum print
     {
-        home =0, HelloWorld,rgb ,toB, br      
+        home_SWEET_home = 0, HelloWorld, roses_are_red_vilots_are_blue, to_B_or_not_to_be, give_me_a_break
     }
-    
+
 
 }
 

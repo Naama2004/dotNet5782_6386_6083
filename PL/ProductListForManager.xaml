@@ -30,19 +30,16 @@
                         <TranslateTransform/>
                     </TransformGroup>
                 </ComboBox.RenderTransform>
-                <ComboBoxItem Content="T-shirt"></ComboBoxItem>
-                <ComboBoxItem Content="sweat shirt"></ComboBoxItem>
-                <ComboBoxItem Content="sweant Pants"></ComboBoxItem>
-                <ComboBoxItem Content="Bucket Hat"></ComboBoxItem>
-                <ComboBoxItem Content="socks"></ComboBoxItem>
+
             </ComboBox>
             <Label  x:Name="label" Content="Select Category:" HorizontalAlignment="Left" Margin="39,0,0,0" VerticalAlignment="Center" Height="46" Width="267" Foreground="Red" FontWeight="Bold" FontSize="24" FontStyle="Italic" FontFamily="Stencil"/>
         </Grid>
-        <ListView Name ="ProductsListview" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}" SelectionChanged="ProductsListview_SelectionChanged" MouseDoubleClick="ListViewItem_MouseDoubleClick" >
+        
+        <ListView  Name ="ProductsListview" Grid.Row="1" ItemsSource="{Binding Products}"  MouseDoubleClick="ListViewItem_MouseDoubleClick">
             <ListView.View>
                 <GridView AllowsColumnReorder="True" >
 
-                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding ProductName}" />
+                    <GridViewColumn Header="Print" DisplayMemberBinding="{Binding Print}" />
                     <GridViewColumn Header="ID" DisplayMemberBinding="{Binding ProductId}"/>
                     <GridViewColumn  Header="Category" DisplayMemberBinding="{Binding Category }" />
                     <GridViewColumn  Header="Price" DisplayMemberBinding="{Binding  price }" />
@@ -50,6 +47,7 @@
                 </GridView>
             </ListView.View>
         </ListView>
+        
         <Button x:Name="AddingProductButton" Content="Add new Product" HorizontalAlignment="Left" Margin="158,505,0,10" Padding="5" Click="Button_Click" Width="440" Foreground="Red" FontSize="20" FontWeight="Normal" FontFamily="Showcard Gothic" Grid.Row="1"/>
 
 

@@ -7,25 +7,15 @@
         mc:Ignorable="d"
         Title="AddProductWindowxaml" Height="450" Width="800">
     <Grid>
-        <ComboBox x:Name="Selected_Category" Margin="365,130,190,264">
-            <TextBox TextWrapping="Wrap" Text="TextBox" Width="120"/>
-            <TextBox TextWrapping="Wrap" Text="TextBox" Width="120"/>
-            <ComboBoxItem Content="T-shirt"></ComboBoxItem>
-            <ComboBoxItem Content="sweatShirt"></ComboBoxItem>
-            <ComboBoxItem Content="sweatPants"></ComboBoxItem>
-            <ComboBoxItem Content="Bucket Hat"></ComboBoxItem>
-            <ComboBoxItem Content="socks"></ComboBoxItem>
-        </ComboBox>
+
         <TextBox x:Name="categoryViewer" HorizontalAlignment="Left" Margin="105,130,0,0" TextWrapping="Wrap" Text="category:" VerticalAlignment="Top" Width="218" Height="40" FontSize="16" Foreground="Red" FontWeight="Bold"/>
         <TextBox x:Name="PrintOnItem" HorizontalAlignment="Left" Margin="105,175,0,0" TextWrapping="Wrap" Text="Print On Item:" VerticalAlignment="Top" Width="218" Height="42"  Foreground="Red" FontSize="16" FontWeight="Bold" Background="White"/>
         <TextBox x:Name="price" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Price:" VerticalAlignment="Top" Width="218" Height="38" Margin="105,222,0,0" Foreground="Red" FontSize="16" FontWeight="Bold"/>
-        <TextBox x:Name="in_stock" TextWrapping="Wrap" Text="In stock:" Margin="105,265,477,129" Foreground="Red" FontWeight="Bold" FontSize="16"/>
-        <TextBox x:Name="id" TextWrapping="Wrap" Text="Id:" Margin="105,80,477,309" Foreground="Red" FontSize="16" FontWeight="Bold" />
-        <TextBox x:Name="SelectedId" HorizontalAlignment="Left" Margin="365,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="245" Foreground="Red" FontSize="16" FontWeight="Bold" Height="45" />
-        <TextBox x:Name="SelectedPrice" HorizontalAlignment="Left" Margin="365,222,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="245" Foreground="Red" FontSize="16" FontWeight="Bold" Height="38"/>
-        <TextBox x:Name="Selected_Instock" HorizontalAlignment="Left" Margin="365,265,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="245" Foreground="Red" FontSize="16" FontWeight="Bold" Height="40"/>
+        <TextBox x:Name="SelectedId" HorizontalAlignment="Left" Margin="365,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="218" Foreground="Red" FontSize="16" FontWeight="Bold" Height="45" />
+        <TextBox x:Name="SelectedPrice" HorizontalAlignment="Left" Margin="365,222,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="218" Foreground="Red" FontSize="16" FontWeight="Bold" Height="38"/>
+        <TextBox x:Name="Selected_Instock" HorizontalAlignment="Left" Margin="365,265,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="218" Foreground="Red" FontSize="16" FontWeight="Bold" Height="40"/>
         <TextBox x:Name="HeadLine" HorizontalAlignment="Left" Margin="30,29,0,0" TextWrapping="Wrap" Text="Please Enter Product Details:" VerticalAlignment="Top" Width="441" Foreground="#FF090E39" FontSize="18" FontFamily="Showcard Gothic"/>
-        <ComboBox x:Name="SelectedPrint" HorizontalAlignment="Left" Margin="365,175,0,0" VerticalAlignment="Top" Width="245" Height="43" >
+        <ComboBox x:Name="SelectedPrint" HorizontalAlignment="Left" Margin="365,175,0,0" VerticalAlignment="Top" Width="218" Height="42" >
             <ComboBoxItem Content="127.0.0.1 Sweet 127.0.0.1"></ComboBoxItem>
             <ComboBoxItem Content="HELLO WORLD!"></ComboBoxItem>
             <ComboBoxItem Content="roses are #ff0000 violets are #0000ff"></ComboBoxItem>
@@ -34,7 +24,10 @@
         </ComboBox>
 
         <Button x:Name="ConfirmAdding" Content="ADD" HorizontalAlignment="Left" Margin="325,349,0,0" VerticalAlignment="Top" Height="44" Width="75" FontFamily="Showcard Gothic" FontSize="18" FontWeight="Normal" Click="ConfirmAdding_Click"/>
-        <Button x:Name="confirmUpdatingProduct" Content="update" HorizontalAlignment="Left" Margin="412,349,0,0" VerticalAlignment="Top" Foreground="Black" Height="48" Width="76" FontSize="18" FontFamily="Showcard Gothic" Click="confirmUpdatingProduct_Click"/>
+        <Button x:Name="confirmUpdatingProduct" Content="update" HorizontalAlignment="Left" Margin="324,347,0,0" VerticalAlignment="Top" Foreground="Black" Height="48" Width="76" FontSize="18" FontFamily="Showcard Gothic" Click="confirmUpdatingProduct_Click"/>
+        <ComboBox  x:Name="Selected_Category" Foreground="Red" FontSize="16" FontWeight="Bold" HorizontalAlignment="Left" Margin="365,130,0,0" VerticalAlignment="Top" Width="218" Height="40"/>
+        <TextBox x:Name="in_stock"  Text="Stock:" Foreground="Red" FontSize="16" FontWeight="Bold" HorizontalAlignment="Left" Margin="105,267,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="218" Height="38" />
+        <TextBox x:Name="id" TextWrapping="Wrap" Text="Id:" Foreground="Red" FontSize="16" FontWeight="Bold" HorizontalAlignment="Left" Margin="105,80,0,0"  VerticalAlignment="Top" Width="218" Height="40"/>
 
     </Grid>
 </Window>

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -26,7 +27,7 @@ public class BOProduct : IProduct
                 select new BO.ProductForList()
                 {
                     ProductId = P.ID,
-                    ProductName = P.Name,
+                    Print = P.Print,
                     price = P.Price,
                     Category = (BO.Enums.Category)P.Category!,
                 }).ToList();
@@ -47,7 +48,7 @@ public class BOProduct : IProduct
                                                          //catch()
                 BO.Product productBO = new BO.Product();//bulid a BO entity 
                 productBO.ID = productDO.ID;//set the wanted values into the BO entity 
-                productBO.Name = productDO.Name;
+                productBO.Print = productDO.Print;
                 productBO.Price = productDO.Price;
                 productBO.category = (BO.Enums.Category)productDO.Category;
                 productBO.instock = productDO.InStock;
@@ -76,7 +77,7 @@ public class BOProduct : IProduct
 
                 //maybe we should throw an Exeption ? because we dont want to allow the costumer to see price 0 
 
-                temp.Name = productDO.Name;
+                temp.Print = productDO.Print;
                 temp.ProductId = productDO.ID;
                 if (productDO.InStock != 0)//the costumer only need to see if the item is avileable not how many are there 
                 {
@@ -105,12 +106,12 @@ public class BOProduct : IProduct
     {
         try
         {
-            if (P.ID > 0 && P.Name != " " && P.Price > 0 && P.instock >= 0)
+            if (P.ID > 0 && P.Print != " " && P.Price > 0 && P.instock >= 0)
             {
                 DO.Product DOp = new DO.Product();//creates a DO entity to add to the Data 
 
                 DOp.ID = P.ID;
-                DOp.Name = P.Name;
+                DOp.Print = P.Print;
                 DOp.Price = P.Price;
                 DOp.InStock = P.instock;
                 DOp.Category = (DO.Enums.Category)P.category;
@@ -153,11 +154,11 @@ public class BOProduct : IProduct
     #region update info manager
     public void UpdateProductmaneger(BO.Product P)
     {
-        if (P.ID > 0 && P.Name != " " && P.Price > 0 && P.instock >= 0)
+        if (P.ID > 0 && P.Print != " " && P.Price > 0 && P.instock >= 0)
         {
             DO.Product DOp = new DO.Product();//creates a DO entity with the updated info
             DOp.ID = P.ID;
-            DOp.Name = P.Name;
+            DOp.Print = P.Print;
             DOp.Price = P.Price;
             DOp.InStock = P.instock;
             DOp.Category = (DO.Enums.Category)P.category;
@@ -177,58 +178,43 @@ public class BOProduct : IProduct
     }
     #endregion
 
-    #region get all products by category
-    public IEnumerable<BO.ProductForList> GetProductsByCategory(BO.Enums.Category category)
-    {
-        //this function returns a collection of all of the products that are in the same category 
+    #region get all products by a condition
+    public IEnumerable<BO.ProductForList>  GetProductsByCondition(Func<ProductForList, bool> func, IEnumerable<BO.ProductForList> productForLists)
+        => productForLists.Where(func);
 
-        List<DO.Product> temp = dal.Product.GetAll().ToList();//get all of the products into a temp list 
-        return (from P in temp
+    #endregion
 
-                where P.Category == (DO.Enums.Category)category
-                select new BO.ProductForList()
-                {
-                    ProductId = P.ID,
-                    ProductName = P.Name,
-                    price = P.Price,
-                    Category = (BO.Enums.Category)P.Category,
-                }
-                ).ToList();//idont think there should be a to list in here 
-    }
-    //if the category is invalid throws an Exeption 
+
     public BO.Product createProductByValues(int id, string name,int instock,double price ,string cat)
     {
         BO.Product product = new BO.Product();
         product.ID = id;
-        product.Name = name;
+        product.Print = name;
         product.instock=instock;
-      
+        
         product.Price = price;
-        switch(cat)
+        switch (cat)
         {
-            case "T-shirt":
+            //Tshirt, Sweatshirt, Sweatpant, BucketHat, Socks
+            case "Tshirt":
                 product.category = BO.Enums.Category.Tshirt;
-                
-                    break;
-            case "sweatShirt":
+                break;
+            case "Sweatshirt":
                 product.category = BO.Enums.Category.Sweatshirt;
                 break;
-            case "sweatPants":
+            case "Sweatpant":
                 product.category = BO.Enums.Category.Sweatpant;
                 break;
-            case "Bucket Hat":
+            case "BucketHat":
                 product.category = BO.Enums.Category.BucketHat;
                 break;
-            case "socks":
+             case "Socks":
                 product.category = BO.Enums.Category.Socks;
                 break;
-
-
-
-        }
+    }
         return product;
     }
-    #endregion
+
 }
 
 

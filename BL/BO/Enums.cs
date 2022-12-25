@@ -11,7 +11,7 @@ public class Enums
 
     public enum Category
     {
-        Tshirt = 1, Sweatshirt, Sweatpant, BucketHat, Socks
+        Tshirt, Sweatshirt, Sweatpant, BucketHat, Socks
     }
     public enum Price
     {

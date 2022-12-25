@@ -67,28 +67,27 @@ namespace Dal;
     {
         Product p = new Product();//a new one to add
 
-        int rand = R.Next(6);// choose a random num less then 6 
-        Enums.Category choise = (DO.Enums.Category)rand;
+        int rand = R.Next(5);// choose a random num less then 6 
+        DO.Enums.Category choise = (DO.Enums.Category)rand;
         p.Category = choise;
-        rand = R.Next(6);
+        rand = R.Next(5);
         switch (rand)
         {
+            case 0:
+                p.Print = "127.0.0.1 SWEET  127.0.0.1";
+                break;
             case 1:
-                p.Name = "127.0.0.1 SWEET  127.0.0.1";
+                p.Print = "Hello World!";
                 break;
             case 2:
-                p.Name = "Hello World!";
+                p.Print = "give me a </br>";
                 break;
             case 3:
-                p.Name = "give me a </br>";
+                p.Print = "2B || !2B";
                 break;
             case 4:
-                p.Name = "2B || !2B";
+                p.Print = "roses are #FF0000 vilets are #0000FF";
                 break;
-            case 5:
-                p.Name = "roses are #FF0000 vilets are #0000FF";
-                break;
-
         }
 
         p.ID = config.NextP;
@@ -109,13 +108,9 @@ namespace Dal;
             case Enums.Category.Socks:
                 p.Price = 15;
                 break;
-
-
         }
         switch (choise)
         {
-
-
             case Enums.Category.Tshirt:
                 p.InStock = config.TS_stock_update;
                 break;
@@ -131,7 +126,6 @@ namespace Dal;
             case Enums.Category.Socks:
                 p.InStock = config.SK_stock_update;
                 break;
-
         }
         return p;
     }
