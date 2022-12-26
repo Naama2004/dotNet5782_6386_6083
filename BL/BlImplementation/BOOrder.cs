@@ -27,10 +27,11 @@ public class BOOrder : BLApi.IOrder
                 select new BO.OrderForList()
                 {//update the O to be  a BO ordertiem
                     OrderId = O.ID,
+                    CustomerName = O.CustomerName!,
                     state = FindState(O),
                     Amount = TotalProductsAmount(O.ID),
                     TotalPrice = (Double)TotalPrice(O.ID)!
-                });
+                }); ;
     }
     #endregion
 
@@ -68,7 +69,7 @@ public class BOOrder : BLApi.IOrder
     }
     #endregion
 
-    #region update ship // חסרה זריקה 
+    #region update ship  
     public BO.Order UpdateShip(int id)
     {
         try
@@ -96,7 +97,7 @@ public class BOOrder : BLApi.IOrder
             }
             else
             {
-                throw new Exception("the order was already shiped");//צריך להחזיר משהו לא הצלחתי להבין מה
+                throw new Exception("this boat has already been shiped");
             }
 
         }
@@ -111,7 +112,7 @@ public class BOOrder : BLApi.IOrder
     }
     #endregion
 
-    #region update delivery // חסרה זריקה
+    #region update delivery 
     public BO.Order UpdateDelivery(int id)
     {
         try
@@ -139,7 +140,7 @@ public class BOOrder : BLApi.IOrder
             }
             else
             {
-                throw new Exception("the order was already sent");//צריך להחזיר משהו לא הצלחתי להבין מה
+                throw new Exception("the order was already delivered");
             }
 
         }

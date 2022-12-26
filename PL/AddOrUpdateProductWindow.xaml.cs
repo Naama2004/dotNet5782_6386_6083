@@ -94,56 +94,66 @@ namespace PL
                     case "Tshirt":
                         {
                             if (wantedPrice != 30)
+                            {
                                 MessageBox.Show(
                        "The price you entered doesnt matches the category",
                        "Invalid input",
                        MessageBoxButton.OK,
                        MessageBoxImage.Hand);
-                            flag = false;
+                                flag = false;
+                            }
                             break;
                         }
                     case "Sweatshirt":
                         {
                             if (wantedPrice != 50)
+                            {
                                 MessageBox.Show(
                        "The price you entered doesnt matches the category",
                        "Invalid input",
                        MessageBoxButton.OK,
                        MessageBoxImage.Hand);
-                            flag = false;
+                                flag = false;
+                            }
                             break;
                         }
                     case "Sweatpant":
                         {
                             if (wantedPrice != 40)
+                            {
                                 MessageBox.Show(
                        "The price you entered doesnt matches the category",
                        "Invalid input",
                        MessageBoxButton.OK,
                        MessageBoxImage.Hand);
-                            flag = false;
+                                flag = false;
+                            }
                             break;
                         }
                     case "BucketHat":
                         {
                             if (wantedPrice != 25)
+                            {
                                 MessageBox.Show(
                        "The price you entered doesnt matches the category",
                        "Invalid input",
                        MessageBoxButton.OK,
                        MessageBoxImage.Hand);
-                            flag = false;
+                                flag = false;
+                            }
                             break;
                         }
                     case "Socks":
                         {
                             if (wantedPrice != 15)
+                            {
                                 MessageBox.Show(
                        "The price you entered doesnt matches the category",
                        "Invalid input",
                        MessageBoxButton.OK,
                        MessageBoxImage.Hand);
-                            flag = false;
+                                flag = false;
+                            }
                             break;
                         }
                 }
@@ -206,15 +216,13 @@ namespace PL
                         bl.Product.AddProductmaneger(TEMP);
 
 
-                    //open a new list window(which calls the get all method which updates the list to include this item
-                    new PL.ProductListForManager().Show();
-                    this.Close();
+
                 }
-                else
-                {
-                    new PL.ProductListForManager().Show();
+                //open a new list window(which calls the get all method which updates the list to include this item
+
+                new PL.ProductListForManager().Show();
                     this.Close();
-                }
+              
             }
             #region catch the exeptions
             catch (BO.IdExistException)

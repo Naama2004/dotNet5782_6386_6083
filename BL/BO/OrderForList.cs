@@ -5,6 +5,7 @@ namespace BO;
 public class OrderForList
 {
     public int OrderId { get; set; }
+    public string? CustomerName { get; set; }   
     public Enums.State state { get; set; }
     public int Amount { get; set; }
     public Double TotalPrice { get; set; }

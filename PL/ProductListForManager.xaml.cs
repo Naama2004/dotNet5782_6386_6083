@@ -30,12 +30,16 @@ namespace PL
     {
         private IBl bl = BLApi.Factory.Get();
 
-        public ObservableCollection<BO.ProductForList> Products { set; get; }
+        // public ObservableCollection<BO.ProductForList> Products { set; get; }
+        //public List<BO.ProductForList> Products { set; get; }
+
+      public  IEnumerable<BO.ProductForList> Products { get; set; }
         public ProductListForManager()
         {
             InitializeComponent();
-            Products = new ObservableCollection<BO.ProductForList>(bl.Product.GetProducts());
-            DataContext = this;
+            Products = bl.Product.GetProducts();
+            ProductsListview.ItemsSource=Products;  
+            //DataContext = this;
             CategorySelector.ItemsSource =  Enum.GetValues(typeof (DO.Enums.Category));
         }
 
@@ -45,12 +49,11 @@ namespace PL
             {
                 BO.Enums.Category category = (BO.Enums.Category)CategorySelector.SelectedItem;
 
-                Products = new ObservableCollection<BO.ProductForList>(bl.Product.GetProductsByCondition(product => product.Category == category, Products));
-                ProductsListview.ItemsSource = Products;
-                
+                //Products = new ObservableCollection<BO.ProductForList>(bl.Product.GetProductsByCondition(product => product.Category == category, Products));
+                ProductsListview.ItemsSource = bl.Product.GetProductsByCondition(product => product.Category == category, Products);
             }
             else
-                ProductsListview.ItemsSource = Products;
+                ProductsListview.ItemsSource = bl.Product.GetProducts().ToList();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

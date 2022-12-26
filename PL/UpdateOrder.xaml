@@ -1,0 +1,25 @@
+﻿<Window x:Class="PL.UpdateOrder"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PL"
+        mc:Ignorable="d"
+        Title="UpdateOrder" Height="450" Width="800">
+    <Grid Background="#DEDBD2">
+        <Label Content="Order Detail:" Background="#DEDBD2" HorizontalAlignment="Left" Margin="237,10,0,0"  VerticalAlignment="Top" Width="305" Height="55" Foreground="#FF4A5759" FontWeight="Bold" FontSize="36" FontStyle="Italic" FontFamily="Stencil"/>
+        <TextBox Background="#DEDBD2" Name="OrderIdDetails" HorizontalAlignment="Left" Margin="400,86,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="166" Height="30" IsEnabled="False"/>
+        <Label Background="#DEDBD2" Name="OrderIdText" HorizontalAlignment="Left" Margin="154,86,0,0" Content="Order ID:" VerticalAlignment="Top" Width="166" Height="30" Foreground="#FF4A5759" FontStyle="Italic" FontFamily="Stencil" IsEnabled="False"/>
+        <TextBox Background="#DEDBD2" Name="CustomerNameDetails" HorizontalAlignment="Left" Margin="400,133,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="166" Height="30" IsEnabled="False"/>
+        <Label Background="#DEDBD2" Name="CustomerNameText" HorizontalAlignment="Left" Margin="154,133,0,0" Content="Customer Name:" VerticalAlignment="Top" Width="166" Height="30" Foreground="#FF4A5759" FontStyle="Italic" FontFamily="Stencil" IsEnabled="False"/>
+        <Label Background="#DEDBD2" Name="StateText" HorizontalAlignment="Left" Margin="154,178,0,0" Content="Orders State:" VerticalAlignment="Top" Width="166" RenderTransformOrigin="-0.062,0.612" Height="30" Foreground="#FF4A5759" FontStyle="Italic" FontFamily="Stencil" IsEnabled="False"/>
+        <TextBox Background="#DEDBD2" Name="StateDetails" HorizontalAlignment="Left" Margin="400,178,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="166" Height="30" IsEnabled="False"/>
+        <Label Background="#DEDBD2" Name="AmountText" HorizontalAlignment="Left" Margin="154,217,0,0" Content="Amount of Products:" VerticalAlignment="Top" Width="166" Height="30" Foreground="#FF4A5759" FontStyle="Italic" FontFamily="Stencil" IsEnabled="False"/>
+        <TextBox Background="#DEDBD2" Name="AmountDetails" HorizontalAlignment="Left" Margin="400,217,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="166" Height="30" IsEnabled="False"/>
+        <Label Background="#DEDBD2" Name="PriceText" HorizontalAlignment="Left" Margin="154,258,0,0" Content="Total Price:" VerticalAlignment="Top" Width="166" Height="30" Foreground="#FF4A5759" FontStyle="Italic" FontFamily="Stencil" IsEnabled="False"/>
+        <TextBox Background="#DEDBD2" Name="PriceDetails" HorizontalAlignment="Left" Margin="400,258,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="166" Height="30" IsEnabled="False"/>
+        <Button Name="shipUpdate" Content="Update Shiping date" HorizontalAlignment="Left" Margin="125,323,0,0" VerticalAlignment="Top" Width="195" Height="55" FontStyle="Italic" FontFamily="Stencil" Foreground="#FF4A5759" Background="#FFB0C4B1" Click="shipUpdate_Click"/>
+        <Button Name="deliveryUpdate" Content="Update Delivery date" HorizontalAlignment="Left" Margin="400,323,0,0" VerticalAlignment="Top" Width="195" Height="55"  Foreground="#FF4A5759" FontStyle="Italic" FontFamily="Stencil" Background="#FFB0C4B1" Click="deliveryUpdate_Click"/>
+
+    </Grid>
+</Window>

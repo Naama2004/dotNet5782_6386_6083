@@ -10,28 +10,24 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-using BLApi;
-//using BlImplementation;
 namespace PL
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for ManegerOrClient.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class ManegerOrClient : Window
     {
-        private IBl bl = BLApi.Factory.Get();
-        public MainWindow()
+        public ManegerOrClient()
         {
             InitializeComponent();
         }
 
-        private void enterListSystem_Click(object sender, RoutedEventArgs e)
+        private void ManegerButton_Click(object sender, RoutedEventArgs e)
         {
-            new ManegerOrClient().Show();
-            this.Close();
+            new OrdersOrProducts().Show();  
+            Close();
         }
     }
 }

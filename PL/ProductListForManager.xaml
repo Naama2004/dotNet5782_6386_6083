@@ -6,13 +6,13 @@
         xmlns:local="clr-namespace:PL"
         mc:Ignorable="d"
         Title="ProductListForManager" Height="640" Width="800">
-    <Grid Name="MainGrid">
+    <Grid Name="MainGrid" Background="#DEDBD2">
         <Grid.RowDefinitions>
             <RowDefinition Height="40*"/>
             <RowDefinition Height="500*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <Grid Name="UpGrid" HorizontalAlignment="Stretch" Height="auto" Grid.Row="0"
+        <Grid Name="UpGrid" Background="#DEDBD2" HorizontalAlignment="Stretch" Height="auto" Grid.Row="0"
             VerticalAlignment="Stretch" Width="auto">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="400*"/>
@@ -21,8 +21,8 @@
                 <ColumnDefinition Width="49*"/>
                 <ColumnDefinition Width="19*"/>
             </Grid.ColumnDefinitions >
-            <ComboBox Name="CategorySelector" Grid.Column="1" Grid.ColumnSpan="4" SelectionChanged="CategorySelector_SelectionChanged" RenderTransformOrigin="0.5,0.5">
-                <ComboBox.RenderTransform>
+            <ComboBox Name="CategorySelector" Background="#DEDBD2" Grid.Column="1" Grid.ColumnSpan="4" SelectionChanged="CategorySelector_SelectionChanged" RenderTransformOrigin="0.5,0.5">
+                <ComboBox.RenderTransform> 
                     <TransformGroup>
                         <ScaleTransform/>
                         <SkewTransform/>
@@ -32,11 +32,11 @@
                 </ComboBox.RenderTransform>
 
             </ComboBox>
-            <Label  x:Name="label" Content="Select Category:" HorizontalAlignment="Left" Margin="39,0,0,0" VerticalAlignment="Center" Height="46" Width="267" Foreground="Red" FontWeight="Bold" FontSize="24" FontStyle="Italic" FontFamily="Stencil"/>
+            <Label  x:Name="label" Content="Select Category:" HorizontalAlignment="Left" Margin="39,0,0,0" VerticalAlignment="Center" Height="46" Width="267" Foreground="#4A5759" FontWeight="Bold" FontSize="24" FontStyle="Italic" FontFamily="Stencil"/>
         </Grid>
-        
-        <ListView  Name ="ProductsListview" Grid.Row="1" ItemsSource="{Binding Products}"  MouseDoubleClick="ListViewItem_MouseDoubleClick">
-            <ListView.View>
+
+        <ListView  Name ="ProductsListview" Grid.Row="1"  Background="#DEDBD2" MouseDoubleClick="ListViewItem_MouseDoubleClick">
+            <ListView.View >
                 <GridView AllowsColumnReorder="True" >
 
                     <GridViewColumn Header="Print" DisplayMemberBinding="{Binding Print}" />
@@ -47,8 +47,8 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        
-        <Button x:Name="AddingProductButton" Content="Add new Product" HorizontalAlignment="Left" Margin="158,505,0,10" Padding="5" Click="Button_Click" Width="440" Foreground="Red" FontSize="20" FontWeight="Normal" FontFamily="Showcard Gothic" Grid.Row="1"/>
+
+        <Button x:Name="AddingProductButton" Content="Add new Product" HorizontalAlignment="Left" Margin="158,505,0,10" Padding="5" Click="Button_Click" Width="440" Foreground="#4A5759" Background="#B0C4B1" FontSize="20" FontWeight="Normal" FontFamily="Showcard Gothic" Grid.Row="1"/>
 
 
     </Grid>
