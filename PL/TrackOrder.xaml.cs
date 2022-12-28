@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BLApi;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,29 +11,32 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-using BLApi;
-//using BlImplementation;
 namespace PL
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for TrackOrder.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class TrackOrder : Window
     {
-
         private IBl bl = BLApi.Factory.Get();
-        public MainWindow()
+        public TrackOrder()
         {
             InitializeComponent();
         }
 
-        private void enterListSystem_Click(object sender, RoutedEventArgs e)
+        public TrackOrder(int id)
         {
-            new ManegerOrClient().Show();
-            this.Close();
+            InitializeComponent();
+            BO.OrderTracking  order =bl.Order.trackOrder(id);
+            OrderID.Text = order.OrderId.ToString();
+            OrderState.Text = order.State.ToString();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+           Close();
         }
     }
 }

@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid Background="#DEDBD2">
-        <Button x:Name="enterListSystem" Background="#DEDBD2" Content="Enter" Margin="251,174,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Height="74" Width="263" FontSize="36" Foreground="#4A5759" FontFamily="Showcard Gothic" Click="enterListSystem_Click">
+        <Button x:Name="enterListSystem" Background="#FFB0C4B1" Content="Enter" Margin="251,174,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Height="74" Width="263" FontSize="36" Foreground="#4A5759" FontFamily="Showcard Gothic" Click="enterListSystem_Click">
             <Button.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -17,6 +17,6 @@
                 </TransformGroup>
             </Button.RenderTransform>
         </Button>
-
+        <StackPanel/>
     </Grid>
 </Window>
