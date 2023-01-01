@@ -32,14 +32,18 @@ namespace PL
         
         
 
-        // public ObservableCollection<BO.ProductForList> Products { set; get; }
-        //public List<BO.ProductForList> Products { set; get; }
+        public ObservableCollection<BO.ProductForList> Products; /*{ set; get; }*/
+       // public List<BO.ProductForList> ProductsList{ set; get; }
 
-        public  IEnumerable<BO.ProductForList> Products { get; set; }
+       // public  IEnumerable<BO.ProductForList> ProductsList { get; set; }
         public ProductListForManager()
         {
             InitializeComponent();
-            Products = bl.Product.GetProducts();
+            var TepProductsList = bl.Product.GetProducts();
+            //from p in bl.Product.GetProducts()
+            //make it PO!!!
+            Products=new ObservableCollection<BO.ProductForList>(TepProductsList);
+
             ProductsListview.ItemsSource=Products;  
             //DataContext = this;
             CategorySelector.ItemsSource =  Enum.GetValues(typeof (DO.Enums.Category));
@@ -60,7 +64,9 @@ namespace PL
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            AddOrUpdateProductWindow help = new AddOrUpdateProductWindow();
+            
+            //Action<BO.Product> action = update => Products.Add(bl.Product.GetProducts().FirstOrDefault(x=>x.ProductId==)
+            AddOrUpdateProductWindow help = new AddOrUpdateProductWindow(Products);
             help.Show();
           //  ProductsListview.ItemsSource = bl.Product.GetProducts();// איך לעשות שלר נצטרך כל פעם לקחת מחדש את הרשימה??
                this.Close();
@@ -78,8 +84,9 @@ namespace PL
                 update.category = item.Category;
                 update.Price = item.price;
                 update.instock = 1;// need to be changed
-                new AddOrUpdateProductWindow(update).Show();//open the ADD or Update window but send it value which makes it the updaate window
-                this.Close();
+                Action<BO.Product >action = update => Products.Add(item);
+                new AddOrUpdateProductWindow(update,Products).Show();//open the ADD or Update window but send it value which makes it the updaate window
+               // this.Close();
             }
             else
             {

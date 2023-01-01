@@ -15,17 +15,17 @@ public class BOcart : ICart
 {
     DalApi.IDal? factor = DalApi.Factory.Get();
     #region add product to cart
-    public BO.cart addProduct(BO.cart C, int id)
+    public BO.cart addProduct(BO.cart C, int ProductID)
     {
         try
         {
-            DO.Product PDetails = factor!.Product.GET(id);
+            DO.Product PDetails = factor!.Product.GET(ProductID);
             C.items = C.items ?? new();
             if (PDetails.InStock > 0)
             {
-                BO.OrderItem item = C.items.FirstOrDefault(x => x.ProductId == id) ?? new()
+                BO.OrderItem item = C.items.FirstOrDefault(x => x.ProductId == ProductID) ?? new()
                 {
-                    ProductId = id,
+                    ProductId = ProductID,
                     OrderId = 0,
                     price = PDetails.Price,
                     Print = PDetails.Print,
@@ -121,7 +121,7 @@ public class BOcart : ICart
     }
     #endregion
 
-    #region approves order or maeks a new one
+    #region approves order or makes a new one
     public bool OrderConfirm(BO.cart c)
     {
         //data tast

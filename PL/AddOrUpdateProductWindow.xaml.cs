@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Collections.ObjectModel;
 
 
 namespace PL
@@ -26,11 +27,13 @@ namespace PL
     public partial class AddOrUpdateProductWindow : Window
     {
         BLApi.IBl? bl = BLApi.Factory.Get();
+        //Action<BO.Product> action;
+        public ObservableCollection<BO.ProductForList> ProductsS;
 
-
-        public AddOrUpdateProductWindow()
+        public AddOrUpdateProductWindow(ObservableCollection<BO.ProductForList> Products)
         {
             InitializeComponent();
+            ProductsS=Products;
             ConfirmAdding.Visibility = System.Windows.Visibility.Visible;
             confirmUpdatingProduct.Visibility = System.Windows.Visibility.Hidden;
             Selected_Category.ItemsSource = Enum.GetValues(typeof(DO.Enums.Category));
@@ -40,9 +43,10 @@ namespace PL
             price.IsEnabled = false;
             in_stock.IsEnabled = false;
         }
-        public AddOrUpdateProductWindow(BO.Product productToUpdate)
+        public AddOrUpdateProductWindow(BO.Product productToUpdate, ObservableCollection <BO.ProductForList> Products)
         { 
             InitializeComponent();
+            ProductsS = Products;
             id.IsEnabled = false;
             categoryViewer.IsEnabled = false;
             PrintOnItem.IsEnabled = false;
@@ -210,10 +214,29 @@ namespace PL
                     if (isUpdating == true)
                     {
                         bl.Product.UpdateProductmaneger(TEMP);
+                        ProductForList help = new ProductForList();
+                        help.price = TEMP.Price;
+                        help.ProductId = TEMP.ID;
+                        help.Category = (Enums.Category)TEMP.category;
+                        help.Print = TEMP.Print;
+
+                        ProductsS.Add(help);
+                        // action(TEMP);
                     }
                     //adding the product to BO
                     else
+                    {
                         bl.Product.AddProductmaneger(TEMP);
+                        ProductForList help=new ProductForList();
+                        help.price = TEMP.Price;
+                        help.ProductId = TEMP.ID;
+                        help.Category = (Enums.Category)TEMP.category;
+                        help.Print=TEMP.Print;
+
+                        ProductsS.Add(help);
+                        //action(TEMP);
+                    }
+
 
 
 
