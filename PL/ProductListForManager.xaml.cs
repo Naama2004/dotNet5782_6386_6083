@@ -29,11 +29,13 @@ namespace PL
     public partial class ProductListForManager : Window
     {
         private IBl bl = BLApi.Factory.Get();
+        
+        
 
         // public ObservableCollection<BO.ProductForList> Products { set; get; }
         //public List<BO.ProductForList> Products { set; get; }
 
-      public  IEnumerable<BO.ProductForList> Products { get; set; }
+        public  IEnumerable<BO.ProductForList> Products { get; set; }
         public ProductListForManager()
         {
             InitializeComponent();

@@ -59,10 +59,13 @@ namespace PL
 
         private void Client_Click(object sender, RoutedEventArgs e)
         {
-            BO.OrderTracking temp=new BO.OrderTracking();
-            temp.OrderId = 123456;
-            temp.State = BO.Enums.State.send;
-          //  new TrackOrder(temp).Show();
+          //  BO.OrderTracking temp=new BO.OrderTracking();
+          //  temp.OrderId = 123456;
+          //  temp.State = BO.Enums.State.send;
+          ////  new TrackOrder(temp).Show();
+          Catalog C=new Catalog();
+            C.Show();
+
         }
     }
 }

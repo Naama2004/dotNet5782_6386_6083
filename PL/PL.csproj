@@ -13,7 +13,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Sol F-1.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\BL\BL.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Sol F-1.jpg" />
   </ItemGroup>
 
 </Project>

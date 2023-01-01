@@ -9,10 +9,11 @@
     <Grid Background="#DEDBD2">
         <Label  Content="Order tracking:" FontFamily="Showcard Gothic" FontSize="36" Foreground="#4A5759" HorizontalAlignment="Center" Height="58" Margin="0,36,0,0" VerticalAlignment="Top" Width="372"/>
         <Label  Foreground="#FF4A5759" FontStyle="Italic" FontFamily="Stencil" Content="Order's ID:" HorizontalAlignment="Left" Height="47" Margin="137,127,0,0" VerticalAlignment="Top" Width="204" FontSize="14"/>
-        <Label Content="Order's status:" Foreground="#FF4A5759" FontStyle="Italic" FontFamily="Stencil" HorizontalAlignment="Left" Height="47" Margin="137,199,0,0" VerticalAlignment="Top" Width="204" FontSize="14"/>
-        <TextBox Name="OrderID" HorizontalAlignment="Left" Height="47" Margin="490,127,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="204" Background="#DEDBD2" Foreground="#FF4A5759" FontStyle="Italic" FontFamily="Stencil" FontSize="14" IsEnabled="False"/>
-        <TextBox Name="OrderState" HorizontalAlignment="Left" Height="47" Margin="490,199,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="204" Background="#DEDBD2" RenderTransformOrigin="0.502,0.516" Foreground="#FF4A5759" FontStyle="Italic" FontFamily="Stencil" FontSize="14" IsEnabled="False"/>
-        <Button Content="Continue shopping" HorizontalAlignment="Center" Height="61" Margin="0,314,0,0" VerticalAlignment="Top" Width="244" FontStyle="Italic" FontFamily="Stencil" Foreground="#FF4A5759" Background="#FFB0C4B1" Click="Button_Click"/>
+        <Label x:Name="order_Status" Content="Order's status:" Foreground="#FF4A5759" FontStyle="Italic" FontFamily="Stencil" HorizontalAlignment="Left" Height="47" Margin="137,199,0,0" VerticalAlignment="Top" Width="204" FontSize="14"/>
+        <TextBox Name="OrderID" HorizontalAlignment="Left" Height="47" Margin="346,127,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="204" Background="#DEDBD2" Foreground="#FF4A5759" FontStyle="Italic" FontFamily="Stencil" FontSize="14"/>
+        <TextBox x:Name="Text_Order_status" HorizontalAlignment="Left" Height="47" Margin="346,199,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="204" Background="#DEDBD2" RenderTransformOrigin="0.502,0.516" Foreground="#FF4A5759" FontStyle="Italic" FontFamily="Stencil" FontSize="14"/>
+        <Button x:Name="_continue" Content="Continue shopping" HorizontalAlignment="Center" Height="61" Margin="0,298,0,0" VerticalAlignment="Top" Width="244" FontStyle="Italic" FontFamily="Stencil" Foreground="#FF4A5759" Background="#FFB0C4B1"/>
+        <Button x:Name="Entered_Oid" Content="Track order" Margin="586,127,32,260" Background="#FFB0C4B1" FontWeight="Bold" FontSize="14" Click="Entered_Oid_Click"/>
 
     </Grid>
 </Window>
