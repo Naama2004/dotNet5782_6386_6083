@@ -63,7 +63,7 @@ namespace PL
           //  temp.OrderId = 123456;
           //  temp.State = BO.Enums.State.send;
           ////  new TrackOrder(temp).Show();
-          Catalog C=new Catalog();
+          CatalogWindow C=new CatalogWindow();
             C.Show();
 
         }

@@ -1,12 +1,13 @@
-﻿<Window x:Class="PL.Cart"
+﻿<Window x:Class="PL.CatalogWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:PL"
         mc:Ignorable="d"
-        Title="Cart" Height="450" Width="800">
+        Title="HELP" Height="450" Width="800">
+
     <Grid Background="#FFDEDBD2">
         <Grid.RowDefinitions>
             <RowDefinition Height="101*"/>
@@ -21,7 +22,7 @@
             <DataGrid.Columns>
                 <DataGridTemplateColumn Header="add to cart"
                                     MinWidth="10">
-
+                  
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Button Style="{StaticResource MaterialDesignFloatingActionMiniButton}"
@@ -34,7 +35,7 @@
                                 <materialDesign:PackIcon Kind="CartAdd"  BorderBrush="#FF4A5759"/>
                             </Button>
                         </DataTemplate>
-
+                       
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
                 <DataGridTemplateColumn Header="choose amount"
@@ -51,5 +52,34 @@
             </DataGrid.Columns>
         </DataGrid>
         <Label x:Name="Label" Content="Layers" Margin="282,0,283,124" FontSize="48" BorderBrush="#FF4A5759" Background="#00000000" HorizontalContentAlignment="Center" FontFamily="Cooper Black" FontStyle="Normal" Foreground="#FF4A5759" FontWeight="Bold" RenderTransformOrigin="0.505,0.149"/>
+
+
+        <materialDesign:ColorZone 
+Mode="PrimaryLight"
+Grid.Row="0"
+Grid.Column="0"
+            Background="#FFDEDBD2"
+Padding="16" Height="73" Margin="0,0,722,0">
+            <StackPanel
+    Orientation="Horizontal">
+                <ToggleButton
+
+        Command="{x:Static materialDesign:DrawerHost.OpenDrawerCommand}"
+        CommandParameter="{x:Static Dock.Left}"
+
+        Style="{DynamicResource MaterialDesignHamburgerToggleButton}" Height="29" Width="29"/>
+                <TextBlock
+        VerticalAlignment="Center"
+        Margin="16 0 0 0"><Run Text="Material Design In XAML Toolkit"/></TextBlock>
+            </StackPanel>
+        </materialDesign:ColorZone>
+
+
+
+
+        <materialDesign:PackIcon Kind="Cart" Height="29" Width="120" Margin="682,10,0,0" MouseDoubleClick="ViewCart" IsEnabled="True"/>
+        <materialDesign:PackIcon Kind="Package" Height="34" Width="76" Margin="648,8,0,0" MouseDoubleClick="Track_Order" IsEnabled="True"/>
+
     </Grid>
+
 </Window>

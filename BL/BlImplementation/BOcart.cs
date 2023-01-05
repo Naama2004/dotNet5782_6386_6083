@@ -159,7 +159,15 @@ public class BOcart : ICart
         Console.WriteLine("your order number is : " + idOfOrder);
         return true;
     }
+
     #endregion
+    public void EmptyCart(BO.cart C)
+    {
+        C.items = null; 
+        C.price = 0;
+        
+
+    }
 }
 
 

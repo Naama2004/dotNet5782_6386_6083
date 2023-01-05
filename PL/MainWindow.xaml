@@ -5,9 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL"
         mc:Ignorable="d"
+         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+      TextElement.FontWeight="Regular"
+     TextElement.FontSize="13"
+     TextOptions.TextFormattingMode="Ideal"
+     TextOptions.TextRenderingMode="Auto"
+     Background="{DynamicResource MaterialDesignPaper}"
+     FontFamily="{DynamicResource MaterialDesignFont}"
         Title="MainWindow" Height="450" Width="800">
     <Grid Background="#DEDBD2">
-        <Button x:Name="enterListSystem" Background="#FFB0C4B1" Content="Enter" Margin="251,174,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Height="74" Width="263" FontSize="36" Foreground="#4A5759" FontFamily="Showcard Gothic" Click="enterListSystem_Click">
+        <Button x:Name="enterListSystem" Background="#FFB0C4B1" Content="Enter" Margin="244,166,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Height="74" Width="263" FontSize="36" Foreground="#4A5759" FontFamily="Showcard Gothic" Click="enterListSystem_Click" BorderBrush="#FF4A5759">
             <Button.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -17,6 +24,6 @@
                 </TransformGroup>
             </Button.RenderTransform>
         </Button>
-        <StackPanel/>
+        <StackPanel Margin="10,0,-10,-1"/>
     </Grid>
 </Window>
