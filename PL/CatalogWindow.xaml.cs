@@ -19,13 +19,17 @@ namespace PL
     {
         private IBl bl = BLApi.Factory.Get();
         public BO.cart currentCart =new BO.cart();  
-        public IEnumerable<BO.ProductForList> Products { get; set; }
+       // public IEnumerable<BO.ProductForList> Products { get; set; }
 
-        
+        public ObservableCollection<BO.ProductForList> Products;
+
         public CatalogWindow()
         {
             InitializeComponent();
-            Products = bl.Product.GetProducts();
+            var i= bl.Product.GetProducts();
+            Products = new ObservableCollection<BO.ProductForList>(i);
+
+           
             ProductList.ItemsSource = Products;
             DataContext = this;
 
@@ -41,7 +45,7 @@ namespace PL
 
         public void ViewCart(object sender, MouseButtonEventArgs e)
         {
-           new Cart().Show();
+           new Cart(currentCart).Show();
         }
         private void Track_Order(object sender, RoutedEventArgs e)
         {

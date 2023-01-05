@@ -10,4 +10,5 @@ public interface ICart
     public bool OrderConfirm(BO.cart c);
     public BO.OrderItem copyOrderItem(BO.OrderItem from);
     public void EmptyCart(BO.cart C);
+    public IEnumerable<BO.OrderItem> getCartList(BO.cart C);
 }

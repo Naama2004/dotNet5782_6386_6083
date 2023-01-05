@@ -168,6 +168,15 @@ public class BOcart : ICart
         
 
     }
+    public IEnumerable<BO.OrderItem> getCartList(BO.cart C)
+    {
+
+        return (from P in C.items//return as an IEnumerable of BO Products 
+                                 //  let productFromDO = p.Product.GET(P.ID)
+                select P);
+
+    }
+ 
 }
 
 
