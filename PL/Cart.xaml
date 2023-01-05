@@ -26,7 +26,6 @@
                             <Button Style="{StaticResource MaterialDesignFloatingActionMiniButton}"
                                     Height="30" Width="30"
                                     HorizontalAlignment="Center"
-                                   
                                     Click="DeleteItem_Click">
                                 <materialDesign:PackIcon Kind="Trash"/>
                             </Button>
@@ -48,6 +47,12 @@
 
             </DataGrid.Columns>
         </DataGrid>
-        <Label x:Name="Label" Content="Layers" Margin="282,0,283,124" FontSize="48" BorderBrush="#FF4A5759" Background="#00000000" HorizontalContentAlignment="Center" FontFamily="Cooper Black" FontStyle="Normal" Foreground="#FF4A5759" FontWeight="Bold" RenderTransformOrigin="0.505,0.149"/>
+        <Label x:Name="Layers" Content="Layers" Margin="282,0,283,124" FontSize="48" BorderBrush="#FF4A5759" Background="#00000000" HorizontalContentAlignment="Center" FontFamily="Cooper Black" FontStyle="Normal" Foreground="#FF4A5759" FontWeight="Bold" RenderTransformOrigin="0.505,0.149"/>
+        <materialDesign:PackIcon Name="smileySad" Kind="SmileySadOutline" Foreground="#4A5759"  Height="152" Grid.RowSpan="2" Width="182" Margin="282,78,0,0"/>
+        <Label Name="emptyCart" Content="we're sorry your cart is Empty..." Margin="248,61,222,68" Foreground="#FF4A5759" FontFamily="Arial Black" FontSize="14"/>
+        <Button Name="continueB" Content="Continue Shopping" Style="{DynamicResource MaterialDesignFlatButton}" Margin="271,28,325,172" Foreground="#FF4A5759" FontFamily="Arial Black" FontWeight="Bold" Background="#FFB0C4B1" Click="continueB_click" Grid.Row="1"/>
+
+
+
     </Grid>
 </Window>

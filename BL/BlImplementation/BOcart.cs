@@ -170,10 +170,16 @@ public class BOcart : ICart
     }
     public IEnumerable<BO.OrderItem> getCartList(BO.cart C)
     {
+  
+            if (C.items != null)
 
-        return (from P in C.items//return as an IEnumerable of BO Products 
-                                 //  let productFromDO = p.Product.GET(P.ID)
-                select P);
+                return (from P in C.items//return as an IEnumerable of BO Products 
+                                         //  let productFromDO = p.Product.GET(P.ID)
+                        select P);
+            else
+          throw new NotFoundException("the cart is empty");
+
+
 
     }
  

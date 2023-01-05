@@ -19,10 +19,10 @@ namespace PL
     /// <summary>
     /// Interaction logic for Cart.xaml
     /// </summary>
-    ///    //לזרוק אם העגלה ריקה
+    
     //לברר את הפרייסים
     // לשנות את ההכנסה הלעגלה שיהיה לפי האמאונט
-    //מסג בוקס בקטלוג 
+     
     //מחיקה מהאובזרבל 
     //פונצקיית  מחיקה של פריט בעגלה
     //אפשרות לשנות אמאונט בעגלה 
@@ -34,12 +34,25 @@ namespace PL
    
         public Cart(BO.cart C)
         {
-            InitializeComponent();
-            var i= bl.Cart.getCartList(C);
+            try
+            {
+                InitializeComponent();
+                var i = bl.Cart.getCartList(C);
+                smileySad.Visibility = Visibility.Hidden;
+                emptyCart.Visibility = Visibility.Hidden;
+                continueB.Visibility = Visibility.Hidden;
 
-            items= new ObservableCollection<BO.OrderItem>(i);
+                items = new ObservableCollection<BO.OrderItem>(i);
 
-            ProductList.ItemsSource = items;
+                ProductList.ItemsSource = items;
+            }
+            catch (BO.NotFoundException ex)
+            {
+                ProductList.Visibility = Visibility.Hidden;
+                Layers.Visibility = Visibility.Hidden;
+
+
+            }
 
 
         }
@@ -48,6 +61,10 @@ namespace PL
            //delete in data sorse!!!
           
 
+        }
+        public void continueB_click(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
     }
 }
