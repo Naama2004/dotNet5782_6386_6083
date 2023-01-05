@@ -18,7 +18,8 @@
                   CanUserResizeRows="False"
                   AreRowDetailsFrozen="True"
                   CanUserAddRows="False"
-                   IsReadOnly="True">
+                   IsReadOnly="True"
+                  MouseDoubleClick="ProductList_MouseDoubleClick">
             <DataGrid.Columns>
                 <DataGridTemplateColumn Header="add to cart"
                                     MinWidth="10">

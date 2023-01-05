@@ -37,7 +37,7 @@ namespace PL
         }
         public void Add_To_Cart_click(object sender, MouseButtonEventArgs e)
         {
-            BO.ProductForList item = ProductList.SelectedItem as BO.ProductForList;
+            BO.ProductForList? item = ProductList.SelectedItem as BO.ProductForList;
             var temp = ProductList.SelectedItem;
             int id = item.ProductId;
             bl.Cart.addProduct(currentCart, id);
@@ -53,6 +53,11 @@ namespace PL
             trackOrder.Show();
 
         }
-       
+
+        private void ProductList_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            BO.ProductForList? item = ProductList.SelectedItem as BO.ProductForList;
+            new ProductInfo(item).Show();   
+        }
     }
 }
