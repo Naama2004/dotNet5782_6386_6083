@@ -1,0 +1,25 @@
+﻿<Window x:Class="PL.ProductInfo"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PL"
+        FontFamily="Showcard Gothic"
+        Foreground="#4A5759"
+        mc:Ignorable="d"
+        Title="ProductInfo" Height="450" Width="800">
+    <Grid Background="#DEDBD2">
+        <Image Name="img" Margin="462,12,28,12"/>
+        <Label Content="Product Info:"  Foreground="#4A5759" FontSize="36" HorizontalAlignment="Left" Height="47" Margin="51,30,0,0" VerticalAlignment="Top" Width="285"/>
+        <Label Content="category:" Foreground="#4A5759" HorizontalAlignment="Left" Height="36" Margin="10,111,0,0" VerticalAlignment="Top" Width="167"/>
+        <Label Content="product id:"  Foreground="#4A5759" HorizontalAlignment="Left" Height="36" Margin="10,315,0,0" VerticalAlignment="Top" Width="167"/>
+        <Label Content="price:" Foreground="#4A5759" HorizontalAlignment="Left" Height="36" Margin="10,252,0,0" VerticalAlignment="Top" Width="167" RenderTransformOrigin="0.51,4.784"/>
+        <Label Content="print:" Foreground="#4A5759" HorizontalAlignment="Left" Height="36" Margin="10,181,0,0" VerticalAlignment="Top" Width="167"/>
+        <Label Name="category"  Foreground="#4A5759" HorizontalAlignment="Left" Height="36" Margin="223,111,0,0" VerticalAlignment="Top" Width="153"/>
+        <Label Name="ID" Foreground="#4A5759" HorizontalAlignment="Left" Height="36" Margin="223,317,0,0" VerticalAlignment="Top" Width="153"/>
+        <Label Name="price" Foreground="#4A5759" HorizontalAlignment="Left" Height="36" Margin="223,252,0,0" VerticalAlignment="Top" Width="153"/>
+        <Label Name="print"  Foreground="#4A5759" HorizontalAlignment="Left" Height="36" Margin="223,181,0,0" VerticalAlignment="Top" Width="153"/>
+
+
+    </Grid>
+</Window>

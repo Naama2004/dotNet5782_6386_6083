@@ -24,6 +24,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "xml", "xml", "{68DA7C63-1A3
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "images", "images", "{83AE7020-918A-4434-84CA-20FF8AE3F0DC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DalXml", "DalXml\DalXml.csproj", "{BF5E4C08-139B-40C1-BE7B-A9ED308ED18D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -58,6 +60,10 @@ Global
 		{E9007652-C9C2-4D4D-8810-7A500B67A4CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E9007652-C9C2-4D4D-8810-7A500B67A4CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E9007652-C9C2-4D4D-8810-7A500B67A4CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF5E4C08-139B-40C1-BE7B-A9ED308ED18D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF5E4C08-139B-40C1-BE7B-A9ED308ED18D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF5E4C08-139B-40C1-BE7B-A9ED308ED18D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF5E4C08-139B-40C1-BE7B-A9ED308ED18D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
