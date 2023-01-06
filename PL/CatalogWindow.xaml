@@ -39,6 +39,21 @@
 
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="In Stock"
+                    MinWidth="10">
+
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate x:Name="stock">
+                            <CheckBox Name="instock"
+                                      IsChecked="True"
+                                      IsHitTestVisible="False">
+                                
+                            </CheckBox>
+                        </DataTemplate>
+
+                    </DataGridTemplateColumn.CellTemplate>
+
+                </DataGridTemplateColumn>
                 <DataGridTemplateColumn Header="choose amount"
                                     MinWidth="10">
 

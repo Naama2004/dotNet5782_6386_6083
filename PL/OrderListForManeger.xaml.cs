@@ -46,6 +46,10 @@ namespace PL
                     MessageBoxImage.Hand);
             }
         }
+        private void goback_click(object sender, MouseButtonEventArgs e)
+        {
+            this.Close();
+        }
 
 
     }

@@ -3,12 +3,17 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+          xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:PL"
         mc:Ignorable="d"
         Title="OrderListForManeger" Height="450" Width="800">
     <Grid Background="#DEDBD2">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="7*"/>
+            <ColumnDefinition Width="793*"/>
+        </Grid.ColumnDefinitions>
 
-        <ListView Name="OrderListview" ItemsSource="{Binding Orders}"  Margin="0,33,0,0" Background="#DEDBD2" MouseDoubleClick="ListViewItem_MouseDoubleClick" Foreground="#FF4A5759" >
+        <ListView Name="OrderListview" ItemsSource="{Binding Orders}"  Margin="0,33,0,0" Background="#DEDBD2" MouseDoubleClick="ListViewItem_MouseDoubleClick" Foreground="#FF4A5759" Grid.ColumnSpan="2" Height="364" VerticalAlignment="Top" >
             <ListView.View>
                 <GridView AllowsColumnReorder="True">
 
@@ -20,6 +25,17 @@
                 </GridView >
             </ListView.View>
         </ListView>
-        <Label HorizontalAlignment="Left" Content="Orders:" VerticalAlignment="Top" Width="345" Height="33" Foreground="#4A5759" FontWeight="Bold" FontSize="24" FontStyle="Italic" FontFamily="Stencil"/>
+        <Label HorizontalAlignment="Left" Content="Orders:" VerticalAlignment="Top" Width="345" Height="33" Foreground="#4A5759" FontWeight="Bold" FontSize="24" FontStyle="Italic" FontFamily="Stencil" Grid.ColumnSpan="2"/>
+        <materialDesign:PackIcon Name="goback" Kind="Forward" Foreground="#FF4A5759" Height="49" Width="101" Margin="644,385,0,0" RenderTransformOrigin="0.5,0.5" Grid.Column="1"
+                 MouseDoubleClick="goback_click"  >
+            <materialDesign:PackIcon.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="-1"/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </materialDesign:PackIcon.RenderTransform>
+        </materialDesign:PackIcon>
     </Grid>
 </Window>

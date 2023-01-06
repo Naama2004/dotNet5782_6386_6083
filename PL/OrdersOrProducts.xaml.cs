@@ -27,7 +27,7 @@ namespace PL
         private void Orders_Click(object sender, RoutedEventArgs e)
         {
             new OrderListForManeger().Show();
-            Close();    
+              
         }
 
         private void Products_Click(object sender, RoutedEventArgs e)

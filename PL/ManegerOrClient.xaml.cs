@@ -19,7 +19,7 @@ namespace PL
     /// </summary>
     public partial class ManegerOrClient : Window
     {
-        const string manegerPassward = "PASSWORD";
+        const string manegerPassward = "pass";
 
         public ManegerOrClient()
         {
@@ -63,8 +63,8 @@ namespace PL
           //  temp.OrderId = 123456;
           //  temp.State = BO.Enums.State.send;
           ////  new TrackOrder(temp).Show();
-          CatalogWindow C=new CatalogWindow();
-            C.Show();
+          new CatalogWindow().Show();
+           
 
         }
     }

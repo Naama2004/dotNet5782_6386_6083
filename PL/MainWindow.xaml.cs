@@ -31,9 +31,9 @@ namespace PL
 
         private void enterListSystem_Click(object sender, RoutedEventArgs e)
         {
-            new CatalogWindow().Show();
-            //new ManegerOrClient().Show();
-            //this.Close();
+            //new CatalogWindow().Show();
+            new ManegerOrClient().Show();
+            this.Close();
         }
     }
 }
