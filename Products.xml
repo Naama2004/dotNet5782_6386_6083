@@ -1,0 +1,214 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Products>
+	<Product>
+		<ID> 100000 </ID>
+		<Category> Tshirt </Category>
+		<Print> 2B || !2B </Print>
+		<Price> 30 </Price>
+		<InStock> 45</InStock>
+	</Product>
+	
+	<Product>
+		<ID> 100001 </ID>
+		<Category> Tshirt </Category>
+		<Print> Hello world! </Print>
+		<Price> 30 </Price>
+		<InStock> 45</InStock>
+	</Product>
+
+	<Product>
+		<ID> 100002 </ID>
+		<Category> Tshirt </Category>
+		<Print> 127.0.0.1 SWEET 127.0.0.1 </Print>
+		<Price> 30 </Price>
+		<InStock> 45</InStock>
+	</Product>
+
+	<Product>
+		<ID> 100003 </ID>
+		<Category> Tshirt </Category>
+		<Print> Roses are #FF0000 Violets are #0000FF </Print>
+		<Price> 30 </Price>
+		<InStock> 45</InStock>
+	</Product>
+
+	<Product>
+		<ID> 100004 </ID>
+		<Category> Tshirt </Category>
+		<Print> Give me a break </Print>
+		<Price> 30 </Price>
+		<InStock> 45</InStock>
+	</Product>
+
+	
+	
+
+	<Product>
+		<ID> 100005 </ID>
+		<Category> Socks </Category>
+		<Print> 2B || !2B </Print>
+		<Price> 15 </Price>
+		<InStock> 45</InStock>
+	</Product>
+
+	<Product>
+		<ID> 100006 </ID>
+		<Category> Socks  </Category>
+		<Print> Hello world! </Print>
+		<Price> 15 </Price>
+		<InStock> 45</InStock>
+	</Product>
+
+	<Product>
+		<ID> 100007 </ID>
+		<Category> Socks  </Category>
+		<Print> 127.0.0.1 SWEET 127.0.0.1 </Print>
+		<Price> 15 </Price>
+		<InStock> 45</InStock>
+	</Product>
+
+	<Product>
+		<ID> 100008 </ID>
+		<Category> Socks  </Category>
+		<Print> Roses are #FF0000 Violets are #0000FF </Print>
+		<Price> 15 </Price>
+		<InStock> 45</InStock>
+	</Product>
+
+	<Product>
+		<ID> 100009 </ID>
+		<Category> Socks  </Category>
+		<Print> Give me a break </Print>
+		<Price> 15 </Price>
+		<InStock> 45</InStock>
+	</Product>
+
+
+	
+	
+	<Product>
+		<ID> 100010 </ID>
+		<Category> Sweatshirt </Category>
+		<Print> 2B || !2B </Print>
+		<Price> 50 </Price>
+		<InStock> 45</InStock>
+	</Product>
+
+	<Product>
+		<ID> 100011 </ID>
+		<Category> Sweatshirt  </Category>
+		<Print> Hello world! </Print>
+		<Price> 50 </Price>
+		<InStock> 45</InStock>
+	</Product>
+
+	<Product>
+		<ID> 100012 </ID>
+		<Category> Sweatshirt  </Category>
+		<Print> 127.0.0.1 SWEET 127.0.0.1 </Print>
+		<Price> 50 </Price>
+		<InStock> 45</InStock>
+	</Product>
+
+	<Product>
+		<ID> 100013 </ID>
+		<Category> Sweatshirt  </Category>
+		<Print> Roses are #FF0000 Violets are #0000FF </Print>
+		<Price> 50 </Price>
+		<InStock> 45</InStock>
+	</Product>
+
+	<Product>
+		<ID> 100014 </ID>
+		<Category> Sweatshirt  </Category>
+		<Print> Give me a break </Print>
+		<Price> 50 </Price>
+		<InStock> 45</InStock>
+	</Product>
+
+
+
+
+
+	<Product>
+		<ID> 100015 </ID>
+		<Category> Sweatpant  </Category>
+		<Print> 2B || !2B </Print>
+		<Price> 40 </Price>
+		<InStock> 45</InStock>
+	</Product>
+
+	<Product>
+		<ID> 100016 </ID>
+		<Category> Sweatpant  </Category>
+		<Print> Hello world! </Print>
+		<Price> 40 </Price>
+		<InStock> 45</InStock>
+	</Product>
+
+	<Product>
+		<ID> 100017 </ID>
+		<Category> Sweatpant   </Category>
+		<Print> 127.0.0.1 SWEET 127.0.0.1 </Print>
+		<Price> 40 </Price>
+		<InStock> 45</InStock>
+	</Product>
+
+	<Product>
+		<ID> 100018 </ID>
+		<Category> Sweatpant   </Category>
+		<Print> Roses are #FF0000 Violets are #0000FF </Print>
+		<Price> 40 </Price>
+		<InStock> 45</InStock>
+	</Product>
+
+	<Product>
+		<ID> 100019 </ID>
+		<Category> Sweatpant   </Category>
+		<Print> Give me a break </Print>
+		<Price> 40 </Price>
+		<InStock> 45</InStock>
+	</Product>
+
+	
+
+	<Product>
+		<ID> 100020 </ID>
+		<Category> BucketHat  </Category>
+		<Print> 2B || !2B </Print>
+		<Price> 25 </Price>
+		<InStock> 45</InStock>
+	</Product>
+
+	<Product>
+		<ID> 100021 </ID>
+		<Category> BucketHatSweatpant  </Category>
+		<Print> Hello world! </Print>
+		<Price> 25 </Price>
+		<InStock> 45</InStock>
+	</Product>
+
+	<Product>
+		<ID> 100022 </ID>
+		<Category> BucketHat   </Category>
+		<Print> 127.0.0.1 SWEET 127.0.0.1 </Print>
+		<Price> 25 </Price>
+		<InStock> 45</InStock>
+	</Product>
+
+	<Product>
+		<ID> 100023 </ID>
+		<Category> BucketHat  </Category>
+		<Print> Roses are #FF0000 Violets are #0000FF </Print>
+		<Price> 25 </Price>
+		<InStock> 45</InStock>
+	</Product>
+
+	<Product>
+		<ID> 100024 </ID>
+		<Category> BucketHat  </Category>
+		<Print> Give me a break </Print>
+		<Price> 25 </Price>
+		<InStock> 45</InStock>
+	</Product>
+</Products>

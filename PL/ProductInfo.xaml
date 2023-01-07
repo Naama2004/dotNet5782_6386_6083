@@ -9,7 +9,11 @@
         mc:Ignorable="d"
         Title="ProductInfo" Height="450" Width="800">
     <Grid Background="#DEDBD2">
-        <Image Name="img" Margin="462,12,28,12"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="161*"/>
+            <ColumnDefinition Width="39*"/>
+        </Grid.ColumnDefinitions>
+        <Image Name="img" Margin="445,12,45,12" Grid.ColumnSpan="2"  />
         <Label Content="Product Info:"  Foreground="#4A5759" FontSize="36" HorizontalAlignment="Left" Height="47" Margin="51,30,0,0" VerticalAlignment="Top" Width="285"/>
         <Label Content="category:" Foreground="#4A5759" HorizontalAlignment="Left" Height="36" Margin="10,111,0,0" VerticalAlignment="Top" Width="167"/>
         <Label Content="product id:"  Foreground="#4A5759" HorizontalAlignment="Left" Height="36" Margin="10,315,0,0" VerticalAlignment="Top" Width="167"/>

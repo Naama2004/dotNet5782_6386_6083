@@ -12,19 +12,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Sol F-1.jpg" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="MaterialDesignThemes" Version="4.6.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\BL\BL.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Resource Include="Sol F-1.jpg" />
   </ItemGroup>
 
 </Project>
