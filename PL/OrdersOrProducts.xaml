@@ -6,9 +6,9 @@
         xmlns:local="clr-namespace:PL"
         mc:Ignorable="d"
         Title="OrdersOrProducts" Height="450" Width="800">
-    <Grid Background="#DEDBD2">
-        <Button Name="Orders"  Background="#B0C4B1" FontFamily="Showcard Gothic" Content="Orders" HorizontalAlignment="Left" Margin="146,170,0,0" VerticalAlignment="Top" Height="71" Width="179" Click="Orders_Click" Foreground="#FF4A5759" />
-        <Button Name="Products" Background="#B0C4B1" FontFamily="Showcard Gothic" Content="Products" HorizontalAlignment="Left" Margin="464,170,0,0" VerticalAlignment="Top" Height="71" Width="179" Click="Products_Click" Foreground="#FF4A5759"/>
+    <Grid >
+        <Button Name="Orders"  Background="#FFFFFF" FontFamily="Showcard Gothic" Content="Orders" HorizontalAlignment="Left" Margin="146,170,0,0" VerticalAlignment="Top" Height="71" Width="179" Click="Orders_Click" Foreground="#AB8F80" BorderBrush="#AB8F80"/>
+        <Button Name="Products" Background="#FFFFFF" FontFamily="Showcard Gothic" Content="Products" HorizontalAlignment="Left" Margin="464,170,0,0" VerticalAlignment="Top" Height="71" Width="179" Click="Products_Click" Foreground="#AB8F80" BorderBrush="#AB8F80"/>
 
     </Grid>
 </Window>

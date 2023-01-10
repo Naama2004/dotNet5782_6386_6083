@@ -5,9 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
           xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:PL"
+         Foreground="#AB8F80"
         mc:Ignorable="d"
-        Title="OrderListForManeger" Height="450" Width="800">
-    <Grid Background="#DEDBD2">
+        Title="OrderListForManeger" Height="457" Width="800">
+    <Grid >
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="7*"/>
             <ColumnDefinition Width="793*"/>
@@ -25,8 +26,8 @@
                 </GridView >
             </ListView.View>
         </ListView>
-        <Label HorizontalAlignment="Left" Content="Orders:" VerticalAlignment="Top" Width="345" Height="33" Foreground="#4A5759" FontWeight="Bold" FontSize="24" FontStyle="Italic" FontFamily="Stencil" Grid.ColumnSpan="2"/>
-        <materialDesign:PackIcon Name="goback" Kind="Forward" Foreground="#FF4A5759" Height="49" Width="101" Margin="644,385,0,0" RenderTransformOrigin="0.5,0.5" Grid.Column="1"
+        <Label HorizontalAlignment="Left" Content="Orders:" VerticalAlignment="Top" Width="800" Height="33" Foreground="#FFFFFF" Background="#AB8F80" FontWeight="Bold" FontSize="24" FontStyle="Italic" FontFamily="Stencil" Grid.ColumnSpan="2"/>
+        <materialDesign:PackIcon Name="goback" Kind="Forward" Foreground="#AB8F80" Height="49" Width="101" Margin="644,385,0,0" RenderTransformOrigin="0.5,0.5" Grid.Column="1"
                  MouseDoubleClick="goback_click"  >
             <materialDesign:PackIcon.RenderTransform>
                 <TransformGroup>

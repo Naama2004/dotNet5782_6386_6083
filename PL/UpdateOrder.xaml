@@ -4,22 +4,23 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL"
+        Foreground="#AB8F80"
         mc:Ignorable="d"
         Title="UpdateOrder" Height="450" Width="800">
-    <Grid Background="#DEDBD2">
-        <Label Content="Order Detail:"  HorizontalAlignment="Left" Margin="237,10,0,0"  VerticalAlignment="Top" Width="305" Height="55" Foreground="#FF4A5759" FontWeight="Bold" FontSize="36" FontStyle="Italic" FontFamily="Stencil"/>
-        <TextBox Background="#DEDBD2" Name="OrderIdDetails" HorizontalAlignment="Left" Margin="400,86,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="166" Height="30" IsEnabled="False"/>
-        <Label Name="OrderIdText" HorizontalAlignment="Left" Margin="154,86,0,0" Content="Order ID:" VerticalAlignment="Top" Width="166" Height="30" Foreground="#FF4A5759" FontStyle="Italic" FontFamily="Stencil" />
-        <TextBox Background="#DEDBD2" Name="CustomerNameDetails" HorizontalAlignment="Left" Margin="400,133,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="166" Height="30" IsEnabled="False"/>
-        <Label  Name="CustomerNameText" HorizontalAlignment="Left" Margin="154,133,0,0" Content="Customer Name:" VerticalAlignment="Top" Width="166" Height="30" Foreground="#FF4A5759" FontStyle="Italic" FontFamily="Stencil" IsEnabled="False"/>
-        <Label  Name="StateText" HorizontalAlignment="Left" Margin="154,178,0,0" Content="Orders State:" VerticalAlignment="Top" Width="166" RenderTransformOrigin="-0.062,0.612" Height="30" Foreground="#FF4A5759" FontStyle="Italic" FontFamily="Stencil" IsEnabled="False"/>
-        <TextBox Background="#DEDBD2" Name="StateDetails" HorizontalAlignment="Left" Margin="400,178,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="166" Height="30" IsEnabled="False"/>
-        <Label  Name="AmountText" HorizontalAlignment="Left" Margin="154,217,0,0" Content="Amount of Products:" VerticalAlignment="Top" Width="166" Height="30" Foreground="#FF4A5759" FontStyle="Italic" FontFamily="Stencil" IsEnabled="False"/>
-        <TextBox Background="#DEDBD2" Name="AmountDetails" HorizontalAlignment="Left" Margin="400,217,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="166" Height="30" IsEnabled="False"/>
-        <Label  Name="PriceText" HorizontalAlignment="Left" Margin="154,258,0,0" Content="Total Price:" VerticalAlignment="Top" Width="166" Height="30" Foreground="#FF4A5759" FontStyle="Italic" FontFamily="Stencil" IsEnabled="False"/>
-        <TextBox Background="#DEDBD2" Name="PriceDetails" HorizontalAlignment="Left" Margin="400,258,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="166" Height="30" IsEnabled="False"/>
-        <Button Name="shipUpdate" Content="Update Shiping date" HorizontalAlignment="Left" Margin="125,323,0,0" VerticalAlignment="Top" Width="195" Height="55" FontStyle="Italic" FontFamily="Stencil" Foreground="#FF4A5759" Background="#FFB0C4B1" Click="shipUpdate_Click"/>
-        <Button Name="deliveryUpdate" Content="Update Delivery date" HorizontalAlignment="Left" Margin="400,323,0,0" VerticalAlignment="Top" Width="195" Height="55"  Foreground="#FF4A5759" FontStyle="Italic" FontFamily="Stencil" Background="#FFB0C4B1" Click="deliveryUpdate_Click"/>
+    <Grid >
+        <Label Content="                        Order Detail:"  HorizontalAlignment="Left"  VerticalAlignment="Top" Width="790" Height="55" Foreground="#FFFFFF" Background="#AB8F80" FontWeight="Bold" FontSize="36" FontStyle="Italic" FontFamily="Stencil"/>
+        <TextBox Background="#FFFFFF" Name="OrderIdDetails" HorizontalAlignment="Left" Margin="400,86,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="166" Height="30" IsEnabled="False"/>
+        <Label Name="OrderIdText" HorizontalAlignment="Left" Margin="154,86,0,0" Content="Order ID:" VerticalAlignment="Top" Width="166" Height="30" Foreground="#AB8F80" FontStyle="Italic" FontFamily="Stencil" />
+        <TextBox Background="#FFFFFF" Name="CustomerNameDetails" HorizontalAlignment="Left" Margin="400,133,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="166" Height="30" IsEnabled="False"/>
+        <Label  Name="CustomerNameText" HorizontalAlignment="Left" Margin="154,133,0,0" Content="Customer Name:" VerticalAlignment="Top" Width="166" Height="30" Foreground="#AB8F80" FontStyle="Italic" FontFamily="Stencil" />
+        <Label  Name="StateText" HorizontalAlignment="Left" Margin="154,178,0,0" Content="Orders State:" VerticalAlignment="Top" Width="166" RenderTransformOrigin="-0.062,0.612" Height="30" Foreground="#AB8F80" FontStyle="Italic" FontFamily="Stencil" />
+        <TextBox Background="#FFFFFF" Name="StateDetails" HorizontalAlignment="Left" Margin="400,178,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="166" Height="30" IsEnabled="False"/>
+        <Label  Name="AmountText" HorizontalAlignment="Left" Margin="154,217,0,0" Content="Amount of Products:" VerticalAlignment="Top" Width="166" Height="30" Foreground="#AB8F80" FontStyle="Italic" FontFamily="Stencil" />
+        <TextBox Background="#FFFFFF" Name="AmountDetails" HorizontalAlignment="Left" Margin="400,217,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="166" Height="30" IsEnabled="False"/>
+        <Label  Name="PriceText" HorizontalAlignment="Left" Margin="154,258,0,0" Content="Total Price:" VerticalAlignment="Top" Width="166" Height="30" Foreground="#AB8F80" FontStyle="Italic" FontFamily="Stencil" />
+        <TextBox Background="#FFFFFF" Name="PriceDetails" HorizontalAlignment="Left" Margin="400,258,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="166" Height="30" IsEnabled="False"/>
+        <Button Name="shipUpdate" BorderBrush="#AB8F80" Content="Update Shiping date" HorizontalAlignment="Left" Margin="125,323,0,0" VerticalAlignment="Top" Width="195" Height="55" FontStyle="Italic" FontFamily="Stencil" Foreground="#AB8F80" Background="#FFFFFF" Click="shipUpdate_Click"/>
+        <Button Name="deliveryUpdate" BorderBrush="#AB8F80" Content="Update Delivery date" HorizontalAlignment="Left" Margin="400,323,0,0" VerticalAlignment="Top" Width="195" Height="55"  Foreground="#AB8F80" FontStyle="Italic" FontFamily="Stencil" Background="#FFFFFF" Click="deliveryUpdate_Click"/>
 
     </Grid>
 </Window>

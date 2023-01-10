@@ -4,18 +4,19 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL"
+        Foreground="#AB8F80"
         mc:Ignorable="d"
         Title="AddProductWindowxaml" Height="450" Width="800">
-    <Grid Background="#DEDBD2">
+    <Grid Background="#EEE6DA" >
 
-        <Label x:Name="categoryViewer" Content="Category:" HorizontalAlignment="Left" Margin="105,130,0,0"  VerticalAlignment="Top" Width="218" Height="40" FontSize="16" Foreground="#4A5759" FontWeight="Bold"/>
-        <Label x:Name="PrintOnItem" HorizontalAlignment="Left" Margin="105,175,0,0" Content="Print On Item:" VerticalAlignment="Top" Width="218" Height="42"  Foreground="#4A5759" FontSize="16" FontWeight="Bold"/>
-        <Label x:Name="price" HorizontalAlignment="Left" Content="Price:" VerticalAlignment="Top" Width="218" Height="38" Margin="105,222,0,0" Foreground="#4A5759" FontSize="16" FontWeight="Bold"/>
-        <TextBox x:Name="SelectedId" Background="#DEDBD2" HorizontalAlignment="Left" Margin="365,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="218" Foreground="#4A5759" FontSize="16" FontWeight="Bold" Height="45" />
-        <TextBox x:Name="SelectedPrice" Background="#DEDBD2" HorizontalAlignment="Left" Margin="365,222,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="218" Foreground="#4A5759" FontSize="16" FontWeight="Bold" Height="38"/>
-        <TextBox x:Name="Selected_Instock" Background="#DEDBD2" HorizontalAlignment="Left" Margin="365,265,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="218" Foreground="#4A5759" FontSize="16" FontWeight="Bold" Height="40"/>
-        <Label x:Name="HeadLine" HorizontalAlignment="Left" Margin="30,29,0,0" Content="Please enter products details:" VerticalAlignment="Top" Width="441" Foreground="#FF4A5759" FontSize="18" FontFamily="Showcard Gothic"/>
-        <ComboBox x:Name="SelectedPrint" Foreground="#4A5759" FontSize="16" FontWeight="Bold" HorizontalAlignment="Left" Margin="365,175,0,0" VerticalAlignment="Top" Width="218" Height="42" Background="#DEDBD2" >
+        <Label x:Name="categoryViewer" Content="Category:" HorizontalAlignment="Left" Margin="105,130,0,0"  VerticalAlignment="Top" Width="218" Height="40" FontSize="16" Foreground="#AB8F80" FontWeight="Bold"/>
+        <Label x:Name="PrintOnItem" HorizontalAlignment="Left" Margin="105,175,0,0" Content="Print On Item:" VerticalAlignment="Top" Width="218" Height="42"  Foreground="#AB8F80" FontSize="16" FontWeight="Bold"/>
+        <Label x:Name="price" HorizontalAlignment="Left" Content="Price:" VerticalAlignment="Top" Width="218" Height="38" Margin="105,222,0,0" Foreground="#AB8F80" FontSize="16" FontWeight="Bold"/>
+        <TextBox x:Name="SelectedId"  HorizontalAlignment="Left" Margin="365,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="218" Foreground="#AB8F80" FontSize="16" FontWeight="Bold" Height="45" />
+        <TextBox x:Name="SelectedPrice"  HorizontalAlignment="Left" Margin="365,222,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="218" Foreground="#AB8F80" FontSize="16" FontWeight="Bold" Height="38"/>
+        <TextBox x:Name="Selected_Instock"  HorizontalAlignment="Left" Margin="365,265,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="218" Foreground="#AB8F80" FontSize="16" FontWeight="Bold" Height="40"/>
+        <Label x:Name="HeadLine" HorizontalAlignment="Left" Margin="30,29,0,0" Content="Please enter products details:" VerticalAlignment="Top" Width="441" Foreground="#AB8F80" FontSize="18" FontFamily="Showcard Gothic"/>
+        <ComboBox x:Name="SelectedPrint" Foreground="#AB8F80" FontSize="16" FontWeight="Bold" HorizontalAlignment="Left" Margin="365,175,0,0" VerticalAlignment="Top" Width="218" Height="42"  >
             <ComboBoxItem Content="127.0.0.1 Sweet 127.0.0.1"></ComboBoxItem>
             <ComboBoxItem Content="HELLO WORLD!"></ComboBoxItem>
             <ComboBoxItem Content="roses are #ff0000 violets are #0000ff"></ComboBoxItem>
@@ -23,11 +24,11 @@
             <ComboBoxItem Content="give me a break"></ComboBoxItem>
         </ComboBox>
 
-        <Button x:Name="ConfirmAdding" Content="ADD"  Foreground="#4A5759" HorizontalAlignment="Left" Margin="325,349,0,0" VerticalAlignment="Top" Height="44" Width="75" FontFamily="Showcard Gothic" FontSize="18" FontWeight="Normal" Click="ConfirmAdding_Click" Background="#FFB0C4B1"/>
-        <Button x:Name="confirmUpdatingProduct" Content="update" HorizontalAlignment="Left" Margin="324,347,0,0" VerticalAlignment="Top" Foreground="#4A5759" Height="48" Width="76" FontSize="18" FontFamily="Showcard Gothic" Click="confirmUpdatingProduct_Click" Background="#FFB0C4B1"/>
-        <ComboBox x:Name="Selected_Category"  Foreground="#4A5759" FontSize="16" FontWeight="Bold" HorizontalAlignment="Left" Margin="365,130,0,0" VerticalAlignment="Top" Width="218" Height="40"/>
-        <Label x:Name="in_stock" Content="Stock:" Foreground="#4A5759" Background="#DEDBD2" FontSize="16" FontWeight="Bold" HorizontalAlignment="Left" Margin="105,267,0,0"  VerticalAlignment="Top" Width="218" Height="38" />
-        <Label x:Name="id" Content="Id:"  Foreground="#4A5759" FontSize="16" FontWeight="Bold" HorizontalAlignment="Left" Margin="105,80,0,0"  VerticalAlignment="Top" Width="218" Height="40"/>
+        <Button x:Name="ConfirmAdding" Content="ADD"  Foreground="#AB8F80" HorizontalAlignment="Left" Margin="250,349,0,0" VerticalAlignment="Top" Height="44" Width="150" FontFamily="Showcard Gothic" FontSize="18" FontWeight="Normal" Click="ConfirmAdding_Click" Background="#FFFFFF" BorderBrush="#AB8F80" />
+        <Button x:Name="confirmUpdatingProduct" Content="update" HorizontalAlignment="Left" Margin="250,349,0,0" VerticalAlignment="Top" Foreground="#AB8F80" Height="48" Width="147" FontSize="18" FontFamily="Showcard Gothic" Click="confirmUpdatingProduct_Click" Background="#FFFFFF" BorderBrush="#AB8F80"/>
+        <ComboBox x:Name="Selected_Category"  Foreground="#AB8F80" FontSize="16" FontWeight="Bold" HorizontalAlignment="Left" Margin="365,130,0,0" VerticalAlignment="Top" Width="218" Height="40"/>
+        <Label x:Name="in_stock" Content="Stock:" Foreground="#AB8F80"  FontSize="16" FontWeight="Bold" HorizontalAlignment="Left" Margin="105,267,0,0"  VerticalAlignment="Top" Width="218" Height="38" />
+        <Label x:Name="id" Content="Id:"  Foreground="#AB8F80" FontSize="16" FontWeight="Bold" HorizontalAlignment="Left" Margin="105,80,0,0"  VerticalAlignment="Top" Width="218" Height="40"/>
 
     </Grid>
 </Window>

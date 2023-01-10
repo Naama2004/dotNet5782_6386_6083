@@ -12,11 +12,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Sweatpantgive_me_a_break.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="MaterialDesignThemes" Version="4.6.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\BL\BL.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Sweatpantgive_me_a_break.png" />
   </ItemGroup>
 
 </Project>

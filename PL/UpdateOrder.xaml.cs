@@ -49,8 +49,9 @@ namespace PL
             catch (NotFoundException ex)
             {
                 MessageBox.Show(
-                    "invalid input",
-                    ex.Message+":("
+                    
+                    ex.Message+":(",
+                    "invalid input"
                     , MessageBoxButton.OK,
                     MessageBoxImage.Hand
                     );    
@@ -58,8 +59,8 @@ namespace PL
             catch (Exception ex)
             {
                 MessageBox.Show(
-                   "sorry",
-                   ex.Message+":)"
+                   ex.Message+":)",
+                   "sorry"
                    , MessageBoxButton.OK,
                    MessageBoxImage.Information
                    );
@@ -79,8 +80,8 @@ namespace PL
             catch (NotFoundException ex)
             {
                 MessageBox.Show(
-                    "invalid input",
-                    ex.Message + ":("
+                    ex.Message + ":(",
+                    "invalid input"
                     , MessageBoxButton.OK,
                     MessageBoxImage.Hand
                     );
@@ -88,8 +89,8 @@ namespace PL
             catch (Exception ex)
             {
                 MessageBox.Show(
-                   "sorry",
-                   "ex.Message+\":)\""
+                   ex.Message+":)",
+                   "sorry"
                    , MessageBoxButton.OK,
                    MessageBoxImage.Information
                    );

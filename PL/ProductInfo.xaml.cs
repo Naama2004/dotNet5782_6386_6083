@@ -24,6 +24,7 @@ namespace PL
         {
             InitializeComponent();
         }
+
         public ProductInfo(BO.ProductForList p)
         {
             InitializeComponent();
@@ -51,13 +52,14 @@ namespace PL
                     break;
 
             }
-            
-            //var bitmapImage = new BitmapImage();
-            ////  Source = "\images\Sweatpantgive_me_a_break.png"
-            //bitmapImage.BeginInit();
-            //bitmapImage.UriSource = new Uri(@"\images\" + p.Category + temp + @".png");
-            //bitmapImage.EndInit();
-            //img.Source = bitmapImage;
+     //   C: \Users\אריאל דרעי\Desktop\תואר\miniProject\dotNet5782_6386_6083\PL\images\SocksHelloWorld.png
+    // / Sweatpantgive_me_a_break.png
+        // \PL\images\Socksgive_me_a_break.png
+        var bitmapImage = new BitmapImage();
+            bitmapImage.BeginInit();
+            bitmapImage.UriSource = new Uri(@"C:\Users\אריאל דרעי\Desktop\תואר\miniProject\dotNet5782_6386_6083\PL\images\" + p.Category + temp + @".png");
+            bitmapImage.EndInit();
+            img.Source = bitmapImage;
             //bind the photo url
         }
     }

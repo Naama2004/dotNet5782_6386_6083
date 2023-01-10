@@ -4,17 +4,16 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL"
+        
         mc:Ignorable="d"
-         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
       TextElement.FontWeight="Regular"
      TextElement.FontSize="13"
      TextOptions.TextFormattingMode="Ideal"
      TextOptions.TextRenderingMode="Auto"
-     Background="{DynamicResource MaterialDesignPaper}"
      FontFamily="{DynamicResource MaterialDesignFont}"
         Title="MainWindow" Height="450" Width="800">
-    <Grid Background="#DEDBD2">
-        <Button x:Name="enterListSystem" Background="#FFB0C4B1" Content="Enter" Margin="244,166,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Height="74" Width="263" FontSize="36" Foreground="#4A5759" FontFamily="Showcard Gothic" Click="enterListSystem_Click" BorderBrush="#FF4A5759">
+    <Grid  Background="#EEE6DA">
+        <Button x:Name="enterListSystem" Background="#EEE6DA" Content="Enter" Margin="254,176,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Height="74" Width="263" FontSize="36" Foreground="#AB8F80" FontFamily="Californian FB" Click="enterListSystem_Click" BorderBrush="#AB8F80" FontWeight="Bold">
             <Button.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -24,6 +23,7 @@
                 </TransformGroup>
             </Button.RenderTransform>
         </Button>
-        <StackPanel Margin="0,0,0,-1"/>
+        <Label Background="#AB8F80"  HorizontalAlignment="Center" Height="23" VerticalAlignment="Top" Width="800"/>
+
     </Grid>
 </Window>

@@ -4,15 +4,17 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL"
+         FontFamily="Cascadia Mono SemiBold"
         mc:Ignorable="d"
         Title="ManegerOrClient" Height="450" Width="800">
-    <Grid RenderTransformOrigin="0.491,0.484" Background="#DEDBD2">
-        <Button Name="Maneger" Background="#B0C4B1" Content="maneger" HorizontalAlignment="Left" Margin="147,217,0,0" VerticalAlignment="Top" Height="71" Width="179" FontFamily="Showcard Gothic" Click="ManegerButton_Click" Foreground="#FF4A5759"/>
-        <Button Name="Client" Content="client" Background="#B0C4B1" HorizontalAlignment="Left" Margin="435,217,0,0" VerticalAlignment="Top" Height="71" Width="179" FontFamily="Showcard Gothic" Foreground="#FF4A5759" Click="Client_Click"/>
-        <Label Name="entry" Content="Are you a manegr or a client?" HorizontalAlignment="Center" Margin="0,84,0,0" VerticalAlignment="Top" Width="408" FontSize="24" FontWeight="Bold" Foreground="#FF4A5759" FontFamily="Showcard Gothic"/>
-        <TextBox Name="passwordContent" HorizontalAlignment="Left" Margin="435,217,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="215" Height="40" Background="#DEDBD2" FontSize="16"/>
-        <Label Name="PasswordText" Content="Please Enter the manegers password:" HorizontalAlignment="Center" Margin="0,84,0,0" VerticalAlignment="Top" Width="523" FontSize="24" FontWeight="Bold" Foreground="#FF4A5759" FontFamily="Showcard Gothic" Height="52"/>
-        <Button Name="pass" Content="Password:" HorizontalAlignment="Left" Margin="147,217,0,0" VerticalAlignment="Top" Width="212" Height="52" FontWeight="Bold" Foreground="#FF4A5759" FontFamily="Showcard Gothic" Background="#B0C4B1" Click="pass_Click"/>
+    <Grid RenderTransformOrigin="0.491,0.484" Background="#EEE6DA">
+        <Button Name="Maneger" BorderBrush="#AB8F80" Background="#EEE6DA" Content="maneger" HorizontalAlignment="Left" Margin="147,217,0,0" VerticalAlignment="Top" Height="71" Width="179"  Click="ManegerButton_Click" Foreground="#AB8F80" FontSize="18"/>
+        <Button Name="Client" BorderBrush="#AB8F80" Content="client" Background="#EEE6DA" HorizontalAlignment="Left" Margin="435,217,0,0" VerticalAlignment="Top" Height="71" Width="179"  Foreground="#AB8F80" Click="Client_Click" FontSize="18"/>
+        <Label Name="entry" Content="Are you a manegr or a client?" HorizontalAlignment="Center" Margin="0,84,0,0" VerticalAlignment="Top" Width="456" FontSize="24" FontWeight="Bold" Foreground="#AB8F80"/>
+        <TextBox Name="passwordContent" HorizontalAlignment="Left" Margin="435,217,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="215" Height="40" Background="#EEE6DA" FontSize="16" BorderBrush="#AB8F80" Foreground="#AB8F80"/>
+        <Label Name="PasswordText" Content="Please Enter the manegers password:" HorizontalAlignment="Left" Margin="147,84,0,0" VerticalAlignment="Top" Width="524" FontSize="24" FontWeight="Bold" Foreground="#AB8F80"  Height="52"/>
+        <Button Name="pass" BorderBrush="#AB8F80" Content="Password:" HorizontalAlignment="Left" Margin="147,217,0,0" VerticalAlignment="Top" Width="212" Height="52" FontWeight="Bold" Foreground="#AB8F80"  Background="#EEE6DA" Click="pass_Click" FontSize="18" />
+        <Label Background="#AB8F80"  HorizontalAlignment="Center" Height="23" VerticalAlignment="Top" Width="800"/>
 
     </Grid>
 </Window>

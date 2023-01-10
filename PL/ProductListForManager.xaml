@@ -4,15 +4,16 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL"
+        FontFamily="Cascadia Mono SemiBold"
         mc:Ignorable="d"
         Title="ProductListForManager" Height="640" Width="800">
-    <Grid Name="MainGrid" Background="#DEDBD2">
+    <Grid Name="MainGrid" Background="#EEE6DA" >
         <Grid.RowDefinitions>
             <RowDefinition Height="40*"/>
             <RowDefinition Height="500*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <Grid Name="UpGrid" Background="#DEDBD2" HorizontalAlignment="Stretch" Height="auto" Grid.Row="0"
+        <Grid Name="UpGrid" Background="#AB8F80"  HorizontalAlignment="Stretch" Height="auto" Grid.Row="0"
             VerticalAlignment="Stretch" Width="auto">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="400*"/>
@@ -21,7 +22,7 @@
                 <ColumnDefinition Width="49*"/>
                 <ColumnDefinition Width="19*"/>
             </Grid.ColumnDefinitions >
-            <ComboBox Name="CategorySelector" Background="#DEDBD2" Grid.Column="1" Grid.ColumnSpan="4" SelectionChanged="CategorySelector_SelectionChanged" RenderTransformOrigin="0.5,0.5">
+            <ComboBox Name="CategorySelector" Background="#AB8F80"  Grid.Column="1" Grid.ColumnSpan="4" SelectionChanged="CategorySelector_SelectionChanged" RenderTransformOrigin="0.5,0.5">
                 <ComboBox.RenderTransform> 
                     <TransformGroup>
                         <ScaleTransform/>
@@ -32,23 +33,22 @@
                 </ComboBox.RenderTransform>
 
             </ComboBox>
-            <Label  x:Name="label" Content="Select Category:" HorizontalAlignment="Left" Margin="39,0,0,0" VerticalAlignment="Center" Height="46" Width="267" Foreground="#4A5759" FontWeight="Bold" FontSize="24" FontStyle="Italic" FontFamily="Stencil"/>
+            <Label  x:Name="label" Content="Select Category:" HorizontalAlignment="Left" Margin="39,0,0,0" VerticalAlignment="Center" Height="46" Width="267" Foreground="#FFFFFF" FontWeight="Bold" FontSize="24" />
         </Grid>
 
-        <ListView  Name ="ProductsListview" Grid.Row="1"  Background="#DEDBD2" MouseDoubleClick="ListViewItem_MouseDoubleClick">
+        <ListView  Name ="ProductsListview" Grid.Row="1" Foreground="#AB8F80" Background="#FFFFFF" MouseDoubleClick="ListViewItem_MouseDoubleClick">
             <ListView.View >
                 <GridView AllowsColumnReorder="True" >
-
+                   
                     <GridViewColumn Header="Print" DisplayMemberBinding="{Binding Print}" />
                     <GridViewColumn Header="ID" DisplayMemberBinding="{Binding ProductId}"/>
                     <GridViewColumn  Header="Category" DisplayMemberBinding="{Binding Category }" />
-                    <GridViewColumn  Header="Price" DisplayMemberBinding="{Binding  price }" />
-
+                    <GridViewColumn  Header="Price"  DisplayMemberBinding="{Binding  price }" />
                 </GridView>
             </ListView.View>
         </ListView>
 
-        <Button x:Name="AddingProductButton" Content="Add new Product" HorizontalAlignment="Left" Margin="158,505,0,10" Padding="5" Click="Button_Click" Width="440" Foreground="#4A5759" Background="#B0C4B1" FontSize="20" FontWeight="Normal" FontFamily="Showcard Gothic" Grid.Row="1"/>
+        <Button x:Name="AddingProductButton"  Content="Add new Product" HorizontalAlignment="Left" Margin="158,505,0,10" Padding="5" Click="Button_Click" Width="440" Foreground="#AB8F80" BorderBrush="#AB8F80" Background="#EEE6DA" FontSize="20" FontWeight="Normal"  Grid.Row="1"/>
 
 
     </Grid>

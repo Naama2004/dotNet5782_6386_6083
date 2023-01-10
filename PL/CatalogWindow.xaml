@@ -59,7 +59,7 @@
 
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate x:Name="Amount">
-                            <TextBox Name="amount">
+                            <TextBox Name="amount" >
                             </TextBox>
                         </DataTemplate>
 

@@ -37,11 +37,15 @@ namespace PL
         }
         public void Add_To_Cart_click(object sender, MouseButtonEventArgs e)
         {
+           var temp1= ProductList.SelectedItem;
             BO.ProductForList? item = ProductList.SelectedItem as BO.ProductForList;
             var temp = ProductList.SelectedItem;
             int id = item.ProductId;
             bl.Cart.addProduct(currentCart, id);
+         
+           
         }
+    
 
         public void ViewCart(object sender, MouseButtonEventArgs e)
         {
@@ -58,6 +62,11 @@ namespace PL
         {
             BO.ProductForList? item = ProductList.SelectedItem as BO.ProductForList;
             new ProductInfo(item).Show();   
+        }
+
+        private void amount_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }
