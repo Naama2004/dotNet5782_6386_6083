@@ -50,7 +50,6 @@ namespace PL
                 case "roses are #FF0000 vilets are #0000FF":
                     temp = BO.Enums.print.roses_are_red_vilots_are_blue;
                     break;
-
             }
      //   C: \Users\אריאל דרעי\Desktop\תואר\miniProject\dotNet5782_6386_6083\PL\images\SocksHelloWorld.png
     // / Sweatpantgive_me_a_break.png
