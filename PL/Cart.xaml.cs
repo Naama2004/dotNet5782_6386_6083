@@ -16,9 +16,7 @@ using BLApi;
 
 namespace PL
 {
-    /// <summary>
-    /// Interaction logic for Cart.xaml
-    /// </summary>
+   
     
     //לברר את הפרייסים
     // לשנות את ההכנסה הלעגלה שיהיה לפי האמאונט
@@ -26,6 +24,7 @@ namespace PL
     //מחיקה מהאובזרבל 
     //פונצקיית  מחיקה של פריט בעגלה
     //אפשרות לשנות אמאונט בעגלה 
+    //נאל אבל 
     public partial class Cart : Window
     {
         private IBl bl = BLApi.Factory.Get();

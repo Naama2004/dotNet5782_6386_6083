@@ -9,22 +9,35 @@
         Title="HELP" Height="450" Width="800">
 
     <Grid Background="#FFDEDBD2">
-        <ListBox Name="catalog" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-                <ListBox.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <UniformGrid Rows="3" Columns="3"/>
-                    </ItemsPanelTemplate>
-                </ListBox.ItemsPanel>
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Vertical" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-                       <Image Source="{Binding ImageSource}" Width="100" />
+        <ListBox Name="catalog" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="360" VerticalAlignment="Top" Margin="0,74,0,0">
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <UniformGrid Rows="3" Columns="3"/>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Vertical" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                        <Image Source="{Binding ImageSource}" Width="100" Margin="50,50"/>
                         <TextBlock Text="{Binding Category}" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" />
-                    </StackPanel>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
 
-        </Grid>
+                        <Button Style="{StaticResource MaterialDesignFloatingActionMiniButton}"
+                                    Height="30" Width="30"
+                                    HorizontalAlignment="Center"
+                                    Background="#AA6F5D"
+                                    BorderBrush="#FF4A5759"
+                                    IsEnabled="True"
+                                    >
+                            <materialDesign:PackIcon Kind="CartAdd"  BorderBrush="#FF4A5759"/>
+                        </Button>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <TextBlock Text="Use our code NEW15 to(maybe) get a discount:)" Background="#AB8F80"  HorizontalAlignment="Center" Height="28" VerticalAlignment="Top" Width="800" TextAlignment="Center" FontFamily="Yu Gothic Medium" TextWrapping="NoWrap" />
+        <TextBlock  Margin="33,28,667,360" Text="Layers" FontSize="24" FontWeight="Bold" FontFamily="Britannic Bold" Foreground="Black"></TextBlock>
+
+   
+    </Grid>
 
 </Window>
