@@ -15,13 +15,13 @@ public class BOcart : ICart
 {
     DalApi.IDal? factor = DalApi.Factory.Get();
     #region add product to cart
-    public BO.cart addProduct(BO.cart C, int ProductID)
+    public BO.cart addProduct(BO.cart C, int ProductID, int amount)
     {
         try
         {
             DO.Product PDetails = factor!.Product.GET(ProductID);
             C.items = C.items ?? new();
-            if (PDetails.InStock > 0)
+            if (PDetails.InStock > amount)
             {
                 BO.OrderItem item = C.items.FirstOrDefault(x => x.ProductId == ProductID) ?? new()
                 {
@@ -29,17 +29,17 @@ public class BOcart : ICart
                     OrderId = 0,
                     price = PDetails.Price,
                     Print = PDetails.Print,
-                    amount = 0,
-                    TotalPrice = 0
+                    amount = amount,
+                    TotalPrice = amount * PDetails.Price
                 };
 
 
                 //item is a new one OR Exsisting one 
 
-                item.amount++;
+                item.amount+=amount;
                 item.TotalPrice += item.price;
                 C.items.Add(item);
-                C.price += item.price;
+                C.price += item.TotalPrice;
                 return C;
             }
             else
@@ -178,11 +178,29 @@ public class BOcart : ICart
                         select P);
             else
           throw new NotFoundException("the cart is empty");
-
-
-
     }
- 
+
+    public BO.cart DeleteProduct(BO.cart C, int ProductID)
+    {
+        //DO.Product PDetails = factor!.Product.GET(ProductID);
+
+        if (C.items != null)
+        {
+            foreach (var p in C.items)
+            {
+                if (p.ProductId == ProductID)
+                {
+                    C.items.Remove(p);
+                    return C;
+                }
+            }
+                throw new NotFoundException("the product is not in the cart"); 
+        }
+        else
+        throw new Exception("the cart is empty");
+    }
+
+
 }
 
 

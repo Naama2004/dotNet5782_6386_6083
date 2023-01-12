@@ -17,18 +17,38 @@
             </ListBox.ItemsPanel>
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel Orientation="Vertical" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-                        <Image Source="{Binding ImageSource}" Width="100" Margin="50,50"/>
+                    <StackPanel Orientation="Vertical" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" MouseDown="ProductList_MouseDoubleClick" >
+                        <Image Source="{Binding ImageSource}" Width="100" Margin="50,50" />
                         <TextBlock Text="{Binding Category}" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" />
 
-                        <Button Style="{StaticResource MaterialDesignFloatingActionMiniButton}"
+                        <Button Name="addToCart" Style="{StaticResource MaterialDesignFloatingActionMiniButton }"
                                     Height="30" Width="30"
                                     HorizontalAlignment="Center"
                                     Background="#AA6F5D"
                                     BorderBrush="#FF4A5759"
                                     IsEnabled="True"
-                                    >
+                                MouseDoubleClick="Add_To_Cart_click">
                             <materialDesign:PackIcon Kind="CartAdd"  BorderBrush="#FF4A5759"/>
+                        </Button>
+                        <Button Name="Up" Click="Up_Click" Padding="0" Width="25" Height="32">
+                            <materialDesign:PackIcon Kind="Plus"
+                                    Height="21" Width="50" Padding="0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Button>
+
+                        <TextBox Name="textNumber" 
+                                     Margin="1" 
+                                     Width="40" 
+                                     TextAlignment="Center"
+                                     FontSize="20"
+                                     Height="38"
+                                 Text="0"/>
+
+                        <Button Name="Down" 
+                                    Margin="1" Padding="0" 
+                                    Click="Down_Click"
+                                    Width="25" Height="32" >
+                            <materialDesign:PackIcon Kind="Minus"
+                                 Height="21" Width="50" Padding="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                         </Button>
                     </StackPanel>
                 </DataTemplate>
@@ -37,7 +57,8 @@
         <TextBlock Text="Use our code NEW15 to(maybe) get a discount:)" Background="#AB8F80"  HorizontalAlignment="Center" Height="28" VerticalAlignment="Top" Width="800" TextAlignment="Center" FontFamily="Yu Gothic Medium" TextWrapping="NoWrap" />
         <TextBlock  Margin="33,28,667,360" Text="Layers" FontSize="24" FontWeight="Bold" FontFamily="Britannic Bold" Foreground="Black"></TextBlock>
 
-   
+        <materialDesign:PackIcon Kind="Cart" Height="32" Width="118" Margin="686,0,0,0" MouseDoubleClick="ViewCart" IsEnabled="True"/>
+        <materialDesign:PackIcon Kind="Package" Height="34" Width="76" Margin="651,-2,0,0" MouseDoubleClick="Track_Order" IsEnabled="True"/>
     </Grid>
 
 </Window>

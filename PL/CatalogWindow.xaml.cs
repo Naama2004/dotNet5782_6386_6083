@@ -1,4 +1,5 @@
 ﻿using BLApi;
+using BO;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -20,44 +21,68 @@ namespace PL
     public partial class CatalogWindow : Window
     {
         private IBl bl = BLApi.Factory.Get();
-        public BO.cart currentCart =new BO.cart();  
-       // public IEnumerable<BO.ProductForList> Products { get; set; }
+        public BO.cart currentCart = new BO.cart();
+
 
         public ObservableCollection<PL.Product> Products;
 
         public CatalogWindow()
         {
             InitializeComponent();
-            var i= getProducts(bl.Product.GetProducts());
+            var i = getProducts(bl.Product.GetProducts());
             Products = new ObservableCollection<PL.Product>(i);
             catalog.ItemsSource = Products;
             DataContext = this;
             bl.Cart.EmptyCart(currentCart);
         }
-        //public void Add_To_Cart_click(object sender, MouseButtonEventArgs e)
-        //{
-        //   var temp1= catalog.SelectedItem;
-        //    BO.ProductForList? item = catalog.SelectedItem as BO.ProductForList;
-        //    var temp = catalog.SelectedItem;
-        //    int id = item.ProductId;
-        //    bl.Cart.addProduct(currentCart, id);
-         
-           
-        //}
+        public void Add_To_Cart_click(object sender, MouseButtonEventArgs e)
+        {
+            try
+            {
+                var curItem = ((ListBoxItem)catalog.ContainerFromElement((Button)sender)).Content;
+                //var temp1 = catalog.SelectedItem;
+                PL.Product? item = curItem as PL.Product;
+
+                int id = item.ProductId;
+                int amount = 0;//get the amount that is in the text box
+                if (amount == 0)
+                {
+                    MessageBox.Show(
+                      "amount 0  ",
+                      "Invalid amount",
+                       MessageBoxButton.OK,
+                      MessageBoxImage.Hand);
+                    //}
+                    //else
+                    bl.Cart.addProduct(currentCart, id, 0);
+                        }
+               
+            }
+            catch(BO.NotInStockException ex)
+            {
+                MessageBox.Show(
+                     "oops thats too much ",
+                     "Invalid stock",
+                      MessageBoxButton.OK,
+                     MessageBoxImage.Hand);
+            }
+
+
+        }
 
         IEnumerable<PL.Product> getProducts(IEnumerable<BO.ProductForList> tempList)
         {
-         
+
             BO.Enums.print temp = new BO.Enums.print();
-            List<PL.Product> returnList=new List<PL.Product>();
-            foreach (var P in tempList)                              
+            List<PL.Product> returnList = new List<PL.Product>();
+            foreach (var P in tempList)
             {
                 PL.Product temp1 = new Product();
                 temp1.ProductId = P.ProductId;
                 temp1.Print = P.Print;
                 temp1.price = P.price;
                 temp1.Category = (BO.Enums.Category)P.Category!;
-                
+
                 switch (P.Print)
                 {
                     case "127.0.0.1 SWEET  127.0.0.1":
@@ -80,33 +105,65 @@ namespace PL
                 bitmapImage.BeginInit();
                 bitmapImage.UriSource = new Uri(@"C:\Users\אריאל דרעי\Desktop\תואר\miniProject\dotNet5782_6386_6083\PL\images\" + P.Category + temp + @".png");
                 bitmapImage.EndInit();
-                temp1.ImageSource=bitmapImage;
-                returnList.Add(temp1);  
+                temp1.ImageSource = bitmapImage;
+                returnList.Add(temp1);
+                
             }
-           return (IEnumerable<PL.Product>)returnList;
+            return (IEnumerable<PL.Product>)returnList;
         }
+        public void ProductList_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            
+            PL.Product? item = catalog.SelectedItem as PL.Product;
+            if(item != null)    
+            new ProductInfo(item!).Show();
+        }
+        public void ViewCart(object sender, MouseButtonEventArgs e)
+        {
+            new Cart(currentCart).Show();
+        }
+        private void Track_Order(object sender, RoutedEventArgs e)
+        {
+            TrackOrder trackOrder = new TrackOrder();
+            trackOrder.Show();
 
-        //public void ViewCart(object sender, MouseButtonEventArgs e)
-        //{
-        //   new Cart(currentCart).Show();
-        //}
-        //private void Track_Order(object sender, RoutedEventArgs e)
-        //{
-        //    TrackOrder trackOrder = new TrackOrder();
-        //    trackOrder.Show();
+        }
+        public void Up_Click(object sender, RoutedEventArgs e)
+        {
+            //   int currentA = int.Parse(textNumber.Text);
+            //    currentA++;
+            //    textNumber.Text = currentA.ToString();
 
-        //}
 
-        //private void ProductList_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        //{
-        //    BO.ProductForList? item = ProductList.SelectedItem as BO.ProductForList;
-        //    new ProductInfo(item).Show();   
-        //}
+        }
+        public void Down_Click(object sender, RoutedEventArgs e)
+        {
+        //    int currentA = int.Parse(textNumber.Text);
+        //    if (currentA > 0)
+        //    {
+        //        currentA--;
+        //        textNumber.Text = currentA.ToString();
+        //    }
+        //    else //0 amount
+        //    {
+        //        MessageBox.Show(
+        //              "brrr its cold here below zero",
+        //              "Invalid amount",
+        //              MessageBoxButton.OK,
+        //              MessageBoxImage.Hand);
 
-        //private void amount_TextChanged(object sender, TextChangedEventArgs e)
-        //{
+        //    }
 
-        //}
-
+        }
     }
 }
+
+
+
+
+//private void amount_TextChanged(object sender, TextChangedEventArgs e)
+//{
+
+//}
+
+

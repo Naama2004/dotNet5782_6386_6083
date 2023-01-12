@@ -243,7 +243,7 @@ namespace PL
                 }
                 //open a new list window(which calls the get all method which updates the list to include this item
 
-                new PL.ProductListForManager().Show();
+               // new PL.ProductListForManager().Show();
                     this.Close();
               
             }

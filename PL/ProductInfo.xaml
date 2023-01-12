@@ -4,25 +4,24 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL"
-        FontFamily="Showcard Gothic"
-        Foreground="#4A5759"
+         Foreground="#AB8F80"
         mc:Ignorable="d"
         Title="ProductInfo" Height="450" Width="800">
-    <Grid Background="#DEDBD2">
+    <Grid Background="#EEE6DA">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="161*"/>
             <ColumnDefinition Width="39*"/>
         </Grid.ColumnDefinitions>
         <Image Name="img" Margin="445,12,45,12" Grid.ColumnSpan="2"  />
-        <Label Content="Product Info:"  Foreground="#4A5759" FontSize="36" HorizontalAlignment="Left" Height="47" Margin="51,30,0,0" VerticalAlignment="Top" Width="285"/>
-        <Label Content="category:" Foreground="#4A5759" HorizontalAlignment="Left" Height="36" Margin="10,111,0,0" VerticalAlignment="Top" Width="167"/>
-        <Label Content="product id:"  Foreground="#4A5759" HorizontalAlignment="Left" Height="36" Margin="10,315,0,0" VerticalAlignment="Top" Width="167"/>
-        <Label Content="price:" Foreground="#4A5759" HorizontalAlignment="Left" Height="36" Margin="10,252,0,0" VerticalAlignment="Top" Width="167" RenderTransformOrigin="0.51,4.784"/>
-        <Label Content="print:" Foreground="#4A5759" HorizontalAlignment="Left" Height="36" Margin="10,181,0,0" VerticalAlignment="Top" Width="167"/>
-        <Label Name="category"  Foreground="#4A5759" HorizontalAlignment="Left" Height="36" Margin="223,111,0,0" VerticalAlignment="Top" Width="153"/>
-        <Label Name="ID" Foreground="#4A5759" HorizontalAlignment="Left" Height="36" Margin="223,317,0,0" VerticalAlignment="Top" Width="153"/>
-        <Label Name="price" Foreground="#4A5759" HorizontalAlignment="Left" Height="36" Margin="223,252,0,0" VerticalAlignment="Top" Width="153"/>
-        <Label Name="print"  Foreground="#4A5759" HorizontalAlignment="Left" Height="36" Margin="223,181,0,0" VerticalAlignment="Top" Width="153"/>
+        <Label Content="Product Info:" Foreground="#AB8F80" FontSize="36" HorizontalAlignment="Left" Height="57" Margin="51,30,0,0" VerticalAlignment="Top" Width="285" FontWeight="Bold"/>
+        <Label Content="category:"  Foreground="#AB8F80" HorizontalAlignment="Left" Height="36" Margin="10,111,0,0" VerticalAlignment="Top" Width="167"/>
+        <Label Content="product id:" Foreground="#AB8F80" HorizontalAlignment="Left" Height="36" Margin="10,315,0,0" VerticalAlignment="Top" Width="167"/>
+        <Label Content="price:" Foreground="#AB8F80" HorizontalAlignment="Left" Height="36" Margin="10,252,0,0" VerticalAlignment="Top" Width="167" RenderTransformOrigin="0.51,4.784"/>
+        <Label Content="print:"  Foreground="#AB8F80" HorizontalAlignment="Left" Height="36" Margin="10,181,0,0" VerticalAlignment="Top" Width="167"/>
+        <Label Name="category" Foreground="#AB8F80"  HorizontalAlignment="Left" Height="36" Margin="223,111,0,0" VerticalAlignment="Top" Width="153"/>
+        <Label Name="ID" Foreground="#AB8F80" HorizontalAlignment="Left" Height="36" Margin="223,317,0,0" VerticalAlignment="Top" Width="153"/>
+        <Label Name="price" Foreground="#AB8F80" HorizontalAlignment="Left" Height="36" Margin="223,252,0,0" VerticalAlignment="Top" Width="153"/>
+        <Label Name="print" Foreground="#AB8F80" HorizontalAlignment="Left" Height="36" Margin="223,181,0,0" VerticalAlignment="Top" Width="153"/>
 
 
     </Grid>

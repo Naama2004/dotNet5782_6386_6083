@@ -28,7 +28,7 @@ namespace PL
     public partial class Cart : Window
     {
         private IBl bl = BLApi.Factory.Get();
-        //public BO.cart thisCart = new BO.cart();
+        public BO.cart thisCart = new BO.cart();
         public ObservableCollection<BO.OrderItem> items { get; set; }
    
         public Cart(BO.cart C)
@@ -36,12 +36,14 @@ namespace PL
             try
             {
                 InitializeComponent();
-                var i = bl.Cart.getCartList(C);
+                thisCart = C;
+                //var i = bl.Cart.getCartList(C);
                 smileySad.Visibility = Visibility.Hidden;
                 emptyCart.Visibility = Visibility.Hidden;
                 continueB.Visibility = Visibility.Hidden;
+                items = new ObservableCollection<BO.OrderItem>(bl.Cart.getCartList(thisCart));
+                
 
-                items = new ObservableCollection<BO.OrderItem>(i);
 
                 ProductList.ItemsSource = items;
             }
@@ -57,8 +59,11 @@ namespace PL
         }
         public void DeleteItem_Click(object sender, RoutedEventArgs e)
         {
-           //delete in data sorse!!!
-          
+            BO.OrderItem? item = ProductList.SelectedItem as BO.OrderItem;
+            thisCart = bl.Cart.DeleteProduct(thisCart, (int)item.ProductId);
+            items = new ObservableCollection<BO.OrderItem>(bl.Cart.getCartList(thisCart));
+            ProductList.ItemsSource = items;
+
 
         }
         public void continueB_click(object sender, RoutedEventArgs e)

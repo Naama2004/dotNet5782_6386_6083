@@ -66,10 +66,10 @@ namespace PL
         {
             
             //Action<BO.Product> action = update => Products.Add(bl.Product.GetProducts().FirstOrDefault(x=>x.ProductId==)
-            AddOrUpdateProductWindow help = new AddOrUpdateProductWindow(Products);
-            help.Show();
+             new AddOrUpdateProductWindow(Products).Show(); ;
+           
           //  ProductsListview.ItemsSource = bl.Product.GetProducts();// איך לעשות שלר נצטרך כל פעם לקחת מחדש את הרשימה??
-               this.Close();
+             //  this.Close();
         }
 
        private void ListViewItem_MouseDoubleClick(object sender, MouseButtonEventArgs e)
