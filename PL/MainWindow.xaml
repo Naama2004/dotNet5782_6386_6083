@@ -13,7 +13,7 @@
      FontFamily="{DynamicResource MaterialDesignFont}"
         Title="MainWindow" Height="450" Width="800">
     <Grid  Background="#EEE6DA">
-        <Button x:Name="enterListSystem" Background="#EEE6DA" Content="Enter" Margin="254,176,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Height="74" Width="263" FontSize="36" Foreground="#AB8F80" FontFamily="Californian FB" Click="enterListSystem_Click" BorderBrush="#AB8F80" FontWeight="Bold">
+        <Button x:Name="enterListSystem" Background="#EEE6DA" Content="Start Shopping" Margin="91,238,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Height="41" Width="261" FontSize="23" Foreground="#AB8F80" FontFamily="Californian FB" Click="enterListSystem_Click" BorderBrush="#AB8F80" FontWeight="Bold">
             <Button.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -23,7 +23,8 @@
                 </TransformGroup>
             </Button.RenderTransform>
         </Button>
-        <Label Background="#AB8F80"  HorizontalAlignment="Center" Height="23" VerticalAlignment="Top" Width="800"/>
+        <Label Content="Welcom to Layers!" HorizontalAlignment="Left"  Height="54" VerticalAlignment="Top" Width="405" Foreground="#FFAB8F80" FontSize="36" Margin="93,10,0,0" FontWeight="Bold"/>
+        <Label Content="Layers is a super-real clothing store that absolutely sells&#xD;&#xA;products that exist in the real world.&#xD;&#xA;We'd love to provide you with our unique product &#xD;&#xA;that will (not) be shipped right to your door!             " HorizontalAlignment="Left" Height="166" Margin="93,69,0,0" VerticalAlignment="Top" Width="605" FontSize="24" Foreground="#FFAB8F80" FontFamily="Bookman Old Style" FontStyle="Italic"/>
 
     </Grid>
 </Window>

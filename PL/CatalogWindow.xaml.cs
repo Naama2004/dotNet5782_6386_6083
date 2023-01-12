@@ -13,6 +13,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using static System.Net.Mime.MediaTypeNames;
+
 namespace PL
 {
     public partial class CatalogWindow : Window
@@ -76,7 +78,7 @@ namespace PL
                 }
                 var bitmapImage = new BitmapImage();
                 bitmapImage.BeginInit();
-                bitmapImage.UriSource = new Uri(@"C:\Users\user\OneDrive\שולחן העבודה\minip\dotNet5782_6386_6083\PL\images\" + P.Category + temp + @".png");
+                bitmapImage.UriSource = new Uri(@"C:\Users\אריאל דרעי\Desktop\תואר\miniProject\dotNet5782_6386_6083\PL\images\" + P.Category + temp + @".png");
                 bitmapImage.EndInit();
                 temp1.ImageSource=bitmapImage;
                 returnList.Add(temp1);  
