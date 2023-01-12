@@ -35,40 +35,38 @@ namespace PL
             DataContext = this;
             bl.Cart.EmptyCart(currentCart);
         }
-        public void Add_To_Cart_click(object sender, MouseButtonEventArgs e)
-        {
-            try
-            {
-                var curItem = ((ListBoxItem)catalog.ContainerFromElement((Button)sender)).Content;
-                //var temp1 = catalog.SelectedItem;
-                PL.Product? item = curItem as PL.Product;
+        //public void Add_To_Cart_click(object sender, MouseButtonEventArgs e)
+        //{
+        //    try
+        //    {
+        //        var curItem = ((ListBoxItem)catalog.ContainerFromElement((Button)sender)).Content;
+        //        //var temp1 = catalog.SelectedItem;
+        //        PL.Product? item = curItem as PL.Product;
 
-                int id = item.ProductId;
-                int amount = 0;//get the amount that is in the text box
-                if (amount == 0)
-                {
-                    MessageBox.Show(
-                      "amount 0  ",
-                      "Invalid amount",
-                       MessageBoxButton.OK,
-                      MessageBoxImage.Hand);
-                    //}
-                    //else
-                    bl.Cart.addProduct(currentCart, id, 0);
-                        }
+        //        int id = item.ProductId;
+        //        int amount = 0;//get the amount that is in the text box
+        //        if (amount == 0)
+        //        {
+        //            MessageBox.Show(
+        //              "amount 0  ",
+        //              "Invalid amount",
+        //               MessageBoxButton.OK,
+        //              MessageBoxImage.Hand);
+        //            //}
+        //            //else
+        //            bl.Cart.addProduct(currentCart, id, 0);
+        //                }
                
-            }
-            catch(BO.NotInStockException ex)
-            {
-                MessageBox.Show(
-                     "oops thats too much ",
-                     "Invalid stock",
-                      MessageBoxButton.OK,
-                     MessageBoxImage.Hand);
-            }
-
-
-        }
+        //    }
+        //    catch(BO.NotInStockException ex)
+        //    {
+        //        MessageBox.Show(
+        //             "oops thats too much ",
+        //             "Invalid stock",
+        //              MessageBoxButton.OK,
+        //             MessageBoxImage.Hand);
+        //    }
+        //}
 
         IEnumerable<PL.Product> getProducts(IEnumerable<BO.ProductForList> tempList)
         {
@@ -116,7 +114,7 @@ namespace PL
             
             PL.Product? item = catalog.SelectedItem as PL.Product;
             if(item != null)    
-            new ProductInfo(item!).Show();
+            new ProductInfo(currentCart,item!).Show();
         }
         public void ViewCart(object sender, MouseButtonEventArgs e)
         {
@@ -126,44 +124,9 @@ namespace PL
         {
             TrackOrder trackOrder = new TrackOrder();
             trackOrder.Show();
-
-        }
-        public void Up_Click(object sender, RoutedEventArgs e)
-        {
-            //   int currentA = int.Parse(textNumber.Text);
-            //    currentA++;
-            //    textNumber.Text = currentA.ToString();
-
-
-        }
-        public void Down_Click(object sender, RoutedEventArgs e)
-        {
-        //    int currentA = int.Parse(textNumber.Text);
-        //    if (currentA > 0)
-        //    {
-        //        currentA--;
-        //        textNumber.Text = currentA.ToString();
-        //    }
-        //    else //0 amount
-        //    {
-        //        MessageBox.Show(
-        //              "brrr its cold here below zero",
-        //              "Invalid amount",
-        //              MessageBoxButton.OK,
-        //              MessageBoxImage.Hand);
-
-        //    }
-
         }
     }
 }
 
-
-
-
-//private void amount_TextChanged(object sender, TextChangedEventArgs e)
-//{
-
-//}
 
 

@@ -19,6 +19,16 @@ public class BOcart : ICart
     {
         try
         {
+            //if (C.items != null)
+            //{
+            //    foreach (var temp in C.items)
+            //    {
+            //        if (temp.ProductId == ProductID)
+            //        {
+            //            updateAmountInCart(C, ProductID, amount);
+            //        }
+            //    }
+            //}
             DO.Product PDetails = factor!.Product.GET(ProductID);
             C.items = C.items ?? new();
             if (PDetails.InStock > amount)
@@ -32,11 +42,6 @@ public class BOcart : ICart
                     amount = amount,
                     TotalPrice = amount * PDetails.Price
                 };
-
-
-                //item is a new one OR Exsisting one 
-
-                item.amount+=amount;
                 item.TotalPrice += item.price;
                 C.items.Add(item);
                 C.price += item.TotalPrice;

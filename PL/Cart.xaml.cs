@@ -18,13 +18,12 @@ namespace PL
 {
    
     
-    //לברר את הפרייסים
-    // לשנות את ההכנסה הלעגלה שיהיה לפי האמאונט
-     
-    //מחיקה מהאובזרבל 
+   //הופעה כפולה בעגלה 
     //פונצקיית  מחיקה של פריט בעגלה
     //אפשרות לשנות אמאונט בעגלה 
     //נאל אבל 
+    // טוטל פרייס בעגלה 
+    
     public partial class Cart : Window
     {
         private IBl bl = BLApi.Factory.Get();
@@ -61,8 +60,7 @@ namespace PL
         {
             BO.OrderItem? item = ProductList.SelectedItem as BO.OrderItem;
             thisCart = bl.Cart.DeleteProduct(thisCart, (int)item.ProductId);
-            items = new ObservableCollection<BO.OrderItem>(bl.Cart.getCartList(thisCart));
-            ProductList.ItemsSource = items;
+            items.Remove(item); 
 
 
         }
