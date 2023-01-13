@@ -8,8 +8,13 @@
         mc:Ignorable="d"
         Title="catalog" Height="450" Width="800">
 
-    <Grid Background="#FFDEDBD2">
-        <ListBox Name="catalog" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="360" VerticalAlignment="Top" Margin="0,74,0,0">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="C:\Users\user\OneDrive\שולחן העבודה\minip\dotNet5782_6386_6083\PL\images\bckground.png">
+
+            </ImageBrush>
+        </Grid.Background>
+        <ListBox Name="catalog" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="333" VerticalAlignment="Top" Margin="0,101,0,0">
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
                     <UniformGrid Rows="3" Columns="3"/>
@@ -25,11 +30,12 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <TextBlock Text="Use our code NEW15 to(maybe) get a discount:)" Background="#AB8F80"  HorizontalAlignment="Center" Height="28" VerticalAlignment="Top" Width="800" TextAlignment="Center" FontFamily="Yu Gothic Medium" TextWrapping="NoWrap" />
-        <TextBlock  Margin="33,28,667,360" Text="Layers" FontSize="24" FontWeight="Bold" FontFamily="Britannic Bold" Foreground="Black"></TextBlock>
-
+        <TextBlock Text="Use our code NEW15 to(maybe) get a discount:)" Background="#FFDAC4AF"   HorizontalAlignment="Center" Height="32" VerticalAlignment="Top" Width="800" TextAlignment="Center" FontFamily="Cooper Black" TextWrapping="NoWrap" />
+       
+        <TextBlock  Margin="31,37,627,351" Text="Layers" FontSize="36" FontWeight="Bold" FontFamily="Cooper Black"></TextBlock>
         <materialDesign:PackIcon Kind="Cart" Height="32" Width="118" Margin="686,0,0,0" MouseDoubleClick="ViewCart" IsEnabled="True"/>
         <materialDesign:PackIcon Kind="Package" Height="34" Width="76" Margin="651,-2,0,0" MouseDoubleClick="Track_Order" IsEnabled="True"/>
+
     </Grid>
 
 </Window>

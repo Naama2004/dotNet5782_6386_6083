@@ -27,6 +27,7 @@ namespace PL
             PasswordText.Visibility = Visibility.Hidden;
             pass.Visibility = Visibility.Hidden;
             passwordContent.Visibility = Visibility.Hidden;
+            rand.Visibility = Visibility.Hidden;
         }
 
         private void ManegerButton_Click(object sender, RoutedEventArgs e)
@@ -37,6 +38,7 @@ namespace PL
             PasswordText.Visibility = Visibility.Visible;
             pass.Visibility = Visibility.Visible;
             passwordContent.Visibility = Visibility.Visible;
+            rand.Visibility = Visibility.Visible;
 
         }
 

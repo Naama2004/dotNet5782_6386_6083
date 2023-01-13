@@ -34,7 +34,7 @@ namespace PL
 
              new ManegerOrClient().Show();
             //new pi().Show();
-            this.Close();
+          //  this.Close();
         }
     }
 }
