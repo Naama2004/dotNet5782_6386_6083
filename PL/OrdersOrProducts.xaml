@@ -5,10 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL"
         mc:Ignorable="d"
+        FontFamily="Cooper black"
+        Foreground="Black"
         Title="OrdersOrProducts" Height="450" Width="800">
     <Grid >
-        <Button Name="Orders"  Background="#FFFFFF" FontFamily="Showcard Gothic" Content="Orders" HorizontalAlignment="Left" Margin="146,170,0,0" VerticalAlignment="Top" Height="71" Width="179" Click="Orders_Click" Foreground="#AB8F80" BorderBrush="#AB8F80"/>
-        <Button Name="Products" Background="#FFFFFF" FontFamily="Showcard Gothic" Content="Products" HorizontalAlignment="Left" Margin="464,170,0,0" VerticalAlignment="Top" Height="71" Width="179" Click="Products_Click" Foreground="#AB8F80" BorderBrush="#AB8F80"/>
+        <Grid.Background>
+            <ImageBrush ImageSource="C:\Users\user\OneDrive\שולחן העבודה\minip\dotNet5782_6386_6083\PL\images\bckground.png">
+
+            </ImageBrush>
+        </Grid.Background>
+        <Label Background="#FFDAC4AF"  HorizontalAlignment="Center" Height="38" VerticalAlignment="Top" Width="800"/>
+        <Button Name="Orders"  Content="Orders" HorizontalAlignment="Left" Margin="295,232,0,0" VerticalAlignment="Top" Height="71" Width="179" Click="Orders_Click"  BorderBrush="#AB8F80" Background="{x:Null}" Foreground="#DD000000" FontSize="16"/>
+        <Button Name="Products"  Content="Products" Margin="295,112,326,0" VerticalAlignment="Top" Height="71" Click="Products_Click"  BorderBrush="#AB8F80" Foreground="#DD000000" Background="{x:Null}" FontSize="16"/>
 
     </Grid>
 </Window>

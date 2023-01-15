@@ -5,16 +5,23 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
           xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:PL"
-         Foreground="#AB8F80"
+         FontFamily="Cooper black"
+        Foreground="Black"
         mc:Ignorable="d"
         Title="OrderListForManeger" Height="457" Width="800">
     <Grid >
+        
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="7*"/>
             <ColumnDefinition Width="793*"/>
         </Grid.ColumnDefinitions>
+        <Grid.Background>
+        <ImageBrush ImageSource="C:\Users\user\OneDrive\שולחן העבודה\minip\dotNet5782_6386_6083\PL\images\bckground.png">
 
-        <ListView Name="OrderListview" ItemsSource="{Binding Orders}"  Margin="0,33,0,0" Background="#DEDBD2" MouseDoubleClick="ListViewItem_MouseDoubleClick" Foreground="#FF4A5759" Grid.ColumnSpan="2" Height="364" VerticalAlignment="Top" >
+        </ImageBrush>
+        </Grid.Background>
+
+        <ListView Name="OrderListview" ItemsSource="{Binding Orders}"  Margin="0,33,0,0"  MouseDoubleClick="ListViewItem_MouseDoubleClick" Grid.ColumnSpan="2" Height="364" VerticalAlignment="Top" >
             <ListView.View>
                 <GridView AllowsColumnReorder="True">
 
@@ -26,17 +33,6 @@
                 </GridView >
             </ListView.View>
         </ListView>
-        <Label HorizontalAlignment="Left" Content="Orders:" VerticalAlignment="Top" Width="800" Height="33" Foreground="#FFFFFF" Background="#AB8F80" FontWeight="Bold" FontSize="24" FontStyle="Italic" FontFamily="Stencil" Grid.ColumnSpan="2"/>
-        <materialDesign:PackIcon Name="goback" Kind="Forward" Foreground="#AB8F80" Height="49" Width="101" Margin="644,385,0,0" RenderTransformOrigin="0.5,0.5" Grid.Column="1"
-                 MouseDoubleClick="goback_click"  >
-            <materialDesign:PackIcon.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform ScaleX="-1"/>
-                    <SkewTransform/>
-                    <RotateTransform/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </materialDesign:PackIcon.RenderTransform>
-        </materialDesign:PackIcon>
+        <Label HorizontalAlignment="Left" Content="Orders:" VerticalAlignment="Top" Width="800" Height="33"  FontSize="24" FontStyle="Italic"  Grid.ColumnSpan="2"/>
     </Grid>
 </Window>

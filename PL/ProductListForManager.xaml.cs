@@ -33,9 +33,7 @@ namespace PL
         
 
         public ObservableCollection<BO.ProductForList> Products; /*{ set; get; }*/
-       // public List<BO.ProductForList> ProductsList{ set; get; }
-
-       // public  IEnumerable<BO.ProductForList> ProductsList { get; set; }
+       
         public ProductListForManager()
         {
             InitializeComponent();
