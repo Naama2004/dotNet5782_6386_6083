@@ -6,14 +6,22 @@
          xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:PL"
         mc:Ignorable="d"
+        FontFamily="Cooper black"
+        Foreground="Black"
         Title="Cart" Height="450" Width="800">
-    <Grid Background="#FFDEDBD2">
+    <Grid >
+        <Grid.Background>
+            <ImageBrush ImageSource="C:\Users\user\OneDrive\שולחן העבודה\minip\dotNet5782_6386_6083\PL\images\bckground.png">
+
+            </ImageBrush>
+        </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="101*"/>
             <RowDefinition Height="116*"/>
         </Grid.RowDefinitions>
-        <DataGrid x:Name="ProductList" ItemsSource="{Binding items}" Margin="0,78,0,10" Background="#FFDEDBD2" Grid.RowSpan="2"
-               CanUserDeleteRows="False" 
+        <DataGrid x:Name="ProductList" ItemsSource="{Binding items}" Margin="0,78,0,10"  Grid.RowSpan="2"
+
+            CanUserDeleteRows="False" 
                   CanUserResizeRows="False"
                   AreRowDetailsFrozen="True"
                   CanUserAddRows="False"
@@ -47,10 +55,10 @@
 
             </DataGrid.Columns>
         </DataGrid>
-        <Label x:Name="Layers" Content="Layers" Margin="282,0,283,124" FontSize="48" BorderBrush="#FF4A5759" Background="#00000000" HorizontalContentAlignment="Center" FontFamily="Cooper Black" FontStyle="Normal" Foreground="#FF4A5759" FontWeight="Bold" RenderTransformOrigin="0.505,0.149"/>
-        <materialDesign:PackIcon Name="smileySad" Kind="SmileySadOutline" Foreground="#4A5759"  Height="114" Width="146" Margin="300,116,0,0" Grid.RowSpan="2"/>
-        <Label Name="emptyCart" Content="we're sorry your cart is Empty..." Margin="235,99,235,30" Foreground="#FF4A5759" FontFamily="Arial Black" FontSize="14"/>
-        <Button Name="continueB" Content="Continue Shopping" Style="{DynamicResource MaterialDesignFlatButton}" Margin="271,28,325,172" Foreground="#FF4A5759" FontFamily="Arial Black" FontWeight="Bold" Background="#FFB0C4B1" Click="continueB_click" Grid.Row="1"/>
+        <Label x:Name="Layers" Content="Layers" Margin="282,0,283,124" FontSize="48"   HorizontalContentAlignment="Center"  FontStyle="Normal"  FontWeight="Bold" RenderTransformOrigin="0.505,0.149"/>
+        <materialDesign:PackIcon Name="smileySad" Kind="SmileySadOutline"   Height="114" Width="146" Margin="300,116,0,0" Grid.RowSpan="2"/>
+        <Label Name="emptyCart" Content="we're sorry your cart is Empty..." Margin="235,99,235,30"   FontSize="14"/>
+        <Button Name="continueB" Content="Continue Shopping" Style="{DynamicResource MaterialDesignFlatButton}" Margin="271,28,325,172"   FontWeight="Bold"  Click="continueB_click" Grid.Row="1"/>
 
 
 

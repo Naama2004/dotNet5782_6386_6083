@@ -28,23 +28,23 @@ namespace PL
     {
         private IBl bl = BLApi.Factory.Get();
         public BO.cart thisCart = new BO.cart();
-        public ObservableCollection<BO.OrderItem> items { get; set; }
+        public ObservableCollection<BO.OrderItem> items { get; set; } 
    
         public Cart(BO.cart C)
         {
             try
             {
                 InitializeComponent();
+
                 thisCart = C;
                 //var i = bl.Cart.getCartList(C);
                 smileySad.Visibility = Visibility.Hidden;
                 emptyCart.Visibility = Visibility.Hidden;
                 continueB.Visibility = Visibility.Hidden;
                 items = new ObservableCollection<BO.OrderItem>(bl.Cart.getCartList(thisCart));
-                
-
-
                 ProductList.ItemsSource = items;
+
+
             }
             catch (BO.NotFoundException ex)
             {

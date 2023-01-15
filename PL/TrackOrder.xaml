@@ -4,16 +4,27 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL"
-        mc:Ignorable="d"
+        FontFamily="Cooper black"
+        Foreground="Black"
+        
+    
+    mc:Ignorable="d"
         Title="TrackOrder" Height="450" Width="800">
-    <Grid Background="#DEDBD2">
-        <Label  Content="Order tracking:" FontFamily="Showcard Gothic" FontSize="36" Foreground="#4A5759" HorizontalAlignment="Center" Height="58" Margin="0,36,0,0" VerticalAlignment="Top" Width="372"/>
-        <Label  Foreground="#FF4A5759" FontStyle="Italic" FontFamily="Stencil" Content="Order's ID:" HorizontalAlignment="Left" Height="47" Margin="137,127,0,0" VerticalAlignment="Top" Width="204" FontSize="14"/>
-        <Label x:Name="order_Status" Content="Order's status:" Foreground="#FF4A5759" FontStyle="Italic" FontFamily="Stencil" HorizontalAlignment="Left" Height="47" Margin="137,199,0,0" VerticalAlignment="Top" Width="204" FontSize="14"/>
-        <TextBox Name="OrderID" HorizontalAlignment="Left" Height="47" Margin="346,127,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="204" Background="#DEDBD2" Foreground="#FF4A5759" FontStyle="Italic" FontFamily="Stencil" FontSize="14"/>
-        <TextBox x:Name="Text_Order_status" HorizontalAlignment="Left" Height="47" Margin="346,199,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="204" Background="#DEDBD2" RenderTransformOrigin="0.502,0.516" Foreground="#FF4A5759" FontStyle="Italic" FontFamily="Stencil" FontSize="14"/>
-        <Button x:Name="_continue" Content="Continue shopping" HorizontalAlignment="Center" Height="61" Margin="0,298,0,0" VerticalAlignment="Top" Width="244" FontStyle="Italic" FontFamily="Stencil" Foreground="#FF4A5759" Background="#FFB0C4B1" Click="_continue_Click"/>
-        <Button x:Name="Entered_Oid" Content="Track order" Margin="586,127,32,260" Background="#FFB0C4B1" FontWeight="Bold" FontSize="14" Click="Entered_Oid_Click"/>
+    <Grid >
+        <Grid.Background>
+            <ImageBrush ImageSource="C:\Users\user\OneDrive\שולחן העבודה\minip\dotNet5782_6386_6083\PL\images\bckground.png">
+
+            </ImageBrush>
+        </Grid.Background>
+
+        <Label Background="#FFDAC4AF"   HorizontalAlignment="Center" Height="32" VerticalAlignment="Top" Width="800"   />
+        <Label  Content="Order tracking:"  FontSize="36"  HorizontalAlignment="Center" Height="65" Margin="0,36,0,0" VerticalAlignment="Top" Width="414"/>
+        <Label   FontStyle="Normal"  Content="Order's ID:" HorizontalAlignment="Left" Height="47" Margin="55,134,0,0" VerticalAlignment="Top" Width="199" FontSize="16"/>
+        <Label x:Name="order_Status" Content="Order's status:"  FontStyle="Normal"  HorizontalAlignment="Left" Height="47" Margin="55,186,0,0" VerticalAlignment="Top" Width="204" FontSize="16"/>
+        <TextBox Name="OrderID" HorizontalAlignment="Left" Height="31" Margin="259,136,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="173"   FontSize="14"/>
+        <TextBox x:Name="Text_Order_status" HorizontalAlignment="Left" Height="32" Margin="259,0,0,0" TextWrapping="Wrap"  VerticalAlignment="Center" Width="173"  RenderTransformOrigin="0.502,0.516" Foreground="#FF4A5759" FontSize="14"/>
+        <Button x:Name="_continue" Content="Continue shopping" HorizontalAlignment="Left" Height="61" Margin="346,282,0,0" VerticalAlignment="Top" Width="244"     Click="_continue_Click" Background="{x:Null}" BorderBrush="Black" Foreground="#DD000000" FontSize="16"/>
+        <Button x:Name="Entered_Oid" Content="Track order" Margin="484,141,134,261"  FontWeight="Bold" FontSize="16" Click="Entered_Oid_Click" Background="{x:Null}" BorderBrush="Black" Foreground="#DD000000"/>
 
     </Grid>
 </Window>

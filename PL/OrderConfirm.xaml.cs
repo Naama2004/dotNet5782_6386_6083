@@ -64,6 +64,7 @@ namespace PL
             if (flag)
             {
                 bool temp = bl.Cart.OrderConfirm(Cart);
+                
                 if (temp == false)
                 {
                     MessageBox.Show("ERROR"

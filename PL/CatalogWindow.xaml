@@ -32,7 +32,7 @@
         </ListBox>
         <TextBlock Text="Use our code NEW15 to(maybe) get a discount:)" Background="#FFDAC4AF"   HorizontalAlignment="Center" Height="32" VerticalAlignment="Top" Width="800" TextAlignment="Center" FontFamily="Cooper Black" TextWrapping="NoWrap" />
        
-        <TextBlock  Margin="31,37,627,351" Text="Layers" FontSize="36" FontWeight="Bold" FontFamily="Cooper Black"></TextBlock>
+        <TextBlock  Margin="31,37,627,362" Text="Layers" FontSize="36" FontWeight="Bold" FontFamily="Cooper Black"></TextBlock>
         <materialDesign:PackIcon Kind="Cart" Height="32" Width="118" Margin="686,0,0,0" MouseDoubleClick="ViewCart" IsEnabled="True"/>
         <materialDesign:PackIcon Kind="Package" Height="34" Width="76" Margin="651,-2,0,0" MouseDoubleClick="Track_Order" IsEnabled="True"/>
 
