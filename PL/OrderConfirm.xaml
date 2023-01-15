@@ -12,8 +12,8 @@
         <Label Content="your E-mail address:" HorizontalAlignment="Left" Height="43" Margin="95,174,0,0" VerticalAlignment="Top" Width="236" Foreground="#FF4A5759" FontStyle="Italic" FontFamily="Stencil" FontSize="14"/>
         <Label Content="your address:" HorizontalAlignment="Left" Height="43" Margin="95,248,0,0" VerticalAlignment="Top" Width="236" Foreground="#FF4A5759" FontStyle="Italic" FontFamily="Stencil" FontSize="14"/>
         <TextBox Name="Name" HorizontalAlignment="Left" Height="43" Margin="459,108,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="227" Background="#DEDBD2"/>
-        <TextBox Name="Email" HorizontalAlignment="Left" Height="43" Margin="459,248,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="227" Background="#DEDBD2"/>
-        <TextBox Name="Address" HorizontalAlignment="Left" Height="43" Margin="459,174,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="227" Background="#DEDBD2"/>
+        <TextBox Name="Address" HorizontalAlignment="Left" Height="43" Margin="459,248,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="227" Background="#DEDBD2"/>
+        <TextBox Name="Email" HorizontalAlignment="Left" Height="43" Margin="459,174,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="227" Background="#DEDBD2"/>
         <Button Content="Place Order" HorizontalAlignment="Left" Height="58" Margin="242,322,0,0" VerticalAlignment="Top" Width="272"  Foreground="#FF4A5759" FontStyle="Italic" FontFamily="Stencil" Background="#FFB0C4B1" FontSize="16" Click="Button_Click"/>
 
     </Grid>

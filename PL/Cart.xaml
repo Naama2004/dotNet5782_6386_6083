@@ -11,7 +11,7 @@
         Title="Cart" Height="450" Width="800">
     <Grid >
         <Grid.Background>
-            <ImageBrush ImageSource="C:\Users\user\OneDrive\שולחן העבודה\minip\dotNet5782_6386_6083\PL\images\bckground.png">
+            <ImageBrush ImageSource="C:\Users\אריאל דרעי\Desktop\תואר\miniProject\dotNet5782_6386_6083\PL\images\bckground.png">
 
             </ImageBrush>
         </Grid.Background>
@@ -59,6 +59,7 @@
         <materialDesign:PackIcon Name="smileySad" Kind="SmileySadOutline"   Height="114" Width="146" Margin="300,116,0,0" Grid.RowSpan="2"/>
         <Label Name="emptyCart" Content="we're sorry your cart is Empty..." Margin="235,99,235,30"   FontSize="14"/>
         <Button Name="continueB" Content="Continue Shopping" Style="{DynamicResource MaterialDesignFlatButton}" Margin="271,28,325,172"   FontWeight="Bold"  Click="continueB_click" Grid.Row="1"/>
+        <Button Content="order" HorizontalAlignment="Left" Height="42" Margin="664,10,0,0" VerticalAlignment="Top" Width="114" Click="Button_Click"/>
 
 
 

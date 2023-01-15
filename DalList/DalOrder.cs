@@ -13,7 +13,7 @@ public class DalOrder :IOrder /*ICrud<Order>*/
         if (O.ID != 0)
         {
             if (DataSource.orders.Exists(x => x?.ID == O.ID))//if it exist returns true O is alredy in the list
-                throw new ExistIdException("this product already exist");
+                throw new ExistIdException("this order already exist");
             DataSource.orders.Add(O);//if the product isnt already in the list , adds it . 
             return O.ID;
         }
@@ -21,6 +21,7 @@ public class DalOrder :IOrder /*ICrud<Order>*/
         {
             //we didnt know that add functions needed to return id and we didnt have the time to finis it
             O.ID = config.NextO;
+           // DataSource.orders.Add(O);
             return O.ID;
         }
     }

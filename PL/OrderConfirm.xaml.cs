@@ -63,22 +63,25 @@ namespace PL
             }
             if (flag)
             {
-                bool temp = bl.Cart.OrderConfirm(Cart);
-                
-                if (temp == false)
+                try
+                {
+                    Cart.CustomerEmail = Email.Text;
+                    Cart.CustomerAddres = Address.Text;
+                    Cart.CustomerName = Name.Text;
+                    int id = bl.Cart.OrderConfirm(Cart);
+                    MessageBox.Show("Order " + id+" is confirm",
+                            "Thank you for your order"
+                            , MessageBoxButton.OK
+                            );
+                }
+                catch (Exception ex)
                 {
                     MessageBox.Show("ERROR"
                     , "sorry something went wrong with your order, try again"
                     , MessageBoxButton.OK,
                       MessageBoxImage.Hand);
                 }
-                else
-                {
-                    MessageBox.Show(" ",
-                        "Thank you for your order"
-                        ,MessageBoxButton.OK
-                        );
-                }
+            
                 Close();
             }
         }
