@@ -14,9 +14,9 @@ public class DalProduct : IProduct/*ICrud<Product>*/
     {
         if (P.ID != 0)
         {
-            if (DataSource.products.Exists(x => x?.ID == P.ID))//is exist returns true P is alredy in the list
+            if (DataSource.Products.Exists(x => x?.ID == P.ID))//is exist returns true P is alredy in the list
                 throw new ExistIdException("this product already exist");
-            DataSource.products.Add(P);//if the product isnt already in the list , adds it . 
+            DataSource.Products.Add(P);//if the product isnt already in the list , adds it . 
             return P.ID;
         }
         else
@@ -29,7 +29,7 @@ public class DalProduct : IProduct/*ICrud<Product>*/
     public void DELETE(int id)
     {
         //if the function finds the product it removes it , if not it returns null and the code throws an exeption.
-       if(DataSource.products.RemoveAll(x => x?.ID == id)==0)
+       if(DataSource.Products.RemoveAll(x => x?.ID == id)==0)
             throw new UnfounfException("cant delete a no existing item"); 
 
 
@@ -47,7 +47,7 @@ public class DalProduct : IProduct/*ICrud<Product>*/
 
     public Product GET(int id)
     {
-        Product? help = DataSource.products.FirstOrDefault(x => x?.ID == id);
+        Product? help = DataSource.Products.FirstOrDefault(x => x?.ID == id);
         if (help != null)//if the product exist in the list , return in 
             return (Product)help;
         else//first or default returned null which means the product doesnt exist 
@@ -72,6 +72,6 @@ public class DalProduct : IProduct/*ICrud<Product>*/
 
     public IEnumerable<DO.Product> GetAll()
     {
-        return (from Product P in DataSource.products select P).ToList();
+        return (from Product P in DataSource.Products select P).ToList();
     }
 }
