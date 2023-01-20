@@ -1,60 +1,80 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<OrderItems>
-	<OrderItem>
-		<ID>300000</ID>
-		<ProductID>100004</ProductID>
-		<OrderID>200000</OrderID>
-		<Price>60</Price>
-		<Amount>2</Amount>
-	</OrderItem>
-
-	<OrderItem>
-		<ID>300001</ID>
-		<ProductID>100007</ProductID>
-		<OrderID>200000</OrderID>
-		<Price>15</Price>
-		<Amount>1</Amount>
-	</OrderItem>
-
-	
-	<OrderItem>
-		<ID>300002</ID>
-		<ProductID>100015</ProductID>
-		<OrderID>200001</OrderID>
-		<Price>40</Price>
-		<Amount>1</Amount>
-	</OrderItem>
-
-	<OrderItem>
-		<ID>300003</ID>
-		<ProductID>100010</ProductID>
-		<OrderID>200001</OrderID>
-		<Price>50</Price>
-		<Amount>1</Amount>
-	</OrderItem>
-
-	<OrderItem>
-		<ID>300004</ID>
-		<ProductID>100008</ProductID>
-		<OrderID>200003</OrderID>
-		<Price>15</Price>
-		<Amount>1</Amount>
-	</OrderItem>
-
-	<OrderItem>
-		<ID>300005</ID>
-		<ProductID>100014 </ProductID>
-		<OrderID>200003</OrderID>
-		<Price>50</Price>
-		<Amount>1</Amount>
-	</OrderItem>
-
-	<OrderItem>
-		<ID>300006</ID>
-		<ProductID>100001</ProductID>
-		<OrderID>200003</OrderID>
-		<Price>120</Price>
-		<Amount>4</Amount>
-	</OrderItem>
-	
+<OrderItems xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <OrderItem>
+    <ID>300000</ID>
+    <ProductID>10004</ProductID>
+    <OrderID>200000</OrderID>
+    <Price>30</Price>
+    <Amount>2</Amount>
+  </OrderItem>
+  <OrderItem>
+    <ID>300001</ID>
+    <ProductID>987654</ProductID>
+    <OrderID>200000</OrderID>
+    <Price>15</Price>
+    <Amount>1</Amount>
+  </OrderItem>
+  <OrderItem>
+    <ID>300002</ID>
+    <ProductID>10005</ProductID>
+    <OrderID>200000</OrderID>
+    <Price>50</Price>
+    <Amount>2</Amount>
+  </OrderItem>
+  <OrderItem>
+    <ID>300003</ID>
+    <ProductID>10003</ProductID>
+    <OrderID>200001</OrderID>
+    <Price>30</Price>
+    <Amount>2</Amount>
+  </OrderItem>
+  <OrderItem>
+    <ID>300004</ID>
+    <ProductID>10005</ProductID>
+    <OrderID>200001</OrderID>
+    <Price>50</Price>
+    <Amount>1</Amount>
+  </OrderItem>
+  <OrderItem>
+    <ID>300005</ID>
+    <ProductID>987654</ProductID>
+    <OrderID>200001</OrderID>
+    <Price>15</Price>
+    <Amount>1</Amount>
+  </OrderItem>
+  <OrderItem>
+    <ID>300006</ID>
+    <ProductID>10001</ProductID>
+    <OrderID>200002</OrderID>
+    <Price>30</Price>
+    <Amount>2</Amount>
+  </OrderItem>
+  <OrderItem>
+    <ID>300007</ID>
+    <ProductID>10005</ProductID>
+    <OrderID>200002</OrderID>
+    <Price>50</Price>
+    <Amount>2</Amount>
+  </OrderItem>
+  <OrderItem>
+    <ID>300008</ID>
+    <ProductID>987654</ProductID>
+    <OrderID>200002</OrderID>
+    <Price>15</Price>
+    <Amount>1</Amount>
+  </OrderItem>
+  <OrderItem>
+    <ID>300009</ID>
+    <ProductID>10002</ProductID>
+    <OrderID>200003</OrderID>
+    <Price>30</Price>
+    <Amount>2</Amount>
+  </OrderItem>
+  <OrderItem>
+    <ID>300010</ID>
+    <ProductID>10005</ProductID>
+    <OrderID>200003</OrderID>
+    <Price>50</Price>
+    <Amount>2</Amount>
+  </OrderItem>
 </OrderItems>

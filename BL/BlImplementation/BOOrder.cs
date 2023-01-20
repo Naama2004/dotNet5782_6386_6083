@@ -76,36 +76,22 @@ public class BOOrder : BLApi.IOrder
         {
 
             DO.Order temp = factor!.Order.GET(id);//find the wanted order
-            if (temp.ShipDate!=null)
+            if (temp.ShipDate == null)
             {
-                if (DateTime.Today > temp.ShipDate)
-                {
-                //updating the DO entity
-                DO.Order updatedDO = new DO.Order();
-                updatedDO.ID = temp.ID;
-                updatedDO.CustomerEmail = temp.CustomerEmail;
-                updatedDO.CustomerAddress = temp.CustomerAddress;
-                updatedDO.CustomerName = temp.CustomerName;
-                updatedDO.OrderDate = temp.OrderDate;
-                updatedDO.DeliveryDate = temp.DeliveryDate;
-                updatedDO.ShipDate = DateTime.Today;
-                factor.Order.UPDATE(updatedDO);
+                temp.ShipDate=DateTime.Now; 
+                factor.Order.UPDATE(temp);
                 //return an updated BO entity
-                BO.Order updatedBO = copyvalues(updatedDO);
+                BO.Order updatedBO = copyvalues(temp);
                 updatedBO.Items = getallorderItem(id);
-                updatedBO.State = FindState(updatedDO);
+                updatedBO.State = FindState(temp);
                 updatedBO.Price = TotalPrice(id);
                 return updatedBO;
             }
             else
             {
                 throw new Exception("this boat has already been shiped");
-            }
-            }
-            else
-            {
-                throw new Exception("this boat has already been shiped");
-            }
+            }           
+
 
         }
         catch(DO.UnfounfException ex)
@@ -230,7 +216,7 @@ public class BOOrder : BLApi.IOrder
         List<DO.OrderItem> temp = factor.OrderItem.GetAll().ToList();
         foreach (DO.OrderItem item in temp)
         {
-            if (item.ID == ID)
+            if (item.OrderID == ID)
                 total += (int)item.Amount;
 
         }
@@ -247,8 +233,8 @@ public class BOOrder : BLApi.IOrder
         List<DO.OrderItem> temp = factor.OrderItem.GetAll().ToList();
         foreach (DO.OrderItem item in temp)
         {
-            if (item.ID == ID)
-                total += (Double?)item.Price;
+            if (item.OrderID == ID)
+                total += item.Price*item.Amount;
 
         }
         return total;

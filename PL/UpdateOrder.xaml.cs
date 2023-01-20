@@ -42,7 +42,17 @@ namespace PL
             int orderID = int.Parse(OrderIdDetails.Text);
             try
             {
-                bl.Order.UpdateShip(orderID);
+                if(bl.Order.UpdateShip(orderID).ShipDate!=null)
+                {
+                    MessageBox.Show(
+
+     "order shiping date was updated",
+     "succses"
+     , MessageBoxButton.OK,
+     MessageBoxImage.Information
+     );
+                }
+
                 new OrderListForManeger().Show();
                 this.Close();
             }

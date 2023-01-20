@@ -30,6 +30,7 @@ public class BOProduct : IProduct
                     Print = P.Print,
                     price = P.Price,
                     Category = (BO.Enums.Category)P.Category!,
+                    InStock = P.InStock,
                 }).ToList();
 
     }

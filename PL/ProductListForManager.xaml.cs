@@ -81,7 +81,7 @@ namespace PL
                 update.Print = item.Print;
                 update.category = item.Category;
                 update.Price = item.price;
-                update.instock = 1;// need to be changed
+                update.instock =item.InStock;// need to be changed
                 Action<BO.Product >action = update => Products.Add(item);
                 new AddOrUpdateProductWindow(update,Products).Show();//open the ADD or Update window but send it value which makes it the updaate window
                // this.Close();

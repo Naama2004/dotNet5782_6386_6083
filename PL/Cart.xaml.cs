@@ -43,7 +43,7 @@ namespace PL
                 continueB.Visibility = Visibility.Hidden;
                 items = new ObservableCollection<BO.OrderItem>(bl.Cart.getCartList(thisCart));
                 ProductList.ItemsSource = items;
-
+                totalCartPrice();
 
             }
             catch (BO.NotFoundException ex)
@@ -55,6 +55,16 @@ namespace PL
             }
 
 
+        }
+
+        public double? totalCartPrice()
+        {
+            double? total=0;
+            foreach(var item in thisCart.items)
+            {
+                total += item.TotalPrice;
+            }
+            return total;
         }
         public void DeleteItem_Click(object sender, RoutedEventArgs e)
         {

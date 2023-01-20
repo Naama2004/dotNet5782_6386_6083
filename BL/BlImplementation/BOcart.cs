@@ -42,7 +42,6 @@ public class BOcart : ICart
                     amount = amount,
                     TotalPrice = amount * PDetails.Price
                 };
-                item.TotalPrice += item.price;
                 C.items.Add(item);
                 C.price += item.TotalPrice;
                 return C;
@@ -145,6 +144,11 @@ public class BOcart : ICart
             DO.Product product = (DO.Product)factor.Product.GET((int)item.ProductId);
             if (product.InStock - item.amount < 0)
                 throw new Exception("we couldnt approve your order");
+
+            DO.Product update = product;
+            update.InStock = product.InStock - item.amount;
+            factor.Product.UPDATE(update);
+
             //if the produt in stock so add to order
             DO.OrderItem newOrderItem = new DO.OrderItem()
             {
@@ -154,7 +158,7 @@ public class BOcart : ICart
                 Amount = item.amount,
             };
             newOrderItem.ID = factor.OrderItem.ADD(newOrderItem);
-            factor.OrderItem.ADD(newOrderItem);
+             factor.OrderItem.ADD(newOrderItem);
         }
         factor.Order.ADD(newOrder);
         //Console.WriteLine("your order number is : " + idOfOrder);

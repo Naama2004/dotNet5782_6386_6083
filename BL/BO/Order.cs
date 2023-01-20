@@ -23,7 +23,7 @@ Order Date: {OrderDate}
 Ship Date:  {ShipDate}
 Delivery Date:{DeliveryDate}
 price: {Price},
-items
+amount of items:{Items.Count}
     
 	";
 }

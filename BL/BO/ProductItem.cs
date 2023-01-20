@@ -11,7 +11,7 @@ public class ProductItem
 
     public override string ToString() => $@"
 Product Id: ={ProductId},
-Name: {Print},
+print: {Print},
 price: {Price},
 Category: {category},
 	";

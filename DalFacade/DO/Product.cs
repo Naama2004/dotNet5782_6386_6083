@@ -1,18 +1,30 @@
 ﻿
 
+using System.Xml.Serialization;
+
 namespace DO;
+[XmlRoot("Products")]
 public struct Product
 {
-    public string? Print { get; set; }
+    [XmlElement("ID")]
     public int ID { get; set; }
-    public double? Price { get; set; }
-    public int? InStock { get; set; }
+    [XmlElement("Category")]
     public Enums.Category? Category { get; set; }
+
+    [XmlElement("Print")]
+    public string? Print { get; set; }
+
+    [XmlElement("Price")]
+    public double? Price { get; set; }
+
+    [XmlElement("InStock")]
+    public int? InStock { get; set; }
+
 
     public override string ToString() => $@"
 	Product ID={ID}:
-    pruduct name: {Print}, 
-	category -{Category}
+    pruduct print: {Print}, 
+	category :{Category}
     Price:{Price}
     Amount in stock:{InStock}
 	";

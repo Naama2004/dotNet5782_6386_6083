@@ -1,34 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Orders>
-	<Order>
-		<ID> 200000</ID>
-		<CustomerName>Naama Deree</CustomerName>
-		<CustomerEmail>Naamaderee@gmail.com</CustomerEmail>
-		<CustomerAddress>jerusalem 43</CustomerAddress>
-		<OrderDate>12/12/2022</OrderDate>
-		<ShipDate>1/1/2023</ShipDate>
-		<DeliveryDate>7/1/2023</DeliveryDate>
-	</Order>
-
-	<Order>
-		<ID> 200001</ID>
-		<CustomerName>Yahel Ohana</CustomerName>
-		<CustomerEmail>yyahelOhana@gmail.com</CustomerEmail>
-		<CustomerAddress>Har shmouel 4</CustomerAddress>
-		<OrderDate>10/11/2022</OrderDate>
-		<ShipDate>1/11/2022</ShipDate>
-		<DeliveryDate>5/11/2022</DeliveryDate>
-	</Order>
-
-	<Order>
-		<ID> 200003</ID>
-		<CustomerName>Noa Kahan</CustomerName>
-		<CustomerEmail>Nkahan@gmail.com</CustomerEmail>
-		<CustomerAddress>Ramat shlomo 6</CustomerAddress>
-		<OrderDate>8/11/2022</OrderDate>
-		<ShipDate>10/11/2022</ShipDate>
-		<DeliveryDate>1/12/2022</DeliveryDate>
-	</Order>
-	
-	
+<Orders xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Order>
+    <ID>200003</ID>
+    <CustomerName>NaamaDeree</CustomerName>
+    <CustomerEmail>naamaderee@gmail.com</CustomerEmail>
+    <CustomerAddress />
+    <OrderDate>2023-01-19T23:18:14.3150042+02:00</OrderDate>
+    <ShipDate>2023-01-19T23:18:26.5046499+02:00</ShipDate>
+    <DeliveryDate>2023-01-19T00:00:00+02:00</DeliveryDate>
+  </Order>
 </Orders>

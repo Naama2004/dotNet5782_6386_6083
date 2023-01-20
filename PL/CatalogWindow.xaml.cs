@@ -83,19 +83,19 @@ namespace PL
 
                 switch (P.Print)
                 {
-                    case "127.0.0.1 SWEET  127.0.0.1":
+                    case "127.0.0.1 Sweet 127.0.0.1":
                         temp = BO.Enums.print.home_SWEET_home;
                         break;
-                    case "Hello World!":
+                    case "HELLO WORLD!":
                         temp = BO.Enums.print.HelloWorld;
                         break;
-                    case "give me a </br>":
+                    case "give me a break":
                         temp = BO.Enums.print.give_me_a_break;
                         break;
                     case "2B || !2B":
                         temp = BO.Enums.print.to_B_or_not_to_be;
                         break;
-                    case "roses are #FF0000 vilets are #0000FF":
+                    case "roses are #ff0000 violets are #0000ff":
                         temp = BO.Enums.print.roses_are_red_vilots_are_blue;
                         break;
                 }

@@ -6,15 +6,31 @@ using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 
-//namespace Dal;
-//using DalApi;
-//using DO;
-//sealed internal class DalXml:IDal
-//{
-//    public IOrder Order { get; } = new Dal.Order();
+namespace Dal;
+using DalApi;
+using DO;
+using System.Diagnostics;
+using System.Xml.Serialization;
 
-//    public IProduct Product{ get; } = new Dal.Product();
+[XmlRoot("RunNumbers")]
+public struct ConfigNumbers
+{
+    [XmlElement("num")]
+    public int num { get; set; }
 
-//    public IOrderItem OrderItem{ get; } = new Dal.OrderItem();
+    [XmlElement("type")]
+    public string type { get; set; }
+}
 
-//}
+sealed internal class DalXml : IDal
+{
+    public static IDal Instance { get; } = new DalXml();
+
+
+    public IOrder Order { get; } = new Dal.Order();
+
+    public IProduct Product { get; } = new Dal.Product();
+
+    public IOrderItem OrderItem { get; } = new Dal.OrderItem();
+
+}

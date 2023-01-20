@@ -10,7 +10,7 @@ public class Product
     public int? instock { get; set; }
     public override string ToString() => $@"
 Product ID={ID}:
-pruduct name: {Print}, 
+print: {Print}, 
 category -{category}
 Price:{Price}
 Amount in stock:{instock}
