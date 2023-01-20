@@ -76,8 +76,10 @@ public class BOOrder : BLApi.IOrder
         {
 
             DO.Order temp = factor!.Order.GET(id);//find the wanted order
-            if (DateTime.Today < temp.ShipDate)
+            if (temp.ShipDate!=null)
             {
+                if (DateTime.Today > temp.ShipDate)
+                {
                 //updating the DO entity
                 DO.Order updatedDO = new DO.Order();
                 updatedDO.ID = temp.ID;
@@ -94,6 +96,11 @@ public class BOOrder : BLApi.IOrder
                 updatedBO.State = FindState(updatedDO);
                 updatedBO.Price = TotalPrice(id);
                 return updatedBO;
+            }
+            else
+            {
+                throw new Exception("this boat has already been shiped");
+            }
             }
             else
             {
@@ -205,12 +212,13 @@ public class BOOrder : BLApi.IOrder
     #region find state
     public BO.Enums.State FindState(DO.Order O)
     {
-        if (DateTime.Today >= O.OrderDate && DateTime.Today < O.ShipDate)
+        if (O.OrderDate != null && O.ShipDate == null && O.DeliveryDate == null)
             return BO.Enums.State.approved;
-        if (DateTime.Today >= O.ShipDate && DateTime.Today < O.DeliveryDate)
+        if (O.OrderDate != null && O.ShipDate != null && O.DeliveryDate == null)
             return BO.Enums.State.send;
-        if (DateTime.Today >= O.DeliveryDate)
+        if (O.OrderDate != null && O.ShipDate != null && O.DeliveryDate != null)
             return BO.Enums.State.provided;
+       
         throw new Exception("check");
     }
     #endregion

@@ -127,42 +127,38 @@ public class BOcart : ICart
     #endregion
 
     #region approves order or makes a new one
-    public bool OrderConfirm(BO.cart c)
+    public int OrderConfirm(BO.cart c)
     {
-        //data tast
-        if ((!c.CustomerEmail.Contains('@')) || (c.CustomerName == "") || (c.CustomerAddres == ""))
-            throw new InValidIdException("the data is not valid");
-
         DO.Order newOrder = new DO.Order();
-
+       // DO.OrderItem temp = new DO.OrderItem();
         int idOfOrder = factor.Order.ADD(newOrder);//return the id of the new order
-        if (idOfOrder < 0)
-            throw new InValidIdException();
+        newOrder.ID = idOfOrder;
         newOrder.OrderDate = DateTime.Now;
         newOrder.ShipDate = null;
         newOrder.DeliveryDate = null;
-
+        newOrder.CustomerAddress = c.CustomerAddres;
+        newOrder.CustomerEmail = c.CustomerEmail;
+        newOrder.CustomerName = c.CustomerName; 
         foreach (var item in c.items)
         {
             //check if the product is in stock
-            DO.Product product = (DO.Product)factor.Product.GET(idOfOrder);
+            DO.Product product = (DO.Product)factor.Product.GET((int)item.ProductId);
             if (product.InStock - item.amount < 0)
-                return false;
+                throw new Exception("we couldnt approve your order");
             //if the produt in stock so add to order
             DO.OrderItem newOrderItem = new DO.OrderItem()
             {
-
                 ProductID = product.ID,
-                OrderID = item.OrderId,
+                OrderID = idOfOrder,
                 Price = item.price,
                 Amount = item.amount,
-                ID = idOfOrder
             };
-
+            newOrderItem.ID = factor.OrderItem.ADD(newOrderItem);
             factor.OrderItem.ADD(newOrderItem);
         }
-        Console.WriteLine("your order number is : " + idOfOrder);
-        return true;
+        factor.Order.ADD(newOrder);
+        //Console.WriteLine("your order number is : " + idOfOrder);
+        return idOfOrder;
     }
 
     #endregion
