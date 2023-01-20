@@ -25,7 +25,15 @@ namespace PL
 
 
         public ObservableCollection<PL.Product> Products;
-
+        public ObservableCollection<PL.Product> catalogProducts;
+        IOrderedEnumerable<IGrouping<BO.Enums.Category, PL.Product>> categoryGroups;
+        IOrderedEnumerable<IGrouping<string, PL.Product>> Printgroups;
+        public IEnumerable<string> printOptions = new string[] { "all",
+              "127.0.0.1 SWEET 127.0.0.1",
+               "Hello World!",
+            "give me a </br>"
+            ,"2B || !2B",
+            "roses are #FF0000 vilets are #0000FF"};
         public CatalogWindow()
         {
             InitializeComponent();
@@ -34,6 +42,8 @@ namespace PL
             catalog.ItemsSource = Products;
             DataContext = this;
             bl.Cart.EmptyCart(currentCart);
+            CategorySelector.ItemsSource = Enum.GetValues(typeof(BO.Enums.Category));
+            PrintSelector.ItemsSource = printOptions;
         }
         //public void Add_To_Cart_click(object sender, MouseButtonEventArgs e)
         //{
@@ -56,7 +66,7 @@ namespace PL
         //            //else
         //            bl.Cart.addProduct(currentCart, id, 0);
         //                }
-               
+
         //    }
         //    catch(BO.NotInStockException ex)
         //    {
@@ -101,21 +111,21 @@ namespace PL
                 }
                 var bitmapImage = new BitmapImage();
                 bitmapImage.BeginInit();
-        
+
                 bitmapImage.UriSource = new Uri(@"C:\Users\user\OneDrive\שולחן העבודה\minip\dotNet5782_6386_6083\PL\images\" + P.Category + temp + @".png");
                 bitmapImage.EndInit();
                 temp1.ImageSource = bitmapImage;
                 returnList.Add(temp1);
-                
+
             }
             return (IEnumerable<PL.Product>)returnList;
         }
         public void ProductList_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            
+
             PL.Product? item = catalog.SelectedItem as PL.Product;
-            if(item != null)    
-            new ProductInfo(currentCart,item!).Show();
+            if (item != null)
+                new ProductInfo(currentCart, item!).Show();
         }
         public void ViewCart(object sender, MouseButtonEventArgs e)
         {
@@ -126,8 +136,81 @@ namespace PL
             TrackOrder trackOrder = new TrackOrder();
             trackOrder.Show();
         }
-    }
-}
+     
 
+        private void Categoryselctor_SelectedChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+            var selectedCategory = ((ComboBox)sender).SelectedItem.ToString();
+            if (selectedCategory != BO.Enums.Category.none.ToString())
+            {
+                var groups = from p in Products
+                             group p by p.Category into newGroup
+                             orderby newGroup.Key
+                             select newGroup;
+                categoryGroups = groups;
+
+                foreach (var g in categoryGroups)
+                {
+                    if (g.Key.ToString() == selectedCategory)
+                    {
+                        catalogProducts = new(g.TakeWhile(x => true));
+                    }
+                }
+                catalog.ItemsSource = catalogProducts;
+            }
+
+            else
+            {
+                catalog.ItemsSource = Products;
+            }
+
+
+
+        }
+
+        private void Printselctor_SelectedChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+
+            var selectedPrint = PrintSelector.SelectedItem;
+            if (selectedPrint != "all")
+            {
+                var groups = from p in Products
+                             group p by p.Print into newGroup
+                             orderby newGroup.Key
+                             select newGroup;
+
+                Printgroups = groups;
+                //if (selectedPrint == "give me a /br")
+                //    selectedPrint = "give me a </br>";
+                foreach (var g in groups)
+                {
+                    if (g.Key == selectedPrint)
+                    {
+                        catalogProducts = new(g.TakeWhile(x => true));
+                    }
+                }
+                catalog.ItemsSource = catalogProducts;
+            }
+            else//the wanted print is default
+            {
+               catalog.ItemsSource = Products;
+            }
+
+
+
+
+
+
+
+
+        }
+
+
+    }
+    }
+
+    
 
 

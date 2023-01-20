@@ -23,58 +23,144 @@ using Microsoft.VisualBasic;
 namespace PL
 {
 
-    /// <summary>
-    /// Interaction logic for ProductListForManager.xaml
-    /// </summary>
+
     public partial class ProductListForManager : Window
     {
         private IBl bl = BLApi.Factory.Get();
-        
-        
+        //products contains the full list of products when sorting by category the matching products gets added to catalog poduct 
+        //when sorting by print the matching products gets added to catalog poduct when clicking the deafult value in each the full list ([eoducts) comes up 
 
-        public ObservableCollection<BO.ProductForList> Products; /*{ set; get; }*/
+
+        public ObservableCollection<BO.ProductForList> Products;
+        public ObservableCollection<BO.ProductForList> catalogProducts;
+        IOrderedEnumerable<IGrouping<BO.Enums.Category, BO.ProductForList>> Categorygroups;
+        IOrderedEnumerable<IGrouping<string, BO.ProductForList>> Printgroups;
+        public IEnumerable<string> printOptions = new string[] { "all",
+              "127.0.0.1 SWEET 127.0.0.1",
+               "Hello World!",
+            "give me a </br>"
+            ,"2B || !2B",
+            "roses are #FF0000 vilets are #0000FF"};
+       
        
         public ProductListForManager()
         {
             InitializeComponent();
+            //binding the product list 
             var TepProductsList = bl.Product.GetProducts();
-            //from p in bl.Product.GetProducts()
-            //make it PO!!!
-            Products=new ObservableCollection<BO.ProductForList>(TepProductsList);
+            Products = new ObservableCollection<BO.ProductForList>(TepProductsList);
 
-            ProductsListview.ItemsSource=Products;  
-            //DataContext = this;
-            CategorySelector.ItemsSource =  Enum.GetValues(typeof (DO.Enums.Category));
+
+
+            ProductsListview.ItemsSource = Products;// try xml
+            DataContext = this;
+            CategorySelector.ItemsSource = Enum.GetValues(typeof(DO.Enums.Category));
+
+            PrintSelector.ItemsSource = printOptions;
+
+
         }
 
-        private void CategorySelector_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        public void CategorySelector_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (CategorySelector.SelectedItem != null)
-            {
-                BO.Enums.Category category = (BO.Enums.Category)CategorySelector.SelectedItem;
 
-                //Products = new ObservableCollection<BO.ProductForList>(bl.Product.GetProductsByCondition(product => product.Category == category, Products));
-                ProductsListview.ItemsSource = bl.Product.GetProductsByCondition(product => product.Category == category, Products);
+
+            //BO.Enums.Category selectedCategory = (BO.Enums.Category)CategorySelector.SelectedItem;
+            var selectedCategory = ((ComboBox)sender).SelectedItem.ToString();
+            if (selectedCategory != BO.Enums.Category.none.ToString())
+            {
+                var groups = from p in Products
+                             group p by p.Category into newGroup
+                             orderby newGroup.Key
+                             select newGroup;
+
+                Categorygroups = groups;
+
+                foreach (var g in Categorygroups)
+                {
+                    if (g.Key.ToString() == selectedCategory)
+                    {
+                        catalogProducts = new(g.TakeWhile(x => true));
+                    }
+                }
+                ProductsListview.ItemsSource = catalogProducts;
             }
             else
-                ProductsListview.ItemsSource = bl.Product.GetProducts().ToList();
+
+                ProductsListview.ItemsSource = Products;
+
+
         }
+        private void PrintSelector_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+            var selectedPrint = PrintSelector.SelectedItem;
+            //var selectedPrint = PrintSelector.Text;
+
+
+            if (selectedPrint != "all")
+            {
+                var groups = from p in Products
+                             group p by p.Print into newGroup
+                             orderby newGroup.Key
+                             select newGroup;
+
+                Printgroups = groups;
+                //if (selectedPrint == "give me a /br")
+                //    selectedPrint = "give me a </br>";
+               foreach (var g in groups)
+                {
+                    if (g.Key== selectedPrint!)
+                    {
+                        catalogProducts = new(g.TakeWhile(x => true));
+                    }
+                }
+                ProductsListview.ItemsSource = catalogProducts; 
+            }
+            else//the wanted print is default
+            {
+                ProductsListview.ItemsSource = Products;
+            }
+
+
+
+
+
+
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            
+
             //Action<BO.Product> action = update => Products.Add(bl.Product.GetProducts().FirstOrDefault(x=>x.ProductId==)
-             new AddOrUpdateProductWindow(Products).Show(); ;
-           
-          //  ProductsListview.ItemsSource = bl.Product.GetProducts();// איך לעשות שלר נצטרך כל פעם לקחת מחדש את הרשימה??
-             //  this.Close();
+            new AddOrUpdateProductWindow(Products).Show(); ;
+
+            //  ProductsListview.ItemsSource = bl.Product.GetProducts();// איך לעשות שלר נצטרך כל פעם לקחת מחדש את הרשימה??
+            //  this.Close();
         }
 
-       private void ListViewItem_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        private void ListViewItem_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
 
-             BO.ProductForList? item = ProductsListview.SelectedItem as BO.ProductForList;
-            if (item != null) 
+            BO.ProductForList? item = ProductsListview.SelectedItem as BO.ProductForList;
+            if (item != null)
             {
                 BO.Product update = new BO.Product();
                 update.ID = item.ProductId;
@@ -82,9 +168,9 @@ namespace PL
                 update.category = item.Category;
                 update.Price = item.price;
                 update.instock = 1;// need to be changed
-                Action<BO.Product >action = update => Products.Add(item);
-                new AddOrUpdateProductWindow(update,Products).Show();//open the ADD or Update window but send it value which makes it the updaate window
-               // this.Close();
+                Action<BO.Product> action = update => Products.Add(item);
+                new AddOrUpdateProductWindow(update, Products).Show();//open the ADD or Update window but send it value which makes it the updaate window
+                                                                      // this.Close();
             }
             else
             {
@@ -96,5 +182,6 @@ namespace PL
 
         }
 
+
     }
-    }
+}

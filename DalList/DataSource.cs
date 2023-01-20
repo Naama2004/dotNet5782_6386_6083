@@ -62,7 +62,7 @@ namespace Dal;
     static readonly Random R = new Random();
     static internal List<Order?> orders { get; } = new List<Order?>();
     static internal List<OrderItem?> ordersItems { get; } = new List<OrderItem?>();
-    static internal List<Product?> products { get; } = new List<Product?>();
+    static internal List<Product?> Products { get; } = new List<Product?>();
     static public Product randP()
     {
         Product p = new Product();//a new one to add
@@ -74,7 +74,7 @@ namespace Dal;
         switch (rand)
         {
             case 0:
-                p.Print = "127.0.0.1 SWEET  127.0.0.1";
+                p.Print = "127.0.0.1 SWEET 127.0.0.1";
                 break;
             case 1:
                 p.Print = "Hello World!";
@@ -218,7 +218,7 @@ namespace Dal;
         temp.ID = config.NextOI;
         int stock = 0;
         Enums.Category pCategory = new Enums.Category();
-        foreach (Product p in products)
+        foreach (Product p in Products)
         {
             if (p.ID == Prand)
             {

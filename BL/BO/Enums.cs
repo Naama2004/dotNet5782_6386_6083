@@ -11,7 +11,7 @@ public class Enums
 
     public enum Category
     {
-        Tshirt, Sweatshirt, Sweatpant, BucketHat, Socks
+        Tshirt, Sweatshirt, Sweatpant, BucketHat, Socks, none
     }
     public enum Price
     {

@@ -3,7 +3,7 @@ public struct Enums
 {
     public enum Category
     {
-       Tshirt,Sweatshirt,Sweatpant,BucketHat, Socks
+     none, Tshirt,Sweatshirt,Sweatpant,BucketHat, Socks
     }
     public enum Price
     {
