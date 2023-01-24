@@ -29,11 +29,11 @@ namespace PL
         IOrderedEnumerable<IGrouping<BO.Enums.Category, PL.Product>> categoryGroups;
         IOrderedEnumerable<IGrouping<string, PL.Product>> Printgroups;
         public IEnumerable<string> printOptions = new string[] { "all",
-              "127.0.0.1 SWEET 127.0.0.1",
-               "Hello World!",
-            "give me a </br>"
+              "127.0.0.1 Sweet 127.0.0.1",
+               "HELLO WORLD!",
+            "give me a break"
             ,"2B || !2B",
-            "roses are #FF0000 vilets are #0000FF"};
+            "roses are #ff0000 violets are #0000ff"};
         public CatalogWindow()
         {
             InitializeComponent();
@@ -45,38 +45,7 @@ namespace PL
             CategorySelector.ItemsSource = Enum.GetValues(typeof(BO.Enums.Category));
             PrintSelector.ItemsSource = printOptions;
         }
-        //public void Add_To_Cart_click(object sender, MouseButtonEventArgs e)
-        //{
-        //    try
-        //    {
-        //        var curItem = ((ListBoxItem)catalog.ContainerFromElement((Button)sender)).Content;
-        //        //var temp1 = catalog.SelectedItem;
-        //        PL.Product? item = curItem as PL.Product;
-
-        //        int id = item.ProductId;
-        //        int amount = 0;//get the amount that is in the text box
-        //        if (amount == 0)
-        //        {
-        //            MessageBox.Show(
-        //              "amount 0  ",
-        //              "Invalid amount",
-        //               MessageBoxButton.OK,
-        //              MessageBoxImage.Hand);
-        //            //}
-        //            //else
-        //            bl.Cart.addProduct(currentCart, id, 0);
-        //                }
-
-        //    }
-        //    catch(BO.NotInStockException ex)
-        //    {
-        //        MessageBox.Show(
-        //             "oops thats too much ",
-        //             "Invalid stock",
-        //              MessageBoxButton.OK,
-        //             MessageBoxImage.Hand);
-        //    }
-        //}
+    
 
         IEnumerable<PL.Product> getProducts(IEnumerable<BO.ProductForList> tempList)
         {
@@ -89,23 +58,24 @@ namespace PL
                 temp1.ProductId = P.ProductId;
                 temp1.Print = P.Print;
                 temp1.price = P.price;
+                
                 temp1.Category = (BO.Enums.Category)P.Category!;
 
                 switch (P.Print)
                 {
-                    case "127.0.0.1 SWEET  127.0.0.1":
+                    case "127.0.0.1 Sweet 127.0.0.1":
                         temp = BO.Enums.print.home_SWEET_home;
                         break;
-                    case "Hello World!":
+                    case "HELLO WORLD!":
                         temp = BO.Enums.print.HelloWorld;
                         break;
-                    case "give me a </br>":
+                    case "give me a break":
                         temp = BO.Enums.print.give_me_a_break;
                         break;
                     case "2B || !2B":
                         temp = BO.Enums.print.to_B_or_not_to_be;
                         break;
-                    case "roses are #FF0000 vilets are #0000FF":
+                    case "roses are #ff0000 violets are #0000ff":
                         temp = BO.Enums.print.roses_are_red_vilots_are_blue;
                         break;
                 }
@@ -133,8 +103,8 @@ namespace PL
         }
         private void Track_Order(object sender, RoutedEventArgs e)
         {
-            TrackOrder trackOrder = new TrackOrder();
-            trackOrder.Show();
+            new TrackOrder().Show();
+          
         }
      
 
@@ -186,7 +156,7 @@ namespace PL
                 //    selectedPrint = "give me a </br>";
                 foreach (var g in groups)
                 {
-                    if (g.Key == selectedPrint)
+                    if( (string)g.Key ==(string) selectedPrint)
                     {
                         catalogProducts = new(g.TakeWhile(x => true));
                     }
@@ -197,7 +167,7 @@ namespace PL
             {
                catalog.ItemsSource = Products;
             }
-
+            
 
 
 

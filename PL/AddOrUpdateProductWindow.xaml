@@ -5,13 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL"
         FontFamily="Cooper black"
+        WindowStartupLocation="CenterScreen"
         Foreground="Black"
         mc:Ignorable="d"
         Title="AddProductWindowxaml" Height="450" Width="800">
-    <Grid Background="#EEE6DA" >
+    <Grid  >
 
-        <Label x:Name="categoryViewer" Content="Category:" HorizontalAlignment="Left" Margin="105,130,0,0"  VerticalAlignment="Top" Width="218" Height="40" FontSize="16" />
+        <Grid.Background>
+            <ImageBrush ImageSource="C:\Users\user\OneDrive\שולחן העבודה\minip\dotNet5782_6386_6083\PL\images\bckground.png">
+
+            </ImageBrush>
+        </Grid.Background>
         <Label x:Name="PrintOnItem" HorizontalAlignment="Left" Margin="105,175,0,0" Content="Print On Item:" VerticalAlignment="Top" Width="218" Height="420" FontSize="16" />
+        <Label x:Name="ctegory" HorizontalAlignment="Left" Margin="105,130,0,0" Content="item category:" VerticalAlignment="Top" Width="218" Height="38" FontSize="16" />
         <Label x:Name="price" HorizontalAlignment="Left" Content="Price:" VerticalAlignment="Top" Width="218" Height="38" Margin="105,222,0,0"  FontSize="16"/>
         <TextBox x:Name="SelectedId"  HorizontalAlignment="Left" Margin="365,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="218"  FontSize="16" FontWeight="Bold" Height="45" />
         <TextBox x:Name="SelectedPrice"  HorizontalAlignment="Left" Margin="365,222,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="218"  FontSize="16" FontWeight="Bold" Height="38"/>
@@ -25,8 +31,8 @@
             <ComboBoxItem Content="give me a break"></ComboBoxItem>
         </ComboBox>
 
-        <Button x:Name="ConfirmAdding" Content="ADD"   HorizontalAlignment="Left" Margin="305,357,0,0" VerticalAlignment="Top" Height="44" Width="150"  FontSize="18" FontWeight="Normal" Click="ConfirmAdding_Click"  BorderBrush="#AB8F80" Background="{x:Null}" Foreground="#DD000000" />
-        <Button x:Name="confirmUpdatingProduct" Content="update" HorizontalAlignment="Left" Margin="305,353,0,0" VerticalAlignment="Top" Height="48" Width="147" FontSize="20"  Click="confirmUpdatingProduct_Click"  BorderBrush="#AB8F80" Background="{x:Null}" Foreground="#DD000000"/>
+        <Button x:Name="ConfirmAdding" Content="ADD"   HorizontalAlignment="Left" Margin="305,357,0,0" VerticalAlignment="Top" Height="44" Width="150"  FontSize="18" FontWeight="Normal" Click="ConfirmAdding_Click"  BorderBrush="Black" Background="{x:Null}" Foreground="#DD000000" />
+        <Button x:Name="confirmUpdatingProduct" Content="update" HorizontalAlignment="Left" Margin="306,355,0,0" VerticalAlignment="Top" Height="48" Width="148" FontSize="20"  Click="confirmUpdatingProduct_Click"  BorderBrush="Black" Background="{x:Null}" Foreground="#DD000000"/>
         <ComboBox x:Name="Selected_Category"   FontSize="16" FontWeight="Bold" HorizontalAlignment="Left" Margin="365,130,0,0" VerticalAlignment="Top" Width="218" Height="40"/>
         <Label x:Name="in_stock" Content="Stock:"  FontSize="16" FontWeight="Bold" HorizontalAlignment="Left" Margin="105,267,0,0"  VerticalAlignment="Top" Width="218" Height="38" />
         <Label x:Name="id" Content="Id:"  FontSize="16" FontWeight="Bold" HorizontalAlignment="Left" Margin="105,80,0,0"  VerticalAlignment="Top" Width="218" Height="40"/>

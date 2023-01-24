@@ -16,6 +16,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Xml;
 //using BL;
+using System;
 using BLApi;
 using BlImplementation;
 using Microsoft.VisualBasic;
@@ -36,24 +37,23 @@ namespace PL
         IOrderedEnumerable<IGrouping<BO.Enums.Category, BO.ProductForList>> Categorygroups;
         IOrderedEnumerable<IGrouping<string, BO.ProductForList>> Printgroups;
         public IEnumerable<string> printOptions = new string[] { "all",
-              "127.0.0.1 SWEET 127.0.0.1",
-               "Hello World!",
-            "give me a </br>"
+              "127.0.0.1 Sweet 127.0.0.1",
+               "HELLO WORLD!",
+            "give me a break"
             ,"2B || !2B",
-            "roses are #FF0000 vilets are #0000FF"};
-       
-       
+            "roses are #ff0000 violets are #0000ff"};
+
+
         public ProductListForManager()
         {
             InitializeComponent();
-            //binding the product list 
+       
             var TepProductsList = bl.Product.GetProducts();
             Products = new ObservableCollection<BO.ProductForList>(TepProductsList);
 
 
 
-            ProductsListview.ItemsSource = Products;// try xml
-            DataContext = this;
+            ProductsListview.ItemsSource = Products;
             CategorySelector.ItemsSource = Enum.GetValues(typeof(DO.Enums.Category));
 
             PrintSelector.ItemsSource = printOptions;
@@ -64,7 +64,7 @@ namespace PL
         public void CategorySelector_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
-
+       
             //BO.Enums.Category selectedCategory = (BO.Enums.Category)CategorySelector.SelectedItem;
             var selectedCategory = ((ComboBox)sender).SelectedItem.ToString();
             if (selectedCategory != BO.Enums.Category.none.ToString())
@@ -83,11 +83,16 @@ namespace PL
                         catalogProducts = new(g.TakeWhile(x => true));
                     }
                 }
-                ProductsListview.ItemsSource = catalogProducts;
+                
+                    ProductsListview.ItemsSource = catalogProducts;
+               
             }
             else
-
+            {
+           
                 ProductsListview.ItemsSource = Products;
+                
+            }
 
 
         }
@@ -95,9 +100,6 @@ namespace PL
         {
 
             var selectedPrint = PrintSelector.SelectedItem;
-            //var selectedPrint = PrintSelector.Text;
-
-
             if (selectedPrint != "all")
             {
                 var groups = from p in Products
@@ -108,19 +110,47 @@ namespace PL
                 Printgroups = groups;
                 //if (selectedPrint == "give me a /br")
                 //    selectedPrint = "give me a </br>";
-               foreach (var g in groups)
+                foreach (var g in groups)
                 {
-                    if (g.Key== selectedPrint!)
+                    if ((string)g.Key == (string)selectedPrint)
                     {
                         catalogProducts = new(g.TakeWhile(x => true));
                     }
                 }
-                ProductsListview.ItemsSource = catalogProducts; 
+                ProductsListview.ItemsSource = catalogProducts;
             }
             else//the wanted print is default
             {
                 ProductsListview.ItemsSource = Products;
             }
+
+           // var selectedPrint = PrintSelector.SelectedItem;
+            ////var selectedPrint = PrintSelector.Text;
+
+
+            //if (selectedPrint != "all")
+            //{
+            //    var groups = from p in Products
+            //                 group p by p.Print into newGroup
+            //                 orderby newGroup.Key
+            //                 select newGroup;
+
+            //    Printgroups = groups;
+            //    //if (selectedPrint == "give me a /br")
+            //    //    selectedPrint = "give me a </br>";
+            //   foreach (var g in groups)
+            //    {
+            //        if (g.Key== selectedPrint!)
+            //        {
+            //            catalogProducts = new(g.TakeWhile(x => true));
+            //        }
+            //    }
+            //    ProductsListview.ItemsSource = catalogProducts; 
+            //}
+            //else//the wanted print is default
+            //{
+            //    ProductsListview.ItemsSource = Products;
+            //}
 
 
 

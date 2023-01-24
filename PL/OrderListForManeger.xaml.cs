@@ -28,6 +28,7 @@ namespace PL
             InitializeComponent();
             Orders = new ObservableCollection<BO.OrderForList>(bl.Order.GETOrders());
             DataContext = this;
+          
         }
 
         private void ListViewItem_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -46,9 +47,9 @@ namespace PL
                     MessageBoxImage.Hand);
             }
         }
-        private void goback_click(object sender, MouseButtonEventArgs e)
+        private void openOrderSimulator(object sender, MouseButtonEventArgs e)
         {
-            this.Close();
+            new OrdersSimulator().Show();
         }
 
 

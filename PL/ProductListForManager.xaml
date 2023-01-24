@@ -9,18 +9,19 @@
         mc:Ignorable="d"
          FontFamily="Cooper black"
         Foreground="Black"
-        Title="ProductListForManager" Height="640" Width="800">
+        Title="ProductListForManager" Height="640" Width="800"
+        WindowStartupLocation="CenterScreen">
     <Grid Name="MainGrid" >
         <Grid.Background>
-            <ImageBrush ImageSource="C:\Users\אריאל דרעי\Desktop\תואר\miniProject\dotNet5782_6386_6083\PL\images\bckground.png">
+            <ImageBrush ImageSource="C:\Users\user\OneDrive\שולחן העבודה\minip\dotNet5782_6386_6083\PL\images\bckground.png">
 
             </ImageBrush>
         </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="23*"/>
-            <RowDefinition Height="263*"/>
-            <RowDefinition Height="26*"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="289*"/>
+            <!--<RowDefinition Height="0*"/>
+            <RowDefinition Height="Auto"/>-->
         </Grid.RowDefinitions>
         <Grid Name="UpGrid" Height="auto" Grid.Row="0" Width="auto">
             <Grid.ColumnDefinitions>
@@ -37,7 +38,7 @@
             <ComboBox x:Name="PrintSelector"   SelectionChanged = "PrintSelector_SelectionChanged" HorizontalAlignment="Left" Margin="219,0,0,0" Width="120" Background="{x:Null}" Height="46" Grid.ColumnSpan="2" BorderBrush="#89000000"/>
         </Grid>
 
-        <ListView  Name ="ProductsListview" ItemsSource="{Binding Products}" Grid.Row="1"  MouseDoubleClick="ListViewItem_MouseDoubleClick" Margin="0,10,0,0" Grid.RowSpan="2">
+        <ListView  Name ="ProductsListview" ItemsSource="{Binding Products}" Grid.Row="1"  MouseDoubleClick="ListViewItem_MouseDoubleClick" Margin="0,5,0,0" Height="432" VerticalAlignment="Top">
             <ListView.View >
                 <GridView AllowsColumnReorder="True" >
 
@@ -49,7 +50,7 @@
             </ListView.View>
         </ListView>
 
-        <Button x:Name="AddingProductButton"  Content="Add new Product" HorizontalAlignment="Left" Margin="152,451,0,44" Padding="5" Click="Button_Click" Width="440"   FontSize="20" FontWeight="Normal"  Grid.Row="1" Background="{x:Null}" Foreground="#DD000000" BorderBrush="#FFDAC4AF"/>
+        <Button x:Name="AddingProductButton"  Content="Add new Product" HorizontalAlignment="Center" Margin="0,496,0,50" Padding="5" Click="Button_Click" Width="440"   FontSize="20" FontWeight="Normal"  Grid.Row="2" Background="{x:Null}" Foreground="#DD000000" BorderBrush="Black"/>
 
 
 

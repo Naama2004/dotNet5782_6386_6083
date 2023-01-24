@@ -40,7 +40,7 @@ Enter 5 to remove a product as a menager
 Enter 6 update product as a mengaer 
 Enter 7 to get a product , by its category ");
                     int Functioncoice;
-                    Functioncoice=int.Parse(Console.ReadLine());
+                    Functioncoice=int.Parse(Console.ReadLine()!);
                     switch (Functioncoice)
                     {
                         
@@ -149,28 +149,28 @@ enter a for sweatshirt b for sweatpants c for bucket hut d for socks e for T-shi
                                 if (ch == "a")
                                 {
                                     p.category = BO.Enums.Category.Sweatshirt;
-                                    p.Price = 50;
+                                    p.Price = (int)BO.Enums.Price.Sweatshirt;
                                 }
 
                                 if (ch == "b")
                                 {
                                     p.category = BO.Enums.Category.Sweatpant;
-                                    p.Price = 40;
+                                    p.Price = (int)BO.Enums.Price.Sweatpant;
                                 }
                                 if (ch == "c")
                                 {
                                     p.category = BO.Enums.Category.BucketHat;
-                                    p.Price = 25;
+                                    p.Price = (int)BO.Enums.Price.BucketHat;
                                 }
                                 if (ch == "d")
                                 {
                                     p.category = BO.Enums.Category.Socks;
-                                    p.Price = 15;
+                                    p.Price = (int)BO.Enums.Price.Socks;
                                 }
                                 if (ch == "e")
                                 {
                                     p.category = BO.Enums.Category.Tshirt;
-                                    p.Price = 35;
+                                    p.Price = (int)BO.Enums.Price.Tshirt;
                                 }
                                 Console.WriteLine(@"
 enter products amount in stock");
@@ -228,36 +228,36 @@ enter a for sweatshirt b for sweatpants c for bucket hut d for socks e for T-shi
                                 if (op1 == "a")
                                 {
                                     p.category = BO.Enums.Category.Sweatshirt;
-                                    p.Price = 50;
+                                    p.Price = (int)BO.Enums.Price.Sweatshirt;
                                 }
 
                                 if (op1 == "b")
                                 {
                                     p.category = BO.Enums.Category.Sweatpant;
-                                    p.Price = 40;
+                                    p.Price = (int)BO.Enums.Price.Sweatpant;
                                 }
                                 if (op1 == "c")
                                 {
                                     p.category = BO.Enums.Category.BucketHat;
-                                    p.Price = 25;
+                                    p.Price = (int)BO.Enums.Price.BucketHat;
                                 }
                                 if (op1 == "d")
                                 {
                                     p.category = BO.Enums.Category.Socks;
-                                    p.Price = 15;
+                                    p.Price = (int)BO.Enums.Price.Socks;
                                 }
                                 if (op1 == "e")
                                 {
                                     p.category = BO.Enums.Category.Tshirt;
-                                    p.Price = 35;
+                                    p.Price = (int)BO.Enums.Price.Tshirt;
                                 }
                                 Console.WriteLine(@"
 enter products amount in stock");
-                                p.instock = int.Parse(Console.ReadLine());
+                                p.instock = int.Parse(Console.ReadLine()!);
                                 bl.Product.UpdateProductmaneger(p);
                                 Console.WriteLine(@"
 enter products id to check if it was updated");
-                                id = int.Parse(Console.ReadLine());
+                                id = int.Parse(Console.ReadLine()!);
                                 p = bl.Product.ProductInfoManeger(id);
                                 Console.WriteLine(p);
                                 break;

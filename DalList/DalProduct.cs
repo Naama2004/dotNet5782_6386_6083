@@ -8,15 +8,15 @@ using static Dal.DataSource;
 
 namespace Dal;
 
-public class DalProduct : IProduct/*ICrud<Product>*/
+public class DalProduct : IProduct
 {
     public int ADD(Product P)
     {
         if (P.ID != 0)
         {
-            if (DataSource.Products.Exists(x => x?.ID == P.ID))//is exist returns true P is alredy in the list
+            if (Products.Exists(x => x?.ID == P.ID))
                 throw new ExistIdException("this product already exist");
-            DataSource.Products.Add(P);//if the product isnt already in the list , adds it . 
+           Products.Add(P); 
             return P.ID;
         }
         else
@@ -28,50 +28,27 @@ public class DalProduct : IProduct/*ICrud<Product>*/
 
     public void DELETE(int id)
     {
-        //if the function finds the product it removes it , if not it returns null and the code throws an exeption.
-       if(DataSource.Products.RemoveAll(x => x?.ID == id)==0)
+        //if the function finds the product it removes it , if not it returns 0 and the code throws an exeption.
+     if( Products.RemoveAll(x => x?.ID == id)==0)
             throw new UnfounfException("cant delete a no existing item"); 
-
-
-
-        //GET(id);// if it does not exsit the method GET will throw exeption
-        //foreach (Product P in DataSource.products)
-        //{
-        //    if (P.ID == id)
-        //    {
-        //        DataSource.products.Remove(P); 
-        //        break;  
-        //    }
-        //}
     }
 
     public Product GET(int id)
     {
-        Product? help = DataSource.Products.FirstOrDefault(x => x?.ID == id);
-        if (help != null)//if the product exist in the list , return in 
-            return (Product)help;
-        else//first or default returned null which means the product doesnt exist 
-            throw new UnfounfException(" id not found");
+        return Products.FirstOrDefault(x => x?.ID == id)
+            ?? throw new UnfounfException("id not found");
 
-
-
-
-        //foreach (Product P in DataSource.products)
-        //{
-        //    if (P.ID == id)
-        //        return P;
-        //}
-        //throw new UnfounfException(" id not found");
     }
 
     public void UPDATE(Product entity)
     {
-        DELETE((int)entity.ID);// the method delete will throw an exeption if the id does not exist
+        DELETE(entity.ID);//if the product doesnt exist DELETE will throw the Exception
         ADD(entity);
     }
 
     public IEnumerable<DO.Product> GetAll()
     {
-        return (from Product P in DataSource.Products select P).ToList();
+        return (from Product P in Products
+                select P);
     }
 }

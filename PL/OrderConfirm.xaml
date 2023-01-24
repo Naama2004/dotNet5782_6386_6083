@@ -5,16 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL"
         mc:Ignorable="d"
+          FontFamily="Cooper black"
+        Foreground="Black"
+        WindowStartupLocation="CenterScreen"
         Title="OrderConfirm" Height="450" Width="800">
-    <Grid Background="#DEDBD2">
-        <Label Content="Your order is a just few more details away" HorizontalAlignment="Center" Height="53" Margin="0,23,0,0" VerticalAlignment="Top" Width="573" FontFamily="Showcard Gothic" FontSize="24" Foreground="#4A5759"/>
-        <Label Content="your Name:" HorizontalAlignment="Left" Height="43" Margin="95,108,0,0" VerticalAlignment="Top" Width="236" Foreground="#FF4A5759" FontStyle="Italic" FontFamily="Stencil" FontSize="14"/>
-        <Label Content="your E-mail address:" HorizontalAlignment="Left" Height="43" Margin="95,174,0,0" VerticalAlignment="Top" Width="236" Foreground="#FF4A5759" FontStyle="Italic" FontFamily="Stencil" FontSize="14"/>
-        <Label Content="your address:" HorizontalAlignment="Left" Height="43" Margin="95,248,0,0" VerticalAlignment="Top" Width="236" Foreground="#FF4A5759" FontStyle="Italic" FontFamily="Stencil" FontSize="14"/>
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="C:\Users\user\OneDrive\שולחן העבודה\minip\dotNet5782_6386_6083\PL\images\bckground.png">
+
+            </ImageBrush>
+        </Grid.Background>
+        <Label Content="Your order is a just few more details away" HorizontalAlignment="Center" Height="53" Margin="0,23,0,0" VerticalAlignment="Top" Width="573" FontSize="24"/>
+        <Label Content="your Name:" HorizontalAlignment="Left" Height="43" Margin="95,108,0,0" VerticalAlignment="Top" Width="236" FontSize="14"/>
+        <Label Content="your E-mail address:" HorizontalAlignment="Left" Height="43" Margin="95,174,0,0" VerticalAlignment="Top" Width="236"  FontStyle="Italic"  FontSize="14"/>
+        <Label Content="your address:" HorizontalAlignment="Left" Height="43" Margin="95,248,0,0" VerticalAlignment="Top" Width="236"  Background="{x:Null}" FontStyle="Italic"  FontSize="14"/>
         <TextBox Name="Name" HorizontalAlignment="Left" Height="43" Margin="459,108,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="227" Background="#DEDBD2"/>
         <TextBox Name="Address" HorizontalAlignment="Left" Height="43" Margin="459,248,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="227" Background="#DEDBD2"/>
         <TextBox Name="Email" HorizontalAlignment="Left" Height="43" Margin="459,174,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="227" Background="#DEDBD2"/>
-        <Button Content="Place Order" HorizontalAlignment="Left" Height="58" Margin="242,322,0,0" VerticalAlignment="Top" Width="272"  Foreground="#FF4A5759" FontStyle="Italic" FontFamily="Stencil" Background="#FFB0C4B1" FontSize="16" Click="Button_Click"/>
+        <Button   Content="Place Order" HorizontalAlignment="Left" Height="58" Margin="241,338,0,0" VerticalAlignment="Top" Width="272"  FontSize="18" Click="Button_Click" Background="{x:Null}" BorderBrush="Black" Foreground="#DD000000"/>
 
     </Grid>
 </Window>

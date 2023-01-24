@@ -94,19 +94,19 @@ namespace Dal;
         switch (choise)
         {
             case Enums.Category.Tshirt:
-                p.Price = 30;
+                p.Price = (int)DO.Enums.Price.Tshirt;
                 break;
             case Enums.Category.Sweatshirt:
-                p.Price = 50;
+                p.Price = (int)DO.Enums.Price.Sweatshirt;
                 break;
             case Enums.Category.Sweatpant:
-                p.Price = 40;
+                p.Price = (int)DO.Enums.Price.Sweatpant;
                 break;
             case Enums.Category.BucketHat:
-                p.Price = 25;
+                p.Price = (int)DO.Enums.Price.BucketHat;
                 break;
             case Enums.Category.Socks:
-                p.Price = 15;
+                p.Price = (int)DO.Enums.Price.Socks;
                 break;
         }
         switch (choise)
@@ -135,30 +135,67 @@ namespace Dal;
         //order id
         Order O = new Order();
         O.ID = config.NextO;//update id num
+        Random rand = new Random();
+        int state=rand.Next(1,3);  
+        switch (state)
+        {
+            case 3:
+                {
+                    //order date
+                    DateTime start = new DateTime(2022, 1, 1);//min date
+                    int range = (DateTime.Today - start).Days;//from start to this day 
+                    start.AddDays(R.Next(range));//add random amount of days to the start date
+                    O.OrderDate = start; //update the date   
 
-        //order date
+                    //ship Date
 
-        DateTime start = new DateTime(2022, 1, 1);//min date
-        int range = (DateTime.Today - start).Days;//from start to this day 
-        start.AddDays(R.Next(range));//add random amount of days to the start date
-        O.OrderDate = start; //update the date   
+                    DateTime ship = start;//ship date needs to be after the orderdate
+                    int range2 = (DateTime.Today - start).Days;
+                    ship.AddDays(R.Next(range2));//add random amount of days to the start date
+                    O.ShipDate = ship; //update the date  
 
-        //ship Date
+                    //delivery date
+                    DateTime delivery = ship;//the ship date needs to be before the delivery date
+                    int range3 = (DateTime.Today - delivery).Days;//the ship date needs to be before the delivery date
+                    delivery.AddDays(R.Next(range3));//add random amount of days to the start date
+                    O.DeliveryDate = delivery; //update the date
+                    break;
+                }
+            case 2:
+                {
+                    //order date
+                    DateTime start = new DateTime(2022, 1, 1);//min date
+                    int range = (DateTime.Today - start).Days;//from start to this day 
+                    start.AddDays(R.Next(range));//add random amount of days to the start date
+                    O.OrderDate = start; //update the date   
 
-        DateTime ship = start;//ship date needs to be after the orderdate
-        int range2 = (DateTime.Today - start).Days;
-        ship.AddDays(R.Next(range2));//add random amount of days to the start date
-        O.ShipDate = ship; //update the date  
+                    //ship Date
 
-        //delivery date
-        DateTime delivery = ship;//the ship date needs to be before the delivery date
-        int range3 = (DateTime.Today - delivery).Days;//the ship date needs to be before the delivery date
-        delivery.AddDays(R.Next(range3));//add random amount of days to the start date
-        O.DeliveryDate = delivery; //update the date  
+                    DateTime ship = start;//ship date needs to be after the orderdate
+                    int range2 = (DateTime.Today - start).Days;
+                    ship.AddDays(R.Next(range2));//add random amount of days to the start date
+                    O.ShipDate = ship; //update the date  
+                    O.CustomerName = null;
+                    break;
+                }
+            case 1:
+                {
+                    //order date
+                    DateTime start = new DateTime(2022, 1, 1);//min date
+                    int range = (DateTime.Today - start).Days;//from start to this day 
+                    start.AddDays(R.Next(range));//add random amount of days to the start date
+                    O.OrderDate = start; //update the date   
 
+                    O.ShipDate = null;
+                    O.CustomerName = null;
+                    break;
+                }
+                //
+        }
         //costumer name
         Random R2 = new Random();
         int stringlen = R2.Next(3, 9);//random length to the name
+    
 
 
         int randValue;
@@ -231,19 +268,19 @@ namespace Dal;
         switch (pCategory)
         {
             case Enums.Category.Tshirt:
-                temp.Price = 30 * temp.Amount;
+                temp.Price = (int)DO.Enums.Price.Tshirt * temp.Amount;
                 break;
             case Enums.Category.Sweatshirt:
-                temp.Price = 50 * temp.Amount;
+                temp.Price = (int)DO.Enums.Price.Sweatshirt* temp.Amount;
                 break;
             case Enums.Category.Sweatpant:
-                temp.Price = 40 * temp.Amount;
+                temp.Price = (int)DO.Enums.Price.Sweatpant* temp.Amount;
                 break;
             case Enums.Category.BucketHat:
-                temp.Price = 25 * temp.Amount;
+                temp.Price = (int)DO.Enums.Price.BucketHat* temp.Amount;
                 break;
             case Enums.Category.Socks:
-                temp.Price = 15 * temp.Amount;
+                temp.Price = (int)DO.Enums.Price.Socks* temp.Amount;
                 break;
         }
         return temp;
@@ -278,9 +315,36 @@ namespace Dal;
         Order O1 = DataSource.randOrder();
         Order O2 = DataSource.randOrder();
         Order O3 = DataSource.randOrder();
+        Order O4 = DataSource.randOrder();
+        Order O5 = DataSource.randOrder();
+        Order O6 = DataSource.randOrder();
+        Order O7 = DataSource.randOrder();
+        Order O8 = DataSource.randOrder();
+        Order O9 = DataSource.randOrder();
+        Order O10 = DataSource.randOrder();
+        Order O11 = DataSource.randOrder();
+        Order O12 = DataSource.randOrder();
+        Order O13 = DataSource.randOrder();
+        Order O14 = DataSource.randOrder();
+        Order O15 = DataSource.randOrder();
+
+
         pO.ADD(O1);
         pO.ADD(O2);
         pO.ADD(O3);
+        pO.ADD(O4);
+        pO.ADD(O5);
+        pO.ADD(O6);
+        pO.ADD(O7);
+        pO.ADD(O8);
+        pO.ADD(O9);
+        pO.ADD(O10);
+        pO.ADD(O11);
+        pO.ADD(O12);
+        pO.ADD(O13);
+        pO.ADD(O14);
+        pO.ADD(O15);
+
         OrderItem OI1 = DataSource.randOI();
         OrderItem OI2 = DataSource.randOI();
         OrderItem OI3 = DataSource.randOI();

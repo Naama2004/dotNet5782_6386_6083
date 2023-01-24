@@ -37,7 +37,7 @@ namespace PL
                 category.Content = p.Category;
                 print.Content = p.Print;
                 price.Content = p.price;
-                ID.Content = p.ProductId;
+                //ID.Content = p.ProductId;
                 img.Source = p.ImageSource;
             amount.Text = "0";
             cart = c;
@@ -46,8 +46,19 @@ namespace PL
         public void Add_To_Cart_click(object sender, MouseButtonEventArgs e)
         {
             //productInfo.amount = int.Parse(amount.Text);
-            bl.Cart.addProduct(cart, productInfo.ProductId, int.Parse(amount.Text));
-            Close();
+            try
+            {
+                bl.Cart.addProduct(cart, productInfo.ProductId, int.Parse(amount.Text));
+                Close();
+            }
+            catch (BO.NotInStockException ex)
+            {
+                MessageBox.Show(
+                     ex.Message,
+                     "Invalid amount",
+                     MessageBoxButton.OK,
+                     MessageBoxImage.Hand);
+            }
         }
 
         public void Up_Click(object sender, RoutedEventArgs e)

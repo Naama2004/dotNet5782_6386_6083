@@ -37,13 +37,14 @@ namespace PL
                 InitializeComponent();
 
                 thisCart = C;
+                total.Text = totalCartPrice().ToString();
                 //var i = bl.Cart.getCartList(C);
-                smileySad.Visibility = Visibility.Hidden;
-                emptyCart.Visibility = Visibility.Hidden;
-                continueB.Visibility = Visibility.Hidden;
+                //smileySad.Visibility = Visibility.Hidden;
+                //emptyCart.Visibility = Visibility.Hidden;
+                //continueB.Visibility = Visibility.Hidden;
                 items = new ObservableCollection<BO.OrderItem>(bl.Cart.getCartList(thisCart));
                 ProductList.ItemsSource = items;
-                totalCartPrice();
+                
 
             }
             catch (BO.NotFoundException ex)
@@ -82,6 +83,7 @@ namespace PL
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             new OrderConfirm(thisCart).Show();
+            bl.Cart.EmptyCart(thisCart);
             this.Close();
         }
     }

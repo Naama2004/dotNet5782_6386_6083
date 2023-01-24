@@ -24,14 +24,15 @@ public class BOOrder : BLApi.IOrder
         List<DO.Order> tempDOList = factor!.Order.GetAll().ToList();//copy the entire order list in DO to temp DO list 
 
         return (from O in tempDOList//returns a IEnumerable of orderitems 
+                let  D =factor.Order.GET(O.ID)
                 select new BO.OrderForList()
                 {//update the O to be  a BO ordertiem
-                    OrderId = O.ID,
+                    OrderId = D.ID,
                     CustomerName = O.CustomerName!,
                     state = FindState(O),
                     Amount = TotalProductsAmount(O.ID),
                     TotalPrice = (Double)TotalPrice(O.ID)!
-                }); ;
+                }); 
     }
     #endregion
 
@@ -45,7 +46,7 @@ public class BOOrder : BLApi.IOrder
             try
             {
 
-                List<DO.OrderItem> tempList = factor.OrderItem.GetAll().ToList();
+                List<DO.OrderItem> tempList = factor!.OrderItem.GetAll().ToList();
 
                 DO.Order wantedOrder = factor.Order.GET(id);
                 BO.Order returnOrder = new BO.Order();
@@ -111,30 +112,23 @@ public class BOOrder : BLApi.IOrder
         try
         {
 
-            DO.Order temp = factor.Order.GET(id);//find the wanted order
-            if (FindState(temp) == BO.Enums.State.send)
+            DO.Order temp = factor!.Order.GET(id);//find the wanted order
+            if (temp.DeliveryDate == null)
             {
-                //updating the DO entity
-                DO.Order updatedDO = new DO.Order();
-                updatedDO.ID = temp.ID;
-                updatedDO.CustomerEmail = temp.CustomerEmail;
-                updatedDO.CustomerAddress = temp.CustomerAddress;
-                updatedDO.CustomerName = temp.CustomerName;
-                updatedDO.OrderDate = temp.OrderDate;
-                updatedDO.DeliveryDate = DateTime.Today;
-                updatedDO.ShipDate = temp.ShipDate;
-                factor.Order.UPDATE(updatedDO);
+                temp.DeliveryDate = DateTime.Now;
+                factor.Order.UPDATE(temp);
                 //return an updated BO entity
-                BO.Order updatedBO = copyvalues(updatedDO);
+                BO.Order updatedBO = copyvalues(temp);
                 updatedBO.Items = getallorderItem(id);
-                updatedBO.State = FindState(updatedDO);
+                updatedBO.State = FindState(temp);
                 updatedBO.Price = TotalPrice(id);
                 return updatedBO;
             }
             else
             {
-                throw new Exception("the order was already delivered");
+                throw new Exception("this boat has already been shiped");
             }
+
 
         }
         catch (DO.UnfounfException ex)
@@ -157,7 +151,7 @@ public class BOOrder : BLApi.IOrder
 
             try
             {
-                DO.Order myOrder = factor.Order.GET(ID);
+                DO.Order myOrder = factor!.Order.GET(ID);
             return new BO.OrderTracking()
             {
 
@@ -205,7 +199,7 @@ public class BOOrder : BLApi.IOrder
         if (O.OrderDate != null && O.ShipDate != null && O.DeliveryDate != null)
             return BO.Enums.State.provided;
        
-        throw new Exception("check");
+        throw new Exception("order wasnt shiped yet");
     }
     #endregion
 
@@ -213,11 +207,11 @@ public class BOOrder : BLApi.IOrder
     public int TotalProductsAmount(int ID)
     {
         int total = 0;
-        List<DO.OrderItem> temp = factor.OrderItem.GetAll().ToList();
+        List<DO.OrderItem> temp = factor!.OrderItem.GetAll().ToList();
         foreach (DO.OrderItem item in temp)
         {
             if (item.OrderID == ID)
-                total += (int)item.Amount;
+                total += (int)item.Amount!;
 
         }
         return total;
@@ -229,8 +223,8 @@ public class BOOrder : BLApi.IOrder
     public Double? TotalPrice(int ID)
     {
         Double? total = 0;
-        Double? temp1 = 0;
-        List<DO.OrderItem> temp = factor.OrderItem.GetAll().ToList();
+       
+        List<DO.OrderItem> temp = factor!.OrderItem.GetAll().ToList();
         foreach (DO.OrderItem item in temp)
         {
             if (item.OrderID == ID)
@@ -245,7 +239,7 @@ public class BOOrder : BLApi.IOrder
     #region get all order utems
     public List<BO.OrderItem>? getallorderItem(int ID)
     {
-        List<DO.OrderItem> tempDolist = factor.OrderItem.GetAll().ToList();
+        List<DO.OrderItem> tempDolist = factor!.OrderItem.GetAll().ToList();
 
         return (from O in tempDolist
                 where O.OrderID == ID
@@ -256,9 +250,25 @@ public class BOOrder : BLApi.IOrder
                     price = O.Price,
                     amount = O.Amount,
                     TotalPrice = O.Price * O.Amount,
-                    Print = factor.Product.GET((int)O.ProductID).Print
+                    Print = factor.Product.GET((int)O.ProductID!).Print
                 }).ToList();
     }
     #endregion
+
+    public BO.OrderForList GetOrderForList(int ID)
+    {
+        List<DO.Order> tempDOList = factor!.Order.GetAll().ToList();//copy the entire order list in DO to temp DO list 
+
+       return(from O in tempDOList//returns a IEnumerable of orderitems 
+                select new BO.OrderForList()
+                {//update the O to be  a BO ordertiem
+                    OrderId = O.ID,
+                    CustomerName = O.CustomerName!,
+                    state = FindState(O),
+                    Amount = TotalProductsAmount(O.ID),
+                    TotalPrice = (Double)TotalPrice(O.ID)!
+                }).FirstOrDefault()!; 
+
+    }
 
 }

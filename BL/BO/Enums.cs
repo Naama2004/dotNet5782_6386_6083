@@ -13,13 +13,15 @@ public class Enums
     {
         Tshirt, Sweatshirt, Sweatpant, BucketHat, Socks, none
     }
-    public enum Price
-    {
-        TS = 35, SW = 40, Sweatpant, BucketHat, Socks
-    }
+
     public enum print
     {
         home_SWEET_home = 0, HelloWorld, roses_are_red_vilots_are_blue, to_B_or_not_to_be, give_me_a_break
+    }
+
+    public enum Price
+    {
+        Tshirt = 30, Sweatshirt = 50, Sweatpant = 40, BucketHat = 25, Socks = 15
     }
 
 }

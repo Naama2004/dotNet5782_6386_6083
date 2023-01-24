@@ -7,7 +7,7 @@ public struct Enums
     }
     public enum Price
     {
-        TS = 35, SW=40, Sweatpant, BucketHat, Socks
+        Tshirt = 30, Sweatshirt = 50, Sweatpant=40, BucketHat=25, Socks=15
     }
     public enum print
     {

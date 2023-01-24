@@ -23,10 +23,10 @@ namespace PL
 
         public ManegerOrClient()
         {
+            
             InitializeComponent();
-            PasswordText.Visibility = Visibility.Hidden;
-            pass.Visibility = Visibility.Hidden;
             passwordContent.Visibility = Visibility.Hidden;
+            pass.Visibility = Visibility.Hidden;
             rand.Visibility = Visibility.Hidden;
         }
 
@@ -35,7 +35,7 @@ namespace PL
             Maneger.Visibility = Visibility.Hidden;
             Client.Visibility = Visibility.Hidden;
             entry.Visibility = Visibility.Hidden;
-            PasswordText.Visibility = Visibility.Visible;
+            passwordContent.Visibility = Visibility.Visible;
             pass.Visibility = Visibility.Visible;
             passwordContent.Visibility = Visibility.Visible;
             rand.Visibility = Visibility.Visible;
@@ -46,9 +46,8 @@ namespace PL
         {
             string temp=passwordContent.Text;
             if (temp == manegerPassward)
-            {
-                new OrdersOrProducts().Show();
-                Close();
+            { 
+                new OrdersOrProducts().Show(); 
             }
             else
             {

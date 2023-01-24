@@ -20,7 +20,7 @@ namespace PL
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow :Window
     {
 
         private IBl bl = BLApi.Factory.Get();
@@ -31,10 +31,11 @@ namespace PL
 
         private void enterListSystem_Click(object sender, RoutedEventArgs e)
         {
-
+            
+           
              new ManegerOrClient().Show();
-            //new pi().Show();
-          //  this.Close();
+            this.Close();
+           
         }
     }
 }

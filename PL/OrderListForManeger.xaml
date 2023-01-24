@@ -6,22 +6,23 @@
           xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:PL"
          FontFamily="Cooper black"
+        WindowStartupLocation="CenterScreen"
         Foreground="Black"
         mc:Ignorable="d"
         Title="OrderListForManeger" Height="457" Width="800">
     <Grid >
-        
+
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="7*"/>
             <ColumnDefinition Width="793*"/>
         </Grid.ColumnDefinitions>
         <Grid.Background>
-            <ImageBrush ImageSource="C:\Users\אריאל דרעי\Desktop\תואר\miniProject\dotNet5782_6386_6083\PL\images\bckground.png">
+            <ImageBrush ImageSource="C:\Users\user\OneDrive\שולחן העבודה\minip\dotNet5782_6386_6083\PL\images\bckground.png">
 
-        </ImageBrush>
+            </ImageBrush>
         </Grid.Background>
 
-        <ListView Name="OrderListview" ItemsSource="{Binding Orders}"  Margin="0,33,0,0"  MouseDoubleClick="ListViewItem_MouseDoubleClick" Grid.ColumnSpan="2" Height="364" VerticalAlignment="Top" >
+        <ListView Name="OrderListview" ItemsSource="{Binding Orders}"  Margin="0,48,0,0"  MouseDoubleClick="ListViewItem_MouseDoubleClick" Grid.ColumnSpan="2" Height="349" VerticalAlignment="Top" >
             <ListView.View>
                 <GridView AllowsColumnReorder="True">
 
@@ -33,6 +34,8 @@
                 </GridView >
             </ListView.View>
         </ListView>
-        <Label HorizontalAlignment="Left" Content="Orders:" VerticalAlignment="Top" Width="800" Height="33"  FontSize="24" FontStyle="Italic"  Grid.ColumnSpan="2"/>
+        <Label HorizontalAlignment="Left" Content="Orders:"  VerticalAlignment="Top" Width="443" Height="33"  FontSize="24" FontStyle="Italic" Grid.Column="1"/>
+        <Button Name="OrdersSimulator" Content=" Simulate" MouseDoubleClick="openOrderSimulator" Margin="511,1,65,408" Grid.Column="1" Background="{x:Null}" BorderBrush="#FFFF8C8C" Foreground="#DD000000"/>
     </Grid>
+
 </Window>

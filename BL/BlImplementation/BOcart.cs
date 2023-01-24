@@ -19,16 +19,6 @@ public class BOcart : ICart
     {
         try
         {
-            //if (C.items != null)
-            //{
-            //    foreach (var temp in C.items)
-            //    {
-            //        if (temp.ProductId == ProductID)
-            //        {
-            //            updateAmountInCart(C, ProductID, amount);
-            //        }
-            //    }
-            //}
             DO.Product PDetails = factor!.Product.GET(ProductID);
             C.items = C.items ?? new();
             if (PDetails.InStock > amount)
@@ -60,20 +50,19 @@ public class BOcart : ICart
 
     #region update amount in cart
     public BO.cart updateAmountInCart(BO.cart C, int ID, int newAmount)
-
     {
         if(newAmount < 0)
-        {
             throw new InValidIdException("the new amount can not be negative");
-        }
+        
         try
         {
             C.items = C.items ?? new();
-            BO.OrderItem temp = C.items?.FirstOrDefault(x => x.ProductId == ID) ?? throw new Exception("product is not in the cart");
-            if (newAmount == 0)// which means to delete this orderitem from the cart 
+            BO.OrderItem temp = C.items?.FirstOrDefault(x => x.ProductId == ID) 
+                ?? throw new Exception("product is not in the cart");
+            if (newAmount == 0)
             {
                 C.price -= temp?.TotalPrice;
-                C.items.Remove(temp);
+                C.items.Remove(temp!);
                 return C;
             }
             if (newAmount < temp.amount)
@@ -89,15 +78,15 @@ public class BOcart : ICart
             }
             if (newAmount > temp.amount)
             {
-                if (factor.Product.GET(ID).InStock < newAmount)//if there is not enough in stock
-                    throw new Exception();//אין מספיק בסטוק
+                if (factor!.Product.GET(ID).InStock < newAmount)
+                    throw new Exception();
                 BO.OrderItem UpdatesOrderItem = copyOrderItem(temp);
                 UpdatesOrderItem.amount = newAmount;
                 UpdatesOrderItem.TotalPrice = newAmount * UpdatesOrderItem.price;
                 C.price -= temp.TotalPrice;
                 C.items.Remove(temp);
                 C.items.Add(UpdatesOrderItem);
-                C.price += UpdatesOrderItem.TotalPrice;//update the cart price to the new correct one 
+                C.price += UpdatesOrderItem.TotalPrice;
                 return C;
 
             }
@@ -129,19 +118,19 @@ public class BOcart : ICart
     public int OrderConfirm(BO.cart c)
     {
         DO.Order newOrder = new DO.Order();
-       // DO.OrderItem temp = new DO.OrderItem();
-        int idOfOrder = factor.Order.ADD(newOrder);//return the id of the new order
+        int idOfOrder = factor!.Order.ADD(newOrder);
         newOrder.ID = idOfOrder;
         newOrder.OrderDate = DateTime.Now;
         newOrder.ShipDate = null;
         newOrder.DeliveryDate = null;
         newOrder.CustomerAddress = c.CustomerAddres;
         newOrder.CustomerEmail = c.CustomerEmail;
-        newOrder.CustomerName = c.CustomerName; 
+        newOrder.CustomerName = c.CustomerName;
+
+        c.items = c.items ?? new();
         foreach (var item in c.items)
         {
-            //check if the product is in stock
-            DO.Product product = (DO.Product)factor.Product.GET((int)item.ProductId);
+            DO.Product product = factor.Product.GET((int)item.ProductId!);
             if (product.InStock - item.amount < 0)
                 throw new Exception("we couldnt approve your order");
 
@@ -149,7 +138,7 @@ public class BOcart : ICart
             update.InStock = product.InStock - item.amount;
             factor.Product.UPDATE(update);
 
-            //if the produt in stock so add to order
+            
             DO.OrderItem newOrderItem = new DO.OrderItem()
             {
                 ProductID = product.ID,
@@ -161,7 +150,6 @@ public class BOcart : ICart
              factor.OrderItem.ADD(newOrderItem);
         }
         factor.Order.ADD(newOrder);
-        //Console.WriteLine("your order number is : " + idOfOrder);
         return idOfOrder;
     }
 
@@ -175,34 +163,21 @@ public class BOcart : ICart
     }
     public IEnumerable<BO.OrderItem> getCartList(BO.cart C)
     {
-  
-            if (C.items != null)
-
-                return (from P in C.items//return as an IEnumerable of BO Products 
-                                         //  let productFromDO = p.Product.GET(P.ID)
-                        select P);
-            else
-          throw new NotFoundException("the cart is empty");
+        return (from P in C.items
+                        select P)?? throw new NotFoundException("the cart is empty");
+        //else
+        //  throw new NotFoundException("the cart is empty");
     }
 
     public BO.cart DeleteProduct(BO.cart C, int ProductID)
     {
-        //DO.Product PDetails = factor!.Product.GET(ProductID);
 
-        if (C.items != null)
-        {
-            foreach (var p in C.items)
-            {
-                if (p.ProductId == ProductID)
-                {
-                    C.items.Remove(p);
+
+        C.items = C.items ?? throw new Exception("the cart is empty");
+       BO.OrderItem help=C.items.Find(x=>x.ProductId== ProductID)
+            ?? throw new NotFoundException("the product is not in the cart");
+       C.items.Remove(help);
                     return C;
-                }
-            }
-                throw new NotFoundException("the product is not in the cart"); 
-        }
-        else
-        throw new Exception("the cart is empty");
     }
 
 

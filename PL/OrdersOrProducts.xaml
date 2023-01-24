@@ -6,17 +6,18 @@
         xmlns:local="clr-namespace:PL"
         mc:Ignorable="d"
         FontFamily="Cooper black"
+        WindowStartupLocation="CenterScreen"
         Foreground="Black"
         Title="OrdersOrProducts" Height="450" Width="800">
     <Grid >
         <Grid.Background>
-            <ImageBrush ImageSource="C:\Users\אריאל דרעי\Desktop\תואר\miniProject\dotNet5782_6386_6083\PL\images\bckground.png">
+            <ImageBrush ImageSource="C:\Users\user\OneDrive\שולחן העבודה\minip\dotNet5782_6386_6083\PL\images\bckground.png">
 
             </ImageBrush>
         </Grid.Background>
         <Label Background="#FFDAC4AF"  HorizontalAlignment="Center" Height="38" VerticalAlignment="Top" Width="800"/>
-        <Button Name="Orders"  Content="Orders" HorizontalAlignment="Left" Margin="295,232,0,0" VerticalAlignment="Top" Height="71" Width="179" Click="Orders_Click"  BorderBrush="#AB8F80" Background="{x:Null}" Foreground="#DD000000" FontSize="16"/>
-        <Button Name="Products"  Content="Products" Margin="295,112,326,0" VerticalAlignment="Top" Height="71" Click="Products_Click"  BorderBrush="#AB8F80" Foreground="#DD000000" Background="{x:Null}" FontSize="16"/>
+        <Button Name="Orders"  Content="Orders" HorizontalAlignment="Left" Margin="295,232,0,0" VerticalAlignment="Top" Height="71" Width="179" Click="Orders_Click"  BorderBrush="Black" Background="{x:Null}" Foreground="#DD000000" FontSize="16"/>
+        <Button Name="Products"  Content="Products" Margin="295,112,326,0" VerticalAlignment="Top" Height="71" Click="Products_Click"  BorderBrush="Black" Foreground="#DD000000" Background="{x:Null}" FontSize="16"/>
 
     </Grid>
 </Window>

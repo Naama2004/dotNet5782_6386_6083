@@ -6,24 +6,24 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:PL"
          FontFamily="Cascadia Mono SemiBold"
+        WindowStartupLocation="CenterScreen"
         mc:Ignorable="d"
-        Title="ManegerOrClient" Height="450" Width="800">
+        Title="ManegerOrClient" Height="450" Width="800" >
     <Grid RenderTransformOrigin="0.491,0.484" >
         <Grid.Background>
-            <ImageBrush ImageSource="C:\Users\אריאל דרעי\Desktop\תואר\miniProject\dotNet5782_6386_6083\PL\images\bckground.png">
+            <ImageBrush ImageSource="C:\Users\user\OneDrive\שולחן העבודה\minip\dotNet5782_6386_6083\PL\images\bckground.png">
 
             </ImageBrush>
         </Grid.Background>
-        <Button Name="Maneger" BorderBrush="#AB8F80" Background="#EEE6DA" Content="maneger" HorizontalAlignment="Left" Margin="180,217,0,0" VerticalAlignment="Top" Height="71" Width="179"  Click="ManegerButton_Click" Foreground="Black" FontSize="18" FontFamily="Cooper Black"/>
-        <Button Name="Client" BorderBrush="#AB8F80" Content="client" Background="#EEE6DA" HorizontalAlignment="Left" Margin="471,217,0,0" VerticalAlignment="Top" Height="71" Width="179"  Foreground="Black" Click="Client_Click" FontSize="18" FontFamily="Cooper Black"/>
+        <Button Name="Maneger" BorderBrush="Black" Background="#EEE6DA" Content="maneger" HorizontalAlignment="Left" Margin="180,217,0,0" VerticalAlignment="Top" Height="71" Width="179"  Click="ManegerButton_Click" Foreground="Black" FontSize="18" FontFamily="Cooper Black"/>
+        <Button Name="Client" BorderBrush="Black" Content="client" Background="#EEE6DA" HorizontalAlignment="Left" Margin="471,217,0,0" VerticalAlignment="Top" Height="71" Width="179"  Foreground="Black" Click="Client_Click" FontSize="18" FontFamily="Cooper Black"/>
         <Label Name="entry" Content="which side are you on?" HorizontalAlignment="Center" Margin="0,109,0,0" VerticalAlignment="Top" Width="456" FontSize="24" FontWeight="Normal" Foreground="#FF010101" FontFamily="Cooper Black" HorizontalContentAlignment="Center"/>
 
-        <Label Name="rand" Content="jk PLEASE enter a password :)" HorizontalAlignment="Left" Margin="158,135,0,0" VerticalAlignment="Top" Width="456" FontSize="16" FontWeight="Normal" Foreground="#FF010101" FontFamily="Cooper Black" HorizontalContentAlignment="Center"/>
+        <Label Name="rand" Content="enter a password :)" HorizontalAlignment="Left" Margin="158,135,0,0" VerticalAlignment="Top" Width="456" FontSize="16" FontWeight="Normal" Foreground="#FF010101" FontFamily="Cooper Black" HorizontalContentAlignment="Center"/>
 
-        <TextBox Name="passwordContent" HorizontalAlignment="Left" Margin="435,217,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="215" Height="40" Background="#EEE6DA" FontSize="16" BorderBrush="#AB8F80" Foreground="Black" FontFamily="Cooper Black"/>
-        <Label Name="PasswordText" Content="Prove it!" HorizontalAlignment="Left" Margin="126,109,0,0" VerticalAlignment="Top" Width="524" FontSize="24" FontWeight="Normal" Foreground="Black"  Height="52" FontFamily="Cooper Black" HorizontalContentAlignment="Center" RenderTransformOrigin="0.475,1.095"/>
-        <Button Name="pass" BorderBrush="#AB8F80" Content="Password:" HorizontalAlignment="Left" Margin="147,217,0,0" VerticalAlignment="Top" Width="212" Height="52" FontWeight="Normal" Foreground="Black"  Background="#EEE6DA" Click="pass_Click" FontSize="18" FontFamily="Cooper Black" />
+        <TextBox Name="passwordContent" HorizontalAlignment="Left" Margin="471,223,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="215" Height="40" Background="#EEE6DA" FontSize="16" BorderBrush="Black" Foreground="Black" FontFamily="Cooper Black"/>
+        <Button Name="pass" BorderBrush="Black" Content="Password:" HorizontalAlignment="Left" Margin="147,217,0,0" VerticalAlignment="Top" Width="212" Height="52" FontWeight="Normal" Foreground="Black"  Background="#EEE6DA" Click="pass_Click" FontSize="18" FontFamily="Cooper Black" />
         <Label Background="#FFDAC4AF"  HorizontalAlignment="Center" Height="38" VerticalAlignment="Top" Width="800"/>
-      
+
     </Grid>
 </Window>

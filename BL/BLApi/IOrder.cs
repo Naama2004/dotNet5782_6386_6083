@@ -15,7 +15,7 @@ public interface IOrder
     public BO.Order UpdateDelivery(int id);
     public BO.OrderTracking trackOrder(int ID);
 
-
+    public BO.OrderForList GetOrderForList(int ID);
 
 
 }

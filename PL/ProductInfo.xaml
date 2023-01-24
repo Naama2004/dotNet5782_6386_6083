@@ -5,10 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:PL"
-         Foreground="#AB8F80"
+         Foreground="Black"
         mc:Ignorable="d"
         Title="ProductInfo" Height="466" Width="800">
-    <Grid Background="#EEE6DA">
+    <Grid >
+        <Grid.Background>
+            <ImageBrush ImageSource="C:\Users\user\OneDrive\שולחן העבודה\minip\dotNet5782_6386_6083\PL\images\bckground.png">
+
+            </ImageBrush>
+        </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="161*"/>
             <ColumnDefinition Width="39*"/>
@@ -18,22 +23,22 @@
         <Label Content="category:"  Foreground="Black" HorizontalAlignment="Left" Height="36" Margin="10,111,0,0" VerticalAlignment="Top" Width="167" FontFamily="Cooper Black" FontSize="16"/>
         <Label Content="price:" Foreground="Black" HorizontalAlignment="Left" Height="36" Margin="10,252,0,0" VerticalAlignment="Top" Width="167" RenderTransformOrigin="0.51,4.784" FontSize="14" FontFamily="Cooper Black"/>
         <Label Content="print:"  Foreground="Black" HorizontalAlignment="Left" Height="36" Margin="10,181,0,0" VerticalAlignment="Top" Width="167" FontSize="14" FontFamily="Cooper Black"/>
-        <Label Name="category" Foreground="#AB8F80"  HorizontalAlignment="Left" Height="36" Margin="24,252,0,0" VerticalAlignment="Top" Width="153"/>
-        <Label Name="price" Foreground="#AB8F80" HorizontalAlignment="Left" Height="36" Margin="223,252,0,0" VerticalAlignment="Top" Width="153"/>
-        <Label Name="print" Foreground="#AB8F80" HorizontalAlignment="Left" Height="36" Margin="223,181,0,0" VerticalAlignment="Top" Width="153"/>
-        <Label Name="ID"  Margin="117,349,332,57"></Label>
-        <TextBox Name="amount"  HorizontalAlignment="Left" Margin="527,368,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="60"/>
-        <Button Name="down" Content="-" HorizontalAlignment="Left" Background="#FFDAC4AF" Height="26" Margin="477,389,0,0" VerticalAlignment="Top" Width="45" RenderTransformOrigin="0.527,0.691" Click="Down_Click" BorderBrush="Black" Foreground="#DD000000" FontSize="18" FontWeight="Bold"/>
-        <Button Name="up" Content="+" HorizontalAlignment="Left" Height="28" Margin="599,387,0,0" VerticalAlignment="Top" Width="45" Click="Up_Click"/>
+        <Label Name="category"  HorizontalAlignment="Left" Height="36" Margin="118,111,0,0" VerticalAlignment="Top" Width="114" FontSize="14"/>
+        <Label Name="price"  HorizontalAlignment="Left" Height="36" Margin="118,252,0,0" VerticalAlignment="Top" Width="76" FontSize="14" FontWeight="Normal"/>
+        <Label Name="print" HorizontalAlignment="Left" Height="36" Margin="118,181,0,0" VerticalAlignment="Top" Width="125" FontSize="14" FontWeight="Normal"/>
+        <TextBox Name="amount"  HorizontalAlignment="Left" Margin="527,379,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="60"/>
+        <Button Name="down" Content="-" HorizontalAlignment="Left" Background="#FFDAC4AF" Height="28" Margin="477,384,0,0" VerticalAlignment="Top" Width="45" Click="Down_Click" BorderBrush="Black" Foreground="#DD000000" FontSize="18" FontWeight="Bold"/>
+        <Button Name="up"  Background="#FFDAC4AF" Content="+" HorizontalAlignment="Left" Height="28" Margin="592,384,0,0" VerticalAlignment="Top" Width="45" Click="Up_Click" BorderBrush="Black" Foreground="#DD000000" FontWeight="Bold"/>
         <Button Name="add" Style="{StaticResource MaterialDesignFloatingActionMiniButton }"
                                     Height="30" Width="30"
                                     HorizontalAlignment="Left"
-                                    Background="#AA6F5D"
+                                    Background="#FFDAC4AF"
                                     BorderBrush="#FF4A5759"
                                     IsEnabled="True"
-                                    Margin="36,366,0,39"
-                                    MouseDoubleClick="Add_To_Cart_click" Grid.Column="1">
-            <materialDesign:PackIcon Kind="CartAdd"  BorderBrush="#FF4A5759" HorizontalAlignment="Center" Height="69" Width="67"/>
+                                    Margin="10,361,0,59"
+                                    MouseDoubleClick="Add_To_Cart_click" RenderTransformOrigin="-0.119,-0.268" Grid.Column="1">
+
+            <materialDesign:PackIcon Kind="CartAdd" Background="#FFDAC4AF"  BorderBrush="Black" Foreground="Black"/>
         </Button>
     </Grid>
 </Window>

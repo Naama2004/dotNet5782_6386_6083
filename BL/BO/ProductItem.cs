@@ -15,5 +15,4 @@ print: {Print},
 price: {Price},
 Category: {category},
 	";
-
 }

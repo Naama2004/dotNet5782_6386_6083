@@ -42,28 +42,28 @@ press 3 for orderitem");
                             if (op == "a")
                             {
                                 p.Category = Enums.Category.Sweatshirt;
-                                p.Price = 50;
+                                p.Price = (int)DO.Enums.Price.Sweatshirt;
                             }
 
                             if (op == "b")
                             {
                                 p.Category = Enums.Category.Sweatpant;
-                                p.Price = 40;
+                                p.Price = (int)DO.Enums.Price.Sweatpant;
                             }
                             if (op == "c")
                             {
                                 p.Category = Enums.Category.BucketHat;
-                                p.Price = 25;
+                                p.Price = (int)DO.Enums.Price.BucketHat;
                             }
                             if (op == "d")
                             {
                                 p.Category = Enums.Category.Socks;
-                                p.Price = 15;
+                                p.Price = (int)DO.Enums.Price.Socks;
                             }
                             if (op == "e")
                             {
                                 p.Category = Enums.Category.Tshirt;
-                                p.Price = 35;
+                                p.Price = (int)DO.Enums.Price.Tshirt;
                             }
                             Console.WriteLine("Enter name of pruduct");
                             string? name = Console.ReadLine();
@@ -225,28 +225,28 @@ press 3 for order item");
                             if (op == "a")
                             {
                                 p.Category = Enums.Category.Sweatshirt;
-                                p.Price = 50;
+                                p.Price = (int)DO.Enums.Price.Sweatshirt;
                             }
 
                             if (op == "b")
                             {
                                 p.Category = Enums.Category.Sweatpant;
-                                p.Price = 40;
+                                p.Price = (int)DO.Enums.Price.Sweatpant;
                             }
                             if (op == "c")
                             {
                                 p.Category = Enums.Category.BucketHat;
-                                p.Price = 25;
+                                p.Price = (int)DO.Enums.Price.BucketHat;
                             }
                             if (op == "d")
                             {
                                 p.Category = Enums.Category.Socks;
-                                p.Price = 15;
+                                p.Price = (int)DO.Enums.Price.Socks;
                             }
                             if (op == "e")
                             {
                                 p.Category = Enums.Category.Tshirt;
-                                p.Price = 35;
+                                p.Price = (int)DO.Enums.Price.Tshirt;
                             }
                             Console.WriteLine("enter new name");
                             string? name = Console.ReadLine();

@@ -38,7 +38,7 @@ namespace PL
             confirmUpdatingProduct.Visibility = System.Windows.Visibility.Hidden;
             Selected_Category.ItemsSource = Enum.GetValues(typeof(DO.Enums.Category));
             id.IsEnabled = false;
-            categoryViewer.IsEnabled = false;
+           // Selected_Category.IsEnabled = false;
             PrintOnItem.IsEnabled = false;
             price.IsEnabled = false;
             in_stock.IsEnabled = false;
@@ -48,7 +48,7 @@ namespace PL
             InitializeComponent();
             ProductsS = Products;
             id.IsEnabled = false;
-            categoryViewer.IsEnabled = false;
+            
             PrintOnItem.IsEnabled = false;
             price.IsEnabled = false;
             in_stock.IsEnabled = false;
@@ -97,7 +97,7 @@ namespace PL
                 {
                     case "Tshirt":
                         {
-                            if (wantedPrice != 30)
+                            if (wantedPrice != (int)DO.Enums.Price.Tshirt)
                             {
                                 MessageBox.Show(
                        "The price you entered doesnt matches the category",
@@ -110,7 +110,7 @@ namespace PL
                         }
                     case "Sweatshirt":
                         {
-                            if (wantedPrice != 50)
+                            if (wantedPrice != (int)DO.Enums.Price.Sweatshirt)
                             {
                                 MessageBox.Show(
                        "The price you entered doesnt matches the category",
@@ -123,7 +123,7 @@ namespace PL
                         }
                     case "Sweatpant":
                         {
-                            if (wantedPrice != 40)
+                            if (wantedPrice != (int)DO.Enums.Price.Sweatpant)
                             {
                                 MessageBox.Show(
                        "The price you entered doesnt matches the category",
@@ -136,7 +136,7 @@ namespace PL
                         }
                     case "BucketHat":
                         {
-                            if (wantedPrice != 25)
+                            if (wantedPrice != (int)DO.Enums.Price.BucketHat)
                             {
                                 MessageBox.Show(
                        "The price you entered doesnt matches the category",
@@ -149,7 +149,7 @@ namespace PL
                         }
                     case "Socks":
                         {
-                            if (wantedPrice != 15)
+                            if (wantedPrice != (int)DO.Enums.Price.Socks)
                             {
                                 MessageBox.Show(
                        "The price you entered doesnt matches the category",
