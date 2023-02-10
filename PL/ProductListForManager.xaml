@@ -13,7 +13,7 @@
         WindowStartupLocation="CenterScreen">
     <Grid Name="MainGrid" >
         <Grid.Background>
-            <ImageBrush ImageSource="C:\Users\user\OneDrive\שולחן העבודה\minip\dotNet5782_6386_6083\PL\images\bckground.png">
+            <ImageBrush ImageSource="\bckground.png">
 
             </ImageBrush>
         </Grid.Background>

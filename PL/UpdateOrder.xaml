@@ -8,6 +8,9 @@
         mc:Ignorable="d"
         Title="UpdateOrder" Height="450" Width="800">
     <Grid >
+        <Grid.Background>
+            <ImageBrush ImageSource="/bckground.png"/>
+        </Grid.Background>
         <Label Content="                        Order Detail:"  HorizontalAlignment="Left"  VerticalAlignment="Top" Width="790" Height="55" Foreground="#FFFFFF" Background="#AB8F80" FontWeight="Bold" FontSize="36" FontStyle="Italic" FontFamily="Stencil"/>
         <TextBox Background="#FFFFFF" Name="OrderIdDetails" HorizontalAlignment="Left" Margin="400,86,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="166" Height="30" IsEnabled="False"/>
         <Label Name="OrderIdText" HorizontalAlignment="Left" Margin="154,86,0,0" Content="Order ID:" VerticalAlignment="Top" Width="166" Height="30" Foreground="#AB8F80" FontStyle="Italic" FontFamily="Stencil" />

@@ -49,7 +49,7 @@ namespace PL
 
         IEnumerable<PL.Product> getProducts(IEnumerable<BO.ProductForList> tempList)
         {
-
+            string source, suffing=".png",target;
             BO.Enums.print temp = new BO.Enums.print();
             List<PL.Product> returnList = new List<PL.Product>();
             foreach (var P in tempList)
@@ -80,11 +80,17 @@ namespace PL
                         break;
                 }
                 var bitmapImage = new BitmapImage();
+                // ImageSource t = new ImageSource(@"../" + P.Category + temp + @".png");
+                //  @"/" + P.Category + temp + @".png"
                 bitmapImage.BeginInit();
-
-                bitmapImage.UriSource = new Uri(@"C:\Users\user\OneDrive\שולחן העבודה\minip\dotNet5782_6386_6083\PL\images\" + P.Category + temp + @".png");
+                // BucketHatto_B_or_not_to_be.png
+                //  C: \Users\אריאל דרעי\Desktop\תואר\miniProject\dotNet5782_6386_6083\PL\images\Sockshome_SWEET_home.png
+                bitmapImage.UriSource = new Uri(@"C:\Users\אריאל דרעי\Desktop\תואר\miniProject\dotNet5782_6386_6083\PL\images\" + P.Category + temp + suffing);
                 bitmapImage.EndInit();
                 temp1.ImageSource = bitmapImage;
+
+                //target = @"..\PL\images\" + P.Category + temp.ToString() + suffing;
+                //temp1.ImageSource = target;
                 returnList.Add(temp1);
 
             }

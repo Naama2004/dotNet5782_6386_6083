@@ -11,10 +11,9 @@
         Title="ManegerOrClient" Height="450" Width="800" >
     <Grid RenderTransformOrigin="0.491,0.484" >
         <Grid.Background>
-            <ImageBrush ImageSource="C:\Users\user\OneDrive\שולחן העבודה\minip\dotNet5782_6386_6083\PL\images\bckground.png">
-
-            </ImageBrush>
+            <ImageBrush ImageSource="/bckground.png"/>
         </Grid.Background>
+
         <Button Name="Maneger" BorderBrush="Black" Background="#EEE6DA" Content="maneger" HorizontalAlignment="Left" Margin="180,217,0,0" VerticalAlignment="Top" Height="71" Width="179"  Click="ManegerButton_Click" Foreground="Black" FontSize="18" FontFamily="Cooper Black"/>
         <Button Name="Client" BorderBrush="Black" Content="client" Background="#EEE6DA" HorizontalAlignment="Left" Margin="471,217,0,0" VerticalAlignment="Top" Height="71" Width="179"  Foreground="Black" Click="Client_Click" FontSize="18" FontFamily="Cooper Black"/>
         <Label Name="entry" Content="which side are you on?" HorizontalAlignment="Center" Margin="0,109,0,0" VerticalAlignment="Top" Width="456" FontSize="24" FontWeight="Normal" Foreground="#FF010101" FontFamily="Cooper Black" HorizontalContentAlignment="Center"/>

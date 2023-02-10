@@ -19,16 +19,17 @@ using System.Linq;
 
 internal class Product : IProduct
 {
+    static string filePath = @"..\Products.xml";
 
     public IEnumerable<DO.Product> GetAll()
     {
         try
         {
-            if (File.Exists(@"C:\Users\user\OneDrive\שולחן העבודה\minip\dotNet5782_6386_6083\Products.xml"))
+            if (File.Exists(filePath))
             {
 
                 List<DO.Product> list;
-                using FileStream file = new FileStream(@"C:\Users\user\OneDrive\שולחן העבודה\minip\dotNet5782_6386_6083\Products.xml", FileMode.Open);
+                using FileStream file = new FileStream(filePath, FileMode.Open);
                 //XmlSerializer x = new (typeof(List<DO.Product>));
                 XmlSerializer x = new XmlSerializer(typeof(List<DO.Product>), new XmlRootAttribute("Products"));
                 list = x.Deserialize(file)as List<DO.Product>;
@@ -75,7 +76,7 @@ internal class Product : IProduct
     {
         if (p.ID != 0)
         {
-            XElement ProductRoot = XElement.Load(@"C:\Users\user\OneDrive\שולחן העבודה\minip\dotNet5782_6386_6083\Products.xml");  //get all the elements from the file
+            XElement ProductRoot = XElement.Load(filePath);  //get all the elements from the file
 
             //check if the customer exists in th file
             var ProductTemp = (from customer in ProductRoot.Elements()
@@ -95,7 +96,7 @@ internal class Product : IProduct
             //save the root in the file
             try
             {
-                ProductRoot.Save(@"C:\Users\user\OneDrive\שולחן העבודה\minip\dotNet5782_6386_6083\Products.xml");
+                ProductRoot.Save(filePath);
                 return p.ID;
             }
             catch (Exception ex)
@@ -113,7 +114,7 @@ internal class Product : IProduct
     public void DELETE(int id)
     {
 
-        using FileStream file = new FileStream(@"C:\Users\user\OneDrive\שולחן העבודה\minip\dotNet5782_6386_6083\Products.xml", FileMode.Open);
+        using FileStream file = new FileStream(filePath, FileMode.Open);
         XmlSerializer x = new XmlSerializer(typeof(List<DO.Product>), new XmlRootAttribute("Products"));
         List<DO.Product> pList;
         pList= x.Deserialize(file) as List<DO.Product>;
@@ -123,7 +124,7 @@ internal class Product : IProduct
         try
         {   
             pList.RemoveAll(x=>x.ID==id);
-            using FileStream file1 = new FileStream(@"C:\Users\user\OneDrive\שולחן העבודה\minip\dotNet5782_6386_6083\Products.xml", FileMode.Create);
+            using FileStream file1 = new FileStream(filePath, FileMode.Create);
             XmlSerializer x1 = new XmlSerializer(typeof(List<DO.Product>), new XmlRootAttribute("Products"));
             x1.Serialize(file1, pList);
             file1.Close();

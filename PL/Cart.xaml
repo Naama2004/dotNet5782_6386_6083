@@ -12,10 +12,9 @@
         Title="Cart" Height="450" Width="800">
     <Grid >
         <Grid.Background>
-            <ImageBrush ImageSource="C:\Users\user\OneDrive\שולחן העבודה\minip\dotNet5782_6386_6083\PL\images\bckground.png">
-
-            </ImageBrush>
+            <ImageBrush ImageSource="/bckground.png"/>
         </Grid.Background>
+
         <Grid.RowDefinitions>
             <RowDefinition Height="101*"/>
             <RowDefinition Height="116*"/>

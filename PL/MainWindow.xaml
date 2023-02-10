@@ -15,8 +15,9 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid >
         <Grid.Background>
-            <ImageBrush ImageSource="C:\Users\user\OneDrive\שולחן העבודה\minip\dotNet5782_6386_6083\PL\images\pic2.png" />
+            <ImageBrush ImageSource="/pic2.png"/>
         </Grid.Background>
+
         <Button x:Name="enterListSystem" Background="#EEE6DA" Content="Start Shopping" Margin="285,351,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Height="34" Width="214" FontSize="16" Foreground="Black" FontFamily="Cooper Black" Click="enterListSystem_Click" BorderBrush="Black" FontWeight="Normal">
             <Button.RenderTransform>
                 <TransformGroup>

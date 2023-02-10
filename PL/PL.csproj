@@ -12,6 +12,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="bckground.png" />
+    <None Remove="BucketHatgive_me_a_break.png" />
+    <None Remove="BucketHatHelloWorld.png" />
+    <None Remove="BucketHatto_B_or_not_to_be.png" />
+    <None Remove="pic2.png" />
     <None Remove="Sweatpantgive_me_a_break.png" />
   </ItemGroup>
 
@@ -24,6 +29,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="bckground.png" />
+    <Resource Include="BucketHatgive_me_a_break.png" />
+    <Resource Include="BucketHatHelloWorld.png" />
+    <Resource Include="BucketHatto_B_or_not_to_be.png" />
+    <Resource Include="pic2.png" />
     <Resource Include="Sweatpantgive_me_a_break.png" />
   </ItemGroup>
 

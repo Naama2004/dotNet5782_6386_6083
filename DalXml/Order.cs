@@ -13,15 +13,16 @@ using System.Xml.Serialization;
 
 internal class Order : IOrder
 {
+    static string filePath = @"..\Orders.xml";
     public IEnumerable<DO.Order> GetAll()
     {
         try
         {
-            if (File.Exists(@"C:\Users\user\OneDrive\שולחן העבודה\minip\dotNet5782_6386_6083\Orders.xml"))
+            if (File.Exists(filePath))
             {
                 List<DO.Order> list;
                 XmlSerializer x = new XmlSerializer(typeof(List<DO.Order>), new XmlRootAttribute("Orders"));
-                FileStream file = new FileStream(@"C:\Users\user\OneDrive\שולחן העבודה\minip\dotNet5782_6386_6083\Orders.xml", FileMode.Open);
+                FileStream file = new FileStream(filePath, FileMode.Open);
                 list = (List<DO.Order>)x.Deserialize(file)!;
                 file.Close();
                 return list!;
@@ -66,7 +67,7 @@ internal class Order : IOrder
     {
         if (p.ID != 0)
         {
-            XElement OrderRoot = XElement.Load(@"C:\Users\user\OneDrive\שולחן העבודה\minip\dotNet5782_6386_6083\Orders.xml");  //get all the elements from the file
+            XElement OrderRoot = XElement.Load(filePath);  //get all the elements from the file
 
             //check if the customer exists in th file
             var OrderTemp = (from O in OrderRoot.Elements()
@@ -123,7 +124,7 @@ internal class Order : IOrder
             //save the root in the file
             try
             {
-                OrderRoot.Save(@"C:\Users\user\OneDrive\שולחן העבודה\minip\dotNet5782_6386_6083\Orders.xml");
+                OrderRoot.Save(filePath);
                 return p.ID;
             }
             catch (Exception )
@@ -136,7 +137,7 @@ internal class Order : IOrder
             int RunNum;
            // XElement configRoot = XElement.Load(@"C:\Users\אריאל דרעי\Desktop\תואר\miniProject\dotNet5782_6386_6083\cconfig.xml");  //get all the elements from the file
 
-            using FileStream file = new FileStream(@"C:\Users\user\OneDrive\שולחן העבודה\minip\dotNet5782_6386_6083\config.xml", FileMode.Open);
+            using FileStream file = new FileStream(filePath, FileMode.Open);
             XmlSerializer x = new XmlSerializer(typeof(List<ConfigNumbers>), new XmlRootAttribute("RunNumbers"));
             List<Dal.ConfigNumbers> helpListCharge = x.Deserialize(file) as List<ConfigNumbers>;
             file.Close();
@@ -146,7 +147,7 @@ internal class Order : IOrder
             newNum.num += 1;
             helpListCharge.Add(newNum);
 
-            FileStream file1 = new FileStream(@"C:\Users\user\OneDrive\שולחן העבודה\minip\dotNet5782_6386_6083\config.xml", FileMode.Create);
+            FileStream file1 = new FileStream(filePath, FileMode.Create);
             XmlSerializer x1 = new XmlSerializer(typeof(List<ConfigNumbers>), new XmlRootAttribute("RunNumbers"));
             x.Serialize(file1, helpListCharge);
             file1.Close();
@@ -162,7 +163,7 @@ internal class Order : IOrder
 
     public void DELETE(int id)
     {
-        using FileStream file = new FileStream(@"C:\Users\user\OneDrive\שולחן העבודה\minip\dotNet5782_6386_6083\Orders.xml", FileMode.Open);
+        using FileStream file = new FileStream(filePath, FileMode.Open);
         XmlSerializer x = new XmlSerializer(typeof(List<DO.Order>), new XmlRootAttribute("Orders"));
         List<DO.Order> pList;
         pList = x.Deserialize(file) as List<DO.Order>;
@@ -172,7 +173,7 @@ internal class Order : IOrder
         try
         {
             pList.RemoveAll(x => x.ID == id);
-            using FileStream file1 = new FileStream(@"C:\Users\user\OneDrive\שולחן העבודה\minip\dotNet5782_6386_6083\Orders.xml", FileMode.Create);
+            using FileStream file1 = new FileStream(filePath, FileMode.Create);
             XmlSerializer x1 = new XmlSerializer(typeof(List<DO.Order>), new XmlRootAttribute("Orders"));
             x1.Serialize(file1, pList);
             file1.Close();
