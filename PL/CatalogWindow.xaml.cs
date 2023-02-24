@@ -15,6 +15,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using static System.Net.Mime.MediaTypeNames;
+using System.IO;
+using Path = System.IO.Path;
 
 namespace PL
 {
@@ -25,15 +27,17 @@ namespace PL
 
 
         public ObservableCollection<PL.Product> Products;
-        public ObservableCollection<PL.Product> catalogProducts;
-        IOrderedEnumerable<IGrouping<BO.Enums.Category, PL.Product>> categoryGroups;
-        IOrderedEnumerable<IGrouping<string, PL.Product>> Printgroups;
+        public ObservableCollection<PL.Product>? catalogProducts;
+        IOrderedEnumerable<IGrouping<BO.Enums.Category, PL.Product>>? categoryGroups ;
+        IOrderedEnumerable<IGrouping<string, PL.Product>>? Printgroups;
         public IEnumerable<string> printOptions = new string[] { "all",
               "127.0.0.1 Sweet 127.0.0.1",
                "HELLO WORLD!",
             "give me a break"
             ,"2B || !2B",
-            "roses are #ff0000 violets are #0000ff"};
+            "roses are #ff0000 violets are #0000ff"
+        };
+
         public CatalogWindow()
         {
             InitializeComponent();
@@ -49,7 +53,7 @@ namespace PL
 
         IEnumerable<PL.Product> getProducts(IEnumerable<BO.ProductForList> tempList)
         {
-            string source, suffing=".png",target;
+            //string source, suffing=".png";
             BO.Enums.print temp = new BO.Enums.print();
             List<PL.Product> returnList = new List<PL.Product>();
             foreach (var P in tempList)
@@ -79,18 +83,15 @@ namespace PL
                         temp = BO.Enums.print.roses_are_red_vilots_are_blue;
                         break;
                 }
-                var bitmapImage = new BitmapImage();
-                // ImageSource t = new ImageSource(@"../" + P.Category + temp + @".png");
-                //  @"/" + P.Category + temp + @".png"
-                bitmapImage.BeginInit();
-                // BucketHatto_B_or_not_to_be.png
-                //  C: \Users\אריאל דרעי\Desktop\תואר\miniProject\dotNet5782_6386_6083\PL\images\Sockshome_SWEET_home.png
-                bitmapImage.UriSource = new Uri(@"C:\Users\אריאל דרעי\Desktop\תואר\miniProject\dotNet5782_6386_6083\PL\images\" + P.Category + temp + suffing);
-                bitmapImage.EndInit();
-                temp1.ImageSource = bitmapImage;
+                string path = @"..\PL\images\" + P.Category + temp + ".jpg";
+                string fullPath = Path.Combine(Environment.CurrentDirectory, path);
+                BitmapImage image = new BitmapImage();
+                image.BeginInit();
+                image.UriSource = new System.Uri(fullPath ?? throw new Exception("problem"));
+                image.CacheOption = BitmapCacheOption.OnLoad;
+                image.EndInit();
+                temp1.ImageSource = image;
 
-                //target = @"..\PL\images\" + P.Category + temp.ToString() + suffing;
-                //temp1.ImageSource = target;
                 returnList.Add(temp1);
 
             }

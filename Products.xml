@@ -1,185 +1,185 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Products xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <Product>
-    <ID>10000</ID>
-    <Category>Tshirt</Category>
-    <Print>127.0.0.1 Sweet 127.0.0.1</Print>
-    <Price>30</Price>
-    <InStock>90</InStock>
-  </Product>
-  <Product>
-    <ID>10001</ID>
-    <Category>Tshirt</Category>
-    <Print>HELLO WORLD!</Print>
-    <Price>30</Price>
-    <InStock>90</InStock>
-  </Product>
-  <Product>
-    <ID>10002</ID>
-    <Category>Tshirt</Category>
-    <Print>2B || !2B</Print>
-    <Price>30</Price>
-    <InStock>90</InStock>
-  </Product>
-  <Product>
-    <ID>10003</ID>
-    <Category>Tshirt</Category>
-    <Print>roses are #ff0000 violets are #0000ff</Print>
-    <Price>50</Price>
-    <InStock>90</InStock>
-  </Product>
-  <Product>
-    <ID>10004</ID>
-    <Category>Tshirt</Category>
-    <Print>give me a break</Print>
-    <Price>50</Price>
-    <InStock>90</InStock>
-  </Product>
-  <Product>
-    <ID>10005</ID>
-    <Category>Sweatshirt</Category>
-    <Print>2B || !2B</Print>
-    <Price>50</Price>
-    <InStock>90</InStock>
-  </Product>
-  <Product>
-    <ID>10006</ID>
-    <Category>Sweatshirt</Category>
-    <Print>give me a break</Print>
-    <Price>50</Price>
-    <InStock>90</InStock>
-  </Product>
-  <Product>
-    <ID>10007</ID>
-    <Category>Sweatshirt</Category>
-    <Print>127.0.0.1 Sweet 127.0.0.1</Print>
-    <Price>40</Price>
-    <InStock>90</InStock>
-  </Product>
-  <Product>
-    <ID>10008</ID>
-    <Category>Sweatshirt</Category>
-    <Print>roses are #ff0000 violets are #0000ff</Print>
-    <Price>40</Price>
-    <InStock>90</InStock>
-  </Product>
-  <Product>
-    <ID>10009</ID>
-    <Category>Sweatshirt</Category>
-    <Print>HELLO WORLD!</Print>
-    <Price>40</Price>
-    <InStock>90</InStock>
-  </Product>
-  <Product>
-    <ID>10010</ID>
-    <Category>Sweatpant</Category>
-    <Print>127.0.0.1 Sweet 127.0.0.1</Print>
-    <Price>25</Price>
-    <InStock>90</InStock>
-  </Product>
-  <Product>
-    <ID>10011</ID>
-    <Category>Sweatpant</Category>
-    <Print>roses are #ff0000 violets are #0000ff</Print>
-    <Price>25</Price>
-    <InStock>90</InStock>
-  </Product>
-  <Product>
-    <ID>10012</ID>
-    <Category>Sweatpant</Category>
-    <Print>give me a break</Print>
-    <Price>25</Price>
-    <InStock>90</InStock>
-  </Product>
-  <Product>
-    <ID>10013</ID>
-    <Category>Sweatpant</Category>
-    <Print>2B || !2B</Print>
-    <Price>25</Price>
-    <InStock>90</InStock>
-  </Product>
-  <Product>
-    <ID>10014</ID>
-    <Category>Sweatpant</Category>
-    <Print>HELLO WORLD!</Print>
-    <Price>15</Price>
-    <InStock>90</InStock>
-  </Product>
-  <Product>
-    <ID>10015</ID>
-    <Category>BucketHat</Category>
-    <Print>HELLO WORLD!</Print>
-    <Price>15</Price>
-    <InStock>90</InStock>
-  </Product>
-  <Product>
-    <ID>10016</ID>
-    <Category>BucketHat</Category>
-    <Print>2B || !2B</Print>
-    <Price>15</Price>
-    <InStock>90</InStock>
-  </Product>
-  <Product>
-    <ID>10017</ID>
-    <Category>BucketHat</Category>
-    <Print>give me a break</Print>
-    <Price>15</Price>
-    <InStock>90</InStock>
-  </Product>
-  <Product>
-    <ID>10018</ID>
-    <Category>BucketHat</Category>
-    <Print>roses are #ff0000 violets are #0000ff</Print>
-    <Price>40</Price>
-    <InStock>90</InStock>
-  </Product>
-  <Product>
-    <ID>10019</ID>
-    <Category>BucketHat</Category>
-    <Print>127.0.0.1 Sweet 127.0.0.1</Print>
-    <Price>15</Price>
-    <InStock>88</InStock>
-  </Product>
-  <Product>
-    <ID>10020</ID>
-    <Category>BucketHat</Category>
-    <Print>127.0.0.1 Sweet 127.0.0.1</Print>
-    <Price>15</Price>
-    <InStock>90</InStock>
-  </Product>
-  <Product>
-    <ID>10021</ID>
-    <Category>none</Category>
-    <Print>127.0.0.1 Sweet 127.0.0.1</Print>
-    <Price>30</Price>
-    <InStock>90</InStock>
-  </Product>
-  <Product>
-    <ID>10023</ID>
-    <Category>none</Category>
-    <Print>HELLO WORLD!</Print>
-    <Price>30</Price>
-    <InStock>90</InStock>
-  </Product>
-  <Product>
-    <ID>10025</ID>
-    <Category>none</Category>
-    <Print>roses are #ff0000 violets are #0000ff</Print>
-    <Price>30</Price>
-    <InStock>90</InStock>
-  </Product>
-  <Product>
-    <ID>10026</ID>
-    <Category>none</Category>
-    <Print>2B || !2B</Print>
-    <Price>30</Price>
-    <InStock>90</InStock>
-  </Product>
-  <Product>
-    <ID>10024</ID>
-    <Category>none</Category>
-    <Print>give me a break</Print>
-    <Price>30</Price>
-    <InStock>90</InStock>
-  </Product>
+	<Product>
+		<ID>10000</ID>
+		<Category>Tshirt</Category>
+		<Print>127.0.0.1 Sweet 127.0.0.1</Print>
+		<Price>30</Price>
+		<InStock>90</InStock>
+	</Product>
+	<Product>
+		<ID>10001</ID>
+		<Category>Tshirt</Category>
+		<Print>HELLO WORLD!</Print>
+		<Price>30</Price>
+		<InStock>90</InStock>
+	</Product>
+	<Product>
+		<ID>10002</ID>
+		<Category>Tshirt</Category>
+		<Print>2B || !2B</Print>
+		<Price>30</Price>
+		<InStock>90</InStock>
+	</Product>
+	<Product>
+		<ID>10003</ID>
+		<Category>Tshirt</Category>
+		<Print>roses are #ff0000 violets are #0000ff</Print>
+		<Price>50</Price>
+		<InStock>90</InStock>
+	</Product>
+	<Product>
+		<ID>10004</ID>
+		<Category>Tshirt</Category>
+		<Print>give me a break</Print>
+		<Price>50</Price>
+		<InStock>90</InStock>
+	</Product>
+	<Product>
+		<ID>10005</ID>
+		<Category>Sweatshirt</Category>
+		<Print>2B || !2B</Print>
+		<Price>50</Price>
+		<InStock>90</InStock>
+	</Product>
+	<Product>
+		<ID>10006</ID>
+		<Category>Sweatshirt</Category>
+		<Print>give me a break</Print>
+		<Price>50</Price>
+		<InStock>90</InStock>
+	</Product>
+	<Product>
+		<ID>10007</ID>
+		<Category>Sweatshirt</Category>
+		<Print>127.0.0.1 Sweet 127.0.0.1</Print>
+		<Price>40</Price>
+		<InStock>90</InStock>
+	</Product>
+	<Product>
+		<ID>10008</ID>
+		<Category>Sweatshirt</Category>
+		<Print>roses are #ff0000 violets are #0000ff</Print>
+		<Price>40</Price>
+		<InStock>90</InStock>
+	</Product>
+	<Product>
+		<ID>10009</ID>
+		<Category>Sweatshirt</Category>
+		<Print>HELLO WORLD!</Print>
+		<Price>40</Price>
+		<InStock>90</InStock>
+	</Product>
+	<Product>
+		<ID>10010</ID>
+		<Category>Sweatpant</Category>
+		<Print>127.0.0.1 Sweet 127.0.0.1</Print>
+		<Price>25</Price>
+		<InStock>90</InStock>
+	</Product>
+	<Product>
+		<ID>10011</ID>
+		<Category>Sweatpant</Category>
+		<Print>roses are #ff0000 violets are #0000ff</Print>
+		<Price>25</Price>
+		<InStock>90</InStock>
+	</Product>
+	<Product>
+		<ID>10012</ID>
+		<Category>Sweatpant</Category>
+		<Print>give me a break</Print>
+		<Price>25</Price>
+		<InStock>90</InStock>
+	</Product>
+	<Product>
+		<ID>10013</ID>
+		<Category>Sweatpant</Category>
+		<Print>2B || !2B</Print>
+		<Price>25</Price>
+		<InStock>90</InStock>
+	</Product>
+	<Product>
+		<ID>10014</ID>
+		<Category>Sweatpant</Category>
+		<Print>HELLO WORLD!</Print>
+		<Price>15</Price>
+		<InStock>90</InStock>
+	</Product>
+	<Product>
+		<ID>10015</ID>
+		<Category>BucketHat</Category>
+		<Print>HELLO WORLD!</Print>
+		<Price>15</Price>
+		<InStock>90</InStock>
+	</Product>
+	<Product>
+		<ID>10016</ID>
+		<Category>BucketHat</Category>
+		<Print>2B || !2B</Print>
+		<Price>15</Price>
+		<InStock>90</InStock>
+	</Product>
+	<Product>
+		<ID>10017</ID>
+		<Category>BucketHat</Category>
+		<Print>give me a break</Print>
+		<Price>15</Price>
+		<InStock>90</InStock>
+	</Product>
+	<Product>
+		<ID>10018</ID>
+		<Category>BucketHat</Category>
+		<Print>roses are #ff0000 violets are #0000ff</Print>
+		<Price>40</Price>
+		<InStock>90</InStock>
+	</Product>
+	<Product>
+		<ID>10019</ID>
+		<Category>BucketHat</Category>
+		<Print>127.0.0.1 Sweet 127.0.0.1</Print>
+		<Price>15</Price>
+		<InStock>88</InStock>
+	</Product>
+	<Product>
+		<ID>10020</ID>
+		<Category>BucketHat</Category>
+		<Print>127.0.0.1 Sweet 127.0.0.1</Print>
+		<Price>15</Price>
+		<InStock>90</InStock>
+	</Product>
+	<Product>
+		<ID>10021</ID>
+		<Category>none</Category>
+		<Print>127.0.0.1 Sweet 127.0.0.1</Print>
+		<Price>30</Price>
+		<InStock>90</InStock>
+	</Product>
+	<Product>
+		<ID>10023</ID>
+		<Category>none</Category>
+		<Print>HELLO WORLD!</Print>
+		<Price>30</Price>
+		<InStock>90</InStock>
+	</Product>
+	<Product>
+		<ID>10025</ID>
+		<Category>none</Category>
+		<Print>roses are #ff0000 violets are #0000ff</Print>
+		<Price>30</Price>
+		<InStock>90</InStock>
+	</Product>
+	<Product>
+		<ID>10026</ID>
+		<Category>none</Category>
+		<Print>2B || !2B</Print>
+		<Price>30</Price>
+		<InStock>90</InStock>
+	</Product>
+	<Product>
+		<ID>10024</ID>
+		<Category>none</Category>
+		<Print>give me a break</Print>
+		<Price>30</Price>
+		<InStock>90</InStock>
+	</Product>
 </Products>

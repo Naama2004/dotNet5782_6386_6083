@@ -9,6 +9,7 @@
         WindowStartupLocation="CenterScreen"
         Title="catalog" Height="450" Width="800">
 
+
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="/bckground.png"/>
@@ -16,7 +17,7 @@
 
 
 
-        <ListBox Name="catalog" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="333" VerticalAlignment="Top" Margin="0,101,0,0">
+        <ListBox Name="catalog" ScrollViewer.HorizontalScrollBarVisibility="Visible"  Height="333" VerticalAlignment="Top" Margin="0,101,0,0">
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
                     <UniformGrid Rows="3" Columns="3"/>
@@ -25,7 +26,8 @@
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Vertical" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" MouseDown="ProductList_MouseDoubleClick" >
-                        <Image Source="{Binding ImageSource}" Width="100" Margin="50,50" />
+                        <Image Source="{Binding ImageSource}" 
+                               Width="100" Margin="50,50" />
                         <TextBlock Text="{Binding Category}" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" />
 
                     </StackPanel>

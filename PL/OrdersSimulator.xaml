@@ -10,7 +10,6 @@
         Title="OrdersSimulator" Height="450" Width="800">
     <Window.Resources>
         <local:StateToValueConverter x:Key="valueForProgressBar"/>
-      
     </Window.Resources>
 
     <Grid>

@@ -17,5 +17,5 @@ public class Product
 
    // public ImageBrush ImageSource { get; set; }
    public BitmapImage? ImageSource { get; set; }
-   //public string? ImageSource { get; set; }
+  // public string? ImageSource { get; set; }
 }

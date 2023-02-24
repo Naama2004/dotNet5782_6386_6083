@@ -11,14 +11,7 @@
 	  <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
   </PropertyGroup>
 
-  <ItemGroup>
-    <None Remove="bckground.png" />
-    <None Remove="BucketHatgive_me_a_break.png" />
-    <None Remove="BucketHatHelloWorld.png" />
-    <None Remove="BucketHatto_B_or_not_to_be.png" />
-    <None Remove="pic2.png" />
-    <None Remove="Sweatpantgive_me_a_break.png" />
-  </ItemGroup>
+
 
   <ItemGroup>
     <PackageReference Include="MaterialDesignThemes" Version="4.6.1" />

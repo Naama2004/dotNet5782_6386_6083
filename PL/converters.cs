@@ -11,8 +11,9 @@ using System.Windows.Data;
 using MaterialDesignThemes.Wpf;
 using System.Windows.Media;
 
+using System.IO;
 
-
+using System.Windows.Media.Imaging;
 namespace PL
 { 
 
@@ -45,28 +46,29 @@ namespace PL
         }
     }
 
-    public class StateToColorConverter : IValueConverter
-    {
-        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-        {
+    //public class StateToColorConverter : IValueConverter
+    //{
+    //    public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+    //    {
             
-            switch ((BO.Enums.State)value)
-            {
-                case BO.Enums.State.approved:
-                return Brushes.Pink;
-                case BO.Enums.State.send:
-                return Brushes.Orange;
-                case BO.Enums.State.provided:
-                return Brushes.Green;
-            }
-            return  Brushes.Green; 
-        }
-        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            //we will never use this
-            return value;
-        }
-    }
+    //        switch ((BO.Enums.State)value)
+    //        {
+    //            case BO.Enums.State.approved:
+    //            return Brushes.Pink;
+    //            case BO.Enums.State.send:
+    //            return Brushes.Orange;
+    //            case BO.Enums.State.provided:
+    //            return Brushes.Green;
+    //        }
+    //        return  Brushes.Green; 
+    //    }
+    //    public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+    //    {
+    //        //we will never use this
+    //        return value;
+    //    }
+    //}
+
 }
 
 
